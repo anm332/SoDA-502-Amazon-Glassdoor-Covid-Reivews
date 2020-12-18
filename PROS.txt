@@ -1,0 +1,484 @@
+"x"
+"1"	"Great work environment with lots of growth"
+"2"	"Weekly Pay
+Extra hours
+Simple hiring process"
+"3"	"Pays well for what it is, pandemic-proof job, good benefits even for seasonal employees, flexible time off bank, overtime pays well, always trying to create sense of community for employees despite working from home, responsive and caring HR, great position for anyone who wants to work from home or is currently in school like myself, COVID leave is paid"
+"4"	"You will always have work"
+"5"	"Decent pay and benefit options, supportive colleagues"
+"6"	"Working alone by yourself. Especially during covid"
+"7"	"1) Operation Managers care (depending where you work).
+2) get tons of UPT, PTO, VTO and Vacation if it’s available.
+3) Benefits aren’t bad
+4) You choose your shifts, tons of VET available depending on the time of the year. Definitely all year of 2020 and probably into 2021.
+5) keep to yourself if you’d like. Main job is scanning for the most part if your working inside of a warehouse. They will offer to train you in different areas of the building if you’d like! 
+6) Amazon is consistently cleaning their buildings cause of COVID-19. 
+7) Work and have fun while doing it!"
+"8"	"its all in the strength and abilities of the individual its a physical hard job."
+"9"	"Good pay, especially during the holidays"
+"10"	"nice pay, time off if diagnosed with covid"
+"11"	"Very flexible good hours to work"
+"12"	"A lot of opportunities and inclusion, people are cool and dedicated."
+"13"	"So much internal growth potential and company benefits. they got so many options and programs fun and career growth"
+"14"	"They take very good care of you in case of any form of emergency situation!"
+"15"	"Some DSPs pay for full day's work if completed early. Example: Complete a 10-hour shift in 7 hours then you get paid the full 10 hours."
+"16"	"Co-workers are great
+Weekly pay
+Great exercise - the work will get you in shape"
+"17"	"Flexible Hours, Decent Benefits, Can Always Pick Up More Hours"
+"18"	"-great opportunities if you're able to network (difficult during pandemic)
+-work with really intelligent people"
+"19"	"Good pay and establishes good covid procedures for workers"
+"20"	"It’s great to have a job in covid"
+"21"	"Supportive management. Great team and environment. Good work life balance"
+"22"	"If you do good work, Amazon's compensation model makes sure you get paid accordingly. Perfect for type-As who are tired of getting paid the same as coworkers who are performing at a lower level. Also, the benefits/insurance coverage is unbeatable."
+"23"	"Big company, stability during pandemic times."
+"24"	"Reliable job, no resume needed to apply and you get hired within 15 minutes online"
+"25"	"-Good pay for no experience/qualifications 
+-Career choice program can give you qualifications"
+"26"	"Self directed work. A ton of learning opportunities which is a double edged sword."
+"27"	"Pay, insurance, food, benefits, leave services, and paid time off"
+"28"	"- My team is very supportive 
+- Flexible work hours, and time management focused on results rather than filling time quotas. 
+- Can be self-directed
+- Good stock options"
+"29"	"Exercise, benefits, overtime pay, very diverse workforce, an unimaginable amount of open doors to other job types and positions"
+"30"	"Good projects for SDE Intern"
+"31"	"Scholarship for career changes; Strict Covid19 policies."
+"32"	"Average salary
+No experience
+Sign in bonus
+Benefits after 6 months"
+"33"	"People care about each other, fun work, safe and very clean despite covid scares"
+"34"	"Stock bonus keeps going up. The whole world will see your work. Good response to covid with options to work from home and understanding that kids home from school will reduce your productivity"
+"35"	"Upper management is really great"
+"36"	"Always moving and there’s bonuses for the pandemic"
+"37"	"-indepndent work
+-3 days off a week
+-you make people happy
+-guaranteed hours"
+"38"	"The pay is pretty good, but they offer benefits from day one.  They are doing a great job handling the pandemic with strict protocols in place."
+"39"	"Easy to get a job there . Easy work . nice People . Taking COVID actions and doing them well ."
+"40"	"This is a great company to work."
+"41"	"benefits are good make friends"
+"42"	"Great Benefits and Great People, they always bring Hope to new Workers and new Hope to Current Workers. I call Amazon The New America! We Let anyone in, like the Statue of Liberty."
+"43"	"Regular schedule, but mandatory overtime so not really"
+"44"	"Pays Well and Maintains Safe Workplace"
+"45"	"Good benefits, time off weekly accruals. Some operations managers are nice as well as ambassadors."
+"46"	"The pay is good and lots of ways to move up after a year working at tier 1"
+"47"	"Pay is $15 + Possible premium for your shift time
+Trained (2) days on an mentally easy to understand task
+You pick your schedule
+Workout
+Not hot (A/C or fans)
+PEOPLE here help you if you are lost. Super kind associates!!
+You get an extra 5 minutes to your break to leave and come back  to your post (warehouse is HUGE)
+I’m excited to have work during an epidemic"
+"48"	"I'm working for AWS over a year now, and after few months due to the COVID-19 I had a family emergency. Amazon stood next to me all of that time! My manager helped me to be with my family and on the same time not to lose my job.
+
+They want you to advance your career all the time and there are so many opportunities.
+
+Everyone on Amazon willing to share their knowledge."
+"49"	"-Keeps you busy
+-keeps you active
+-has a big break room with free coffee
+-workers are nice they are willing to help you if you are lost since the building is so huge
+-Work is easily repetitive"
+"50"	"Good starting pay, plenty of time off"
+"51"	"Time off, benefits, pays for education, training on site, remained open during Covid-19 ( locations may vary)"
+"52"	"Good benefits from what I hear and cool pay"
+"53"	"Handled COVID really well, went to work from home immediately
+Onboarded virtually and have been virtual for my entire tenure so far (4 months)
+My team has been very welcoming and understanding when it comes to working long hours and comp'ing that time later
+People actually work by the Leadership Principles
+The hiring process is the best I have ever been involved in
+Customer obsession is a real thing, even if everyone carries it out a bit different"
+"54"	"Amazon is a company that really cares. The media will have you believe otherwise. Throughout this COVID 19 pandemic, the pivots for hiring and safety has been tangible. My recruiter was amazing and she helped me every step of the way. I left this company for the first time a few years ago, but I am happy to be back and look forward to a long future here."
+"55"	"It really depends on what team you are on, but I get to work on very innovative products and solve interesting problems. 
+There are a lot of processes or frameworks in place that I appreciate because it organizes how we organize our work and priorities. There is little that falls through the cracks. 
+Management is really compassionate about COVID and BLM and being very considerate of people's mental health. They are very good about recognizing and rewarding the team."
+"56"	"There's a real passion here for the work we do that I enjoy immensely, and so much freedom to operate even at the lowest level. My manager (and I understand that I lucked out and not all managers are as good) doesn't micromanage but points me in the right direction so I can exercise my judgement.
+
+
+My coworkers are all intimidatingly smart and always willing to help, and so are the cross functional teams (PM, TPMS, other system owners). The re's specific structures set up for new engineers to learn and it helps immensely. At my last job I feel like I was not really treated as a human being, but here I operate free of stress even when there's deadlines to meet
+
+The company's also been super accommodating during the pandemic about working from home and enabling us to still be able to function well."
+"57"	"The pay is very competitive and good. Not sure about benefits yet but I’ve heard they’re good. Dave is giving us all a bonus this month so that’s a huge pro"
+"58"	"15-18$ an hour. Mindless work."
+"59"	"On the plus side? Everyone seems to agree that being able to say you worked for Amazon in an I.T. capacity looks good on a resume. And the company really made a huge effort to ensure employees stay safe during COVID. My experience has been that some of my co-workers/peers are great, funny, and intelligent people who are a pleasure to work with."
+"60"	"You get paid $15 per hour minimum wage hourly
+Chances to get overtime with a tap of a button"
+"61"	"Fast paced, great for starting out managements with great benefits."
+"62"	"Everyday is different. This job turns you into a master critical thinker."
+"63"	"Easy to learn the task that you will do during the day"
+"64"	"Seems  like a great company to work for. They give work boots, and PPE like gloves and a  mask to protect against COVID-19. They also have AI  attached to the security cameras and they can tell when people are not at least six feet away at all times, or they will come down and have a talk with you. They also are checking everyone's temperature and making sure that it follows the CDC guidelines and anyone having a fever of 100.4 F or greater is sent home and not allowed to return until three days after fever has passed.  They also offer medical, paid time off, and  401K."
+"65"	"Fast paced, mind expanding growth where if you have an idea you can make it a reality. It can be a fun place to work - find the right teams and ones with business partners or PMs that love what they do."
+"66"	"Pretty easy job. Accrue time off easily."
+"67"	"* Very results driven company, everything you do counts
+* Nice brand name to work for
+* some tools like Chime are really good for internal and external communications
+* everyone is generally helpful and willing to help"
+"68"	"Pays very well for the type of work involved. Friendly environment and lots of opportunities."
+"69"	"Really smart people, a lot of opportunity for growth, always encouraged to be innovative, think big, and create something new. Competitive salary and benefits with other major tech companies. 100% self motivating work environment. No dress code and 4 legged friends are welcome."
+"70"	"Jeff Bezos and his \"S-Team\" are brilliant and continue to make great decisions for long-term growth.  
+
+You work with smart people, you work on exciting projects, you are pushed to your limits...which can be rewarding when you accomplish great things.  The diversity of the potential work and innovation can be very alluring.  I've often called Amazon my \"Sexy Mistress...she's emotionally abusive, but she's so sexy that I go back for more punishment.\""
+"71"	"- You can learn a lot very quickly in a very short time
+- Surrounded with nothing but incredibly smart and driven individuals.
+- Compensation is well beyond my expectations, and more than suitable.
+- Exciting projects all across the company that keep you interested and focused.
+- Amazon is changing the world"
+"72"	"I've been at Amazon for a month now, and I've seen none of the horror stories being communicated to the public, although Amazon is a large enough company that I'm sure there are good pockets and bad pockets. Everyone here is really smart, and wants to succeed both personally, and as a company. People collaborate and help each other, focus on data, and truly focus on the customer. Every company I've ever worked for talks about how important the customer is, but on day 2, they're forgotten. Amazon seems to genuinely focus on what's best for the customer, and it's awesome to be in meetings where people actually bring that up, and make decisions focused on long-term customer satisfaction.
+
+The opportunities to learn here are literally unlimited, and the opportunity to take on new responsibility is as well. I honestly believe you can be as awesome as you want here."
+"73"	"Amazon is doing lot's of cool stuff...but lots of boring stuff too.  There are really well run teams...and very badly run teams.  The experience for software managers and engineers is all over the board, from really run low operational load teams to teams where people burn out after a year.
+
+ - Amazon is built, quite deliberately, to be Darwinian.  You can generally expect that anyone who's been here for more than 2 years is competent and motivated or they wouldn't have survived.  You can count on them as long as your priorities are aligned.  There aren't many slackers here, and they don't survive long.
+  - We work on so much stuff that there's always an opportunity to find amazing cool stuff to work on (note that it's an 'opportunity', one that you have to pursue)
+  - A chance to make a huge difference
+  - A place where you can learn a lot about all kinds of things, both technical and about yourself
+  - Amazon encourages high mobility - even your manager can't prevent you from moving to another team within 6 weeks (normally, more than a few months under unusual conditions).
+  - Your friends and family have actually heard of the place you work and have at least a vague notion of what Amazon does without you having to explain"
+"74"	"Big company with a small company feel.   Very entrepreneurial.  Management facilitates your ideas that push the business forward"
+"75"	"Benefits are a very good for standard"
+"76"	"Amazon is wide open for advancement in all areas if you have the will and the talent."
+"77"	"At Amazon you will learn at lot.... or you will fail. It's an excited environment and leadership is actively investing in improving all the program Amazon runs. It truly is changing the world."
+"78"	"Safety is priority and it show’s positively"
+"79"	"Good starting salary and very friendly team enviorment"
+"80"	"Good benefits , big company, every where"
+"81"	"Great work environment with lots of growth"
+"82"	"Weekly Pay
+Extra hours
+Simple hiring process"
+"83"	"Pays well for what it is, pandemic-proof job, good benefits even for seasonal employees, flexible time off bank, overtime pays well, always trying to create sense of community for employees despite working from home, responsive and caring HR, great position for anyone who wants to work from home or is currently in school like myself, COVID leave is paid"
+"84"	"You will always have work"
+"85"	"Decent pay and benefit options, supportive colleagues"
+"86"	"Working alone by yourself. Especially during covid"
+"87"	"1) Operation Managers care (depending where you work).
+2) get tons of UPT, PTO, VTO and Vacation if it’s available.
+3) Benefits aren’t bad
+4) You choose your shifts, tons of VET available depending on the time of the year. Definitely all year of 2020 and probably into 2021.
+5) keep to yourself if you’d like. Main job is scanning for the most part if your working inside of a warehouse. They will offer to train you in different areas of the building if you’d like! 
+6) Amazon is consistently cleaning their buildings cause of COVID-19. 
+7) Work and have fun while doing it!"
+"88"	"its all in the strength and abilities of the individual its a physical hard job."
+"89"	"Good pay, especially during the holidays"
+"90"	"nice pay, time off if diagnosed with covid"
+"91"	"Pay, time & hours, prestige, benefits"
+"92"	"Great benefits there are a lot of perks."
+"93"	"Work hard and you will like it here"
+"94"	"Benefits, decent pay, simple tasks"
+"95"	"Many opportunities to work in different projects"
+"96"	"Incredible growth opportunities, great people."
+"97"	"Management and owner are understanding and willing to work with you."
+"98"	"Money is not an issue for college students."
+"99"	"You work at your own Pace"
+"100"	"Day one benefits.
+Self manage your time and attendance.
+Rapidly expanding, plenty of room for growth."
+"101"	"Day one benefits.
+Self manage your time and attendance.
+Rapidly expanding, plenty of room for growth."
+"102"	"Pay, people, benefits, free stuff"
+"103"	"there is room for exponential growth"
+"104"	"Managers will help you, great benefits, company truly appreciates it's workerd"
+"105"	"Ever growing company with unlimited potential for growth"
+"106"	"Set schedule even when extra overtime day is called you have a certain day of the week assigned for that if called.
+Pays more than other jobs in area.
+Good benefits. You get PTO UPT and Vacation hours to use. After one year they will pay 95% of your college education (from a specific list of options) Building shutdown for fire and flooding and they still paid their employees for those days missed of work."
+"107"	"Fast paced, data driven, and huge growth potential. Each day feels like winning or losing not just more of the same."
+"108"	"Good insurance and benefits one day 1,full time with guaranteed hours,climate controlled warehouses,friendly co-workers."
+"109"	"Good salary and great managers."
+"110"	"Quality pay, 3 days off is nice."
+"111"	"They have 3 $ extra pay for night during peak season"
+"112"	"Benefits, company takes care of you"
+"113"	"The benefits are amazing and affordable"
+"114"	"efficient system and pays for overtime"
+"115"	"Great benefits, pay, and flexibility of schedule."
+"116"	"Culture of autonomy and team work. Fast pace and rewarded based on improving your team and efficiencies"
+"117"	"Good reach
+Encourage engineers to learn and grow
+good pay"
+"118"	"Good pay and plenty of work to be done."
+"119"	"Has a positive environment, upbeat, aloof"
+"120"	"Benefits and steady income. Work as much as you want."
+"121"	"A lot of growth and opportunity"
+"122"	"work culture and learning opportunities"
+"123"	"Exposure to highly scalable systems"
+"124"	"Pays well, flexible, cares about career development"
+"125"	"Good benefits , good enviroment"
+"126"	"Easy atmosphere to work in"
+"127"	"Fun place to work enjoyable"
+"128"	"Amazon pays well, but they work you very hard"
+"129"	"Very flexible, and the shifts are short"
+"130"	"Fast-paced, empowered to act, interesting work, good salary"
+"131"	"money benefits self improvement status"
+"132"	"Work hard and things will go well"
+"133"	"Flexible environment where you set your own schedule"
+"134"	"Smart folks, always a pleasure learning from everyone"
+"135"	"Eh it’s alright I guess. Good benefits"
+"136"	"Work life balance, opportunity to work on new stuff"
+"137"	"Awesome ppl to work with."
+"138"	"It good has benefits. 401k, stock option and if you dont like to interview you dont have to"
+"139"	"The career path is great"
+"140"	"Great place to work and get experience"
+"141"	"Great place to work and get experience"
+"142"	"salary, benefits, learning opportunities, co-workers"
+"143"	"Work with some of the smartest people in the world"
+"144"	"It is a good place to work"
+"145"	"Solid job that pays the bills."
+"146"	"Career growth opportunities, high energy, good benefits"
+"147"	"Good for self-improvement, skills learning"
+"148"	"good pay and great enviroment"
+"149"	"Work hard get treated well."
+"150"	"The people are the best."
+"151"	"Working alone in such a big place can feel lonely"
+"152"	"The work is easy, steady"
+"153"	"The benefits such as insurance, stock, 401k, etc. are exceptional. The pay is also good and fair for the experience. Overall a great experience and a great place to grow."
+"154"	"A lot of opportunities and able to move around to various positions easily"
+"155"	"Fast paced environment, never the same day"
+"156"	"Base + Stock 200k, great salary for entry level"
+"157"	"Amazon is a great company to grow with"
+"158"	"Opportunity to do really cool stuff"
+"159"	"* Lots of interesting projects
+* Talented people
+* You will learn how to work \"right\""
+"160"	"Everything is super splendid. Indeed"
+"161"	"Everything is super splendid. Indeed"
+"162"	"Gain experience to work with diverse AWS technologies"
+"163"	"good benefits for all associates"
+"164"	"- innovative, supportive, fast-moving, fun! One of the best jobs I’ve had and I highly recommend."
+"165"	"It's fun and real easy work"
+"166"	"Very well organized SDLC
+Customer obsessed and result oriented culture
+Great ownership
+Nice and diligent peers
+The right team could have great management and leadership"
+"167"	"Great benefits 
+Great hours
+Flexible time off options"
+"168"	"Career advancement with multiple choices"
+"169"	"accountability, leadership, structure, challenge and reward"
+"170"	"Decent pay for the work you do"
+"171"	"Decent pay for the work you do"
+"172"	"You will learn a lot in very less time, chance to work with talented people"
+"173"	"Lots of benefits from day 1. Able to transfer or move up in the company"
+"174"	"Positive environment. Opportunity to advance for those who are motivated."
+"175"	"Good pay and it is every week"
+"176"	"Pick up hours take off when needed holiday ot higher position offers"
+"177"	"Very good payment and environment"
+"178"	"Money is the only thing for real."
+"179"	"Best warehouse job i have had. Attentive management team who genuinely cares about you. The staff for the most part is knowledgable and the warehouse is breaking new record everyday."
+"180"	"Job Security...Amazon is here to stay!
+Personal and professional growth through variety of work experiences and team interactions.
+Great pay and benefits.
+Flexible scheduling.
+Perks and extras...
+So much about Amazon is amazing!!"
+"181"	"1. Nowhere on planet earth will you have the opportunity to have the scale and scope of impact you can at AWS. The scope here means in your first 3-6 months you'll probably learn more as a recruiter than you have at any point before in your career. If you're into that sort of thing it's very energizing.
+
+2. The training is good, most recruiting managers are pretty good that I've interacted with, and you'll be given all the tools you need to succeed if you're willing to apply them. The expectations are high but you'll be given every chance and opportunity to succeed.
+
+3. The high performing culture is a plus for me. It's a meritocracy in it's purest form. You'll be exposed to a bunch of high-performing individuals all pushing eachother to be their best. You will get rewarded for greatness when you are able to demonstrate it, and under-performers, slackers, and dead weight are not tolerated, which as a high performer I appreciate."
+"182"	"Awesome teammates, good culture setting out"
+"183"	"Social distancing, quick hiring process, very competitive starting wage, free shoes once hired, daily incentives to perform quickly/efficiently"
+"184"	"Good pay with ok hours"
+"185"	"I’ve worked for Amazon as an example stern also Area Manager II for 6 months and i’m right in the middle of peak, so i’ve been waiting to review this job until i had a solid opinion of it which i think i have after this long... here are the pros: 
+
+-pay... you can make $55k - 60k right out of college as an L4 and $79 - $90 as an L5 area manager being hired externally.
+-benefits: best i’ve ever had and i’ve worked for some big companies 
+-managers and teams make your experience. i’ve been lucky to have teams that gelled well together and Ops Managers that are awesome but it seems like there’s a team first mentality of each shift. shifts are very competitive with the other shifts.
+-it’s a LONG day which i’ll go over in the cons, but it’s also kind of a plus. you’ll either work 4 days a week unless you’re RT where you’ll work 3 overnight 12 hour days.
+- If can last at amazon for 2 years the opportunities will be limitless if you chose not to stay
+-if you’re good they will leave you alone and let you do your thing. i see my ops by accident once a day and whenever i walk to them."
+"186"	"Great career development opportunities all around"
+"187"	"Good money easy work days"
+"188"	"Good if you enjoy big challenges and dynamic environments."
+"189"	"Fast paced company with little to no power distance culture."
+"190"	"Good pay lots of improvement"
+"191"	"Good pay lots of improvement"
+"192"	"Good potential for moving up"
+"193"	"Nice pay raise, and benefits"
+"194"	"Great benefits. Opportunities for promotions"
+"195"	"Constant career growth
+Challenging problems to solve
+Great people to work with"
+"196"	"Amazon is one of the most inspiring and diverse companies to work for. It’s incredible to tangibly see the product of your work in how happy we make customers. Some of the most intelligent people I’ve ever worked for are my coworkers at Amazon. 10/10 dream company."
+"197"	"It has probably the best benefits as a full time employee than anywhere else. It’s great fast paced work if you like it; just need to be mentally strong as well. Most managers are great and super helpful."
+"198"	"1. Fast career growth. You can get promoted pretty quickly from new grads if you put in the work. 
+2. Smart coworkers
+3. You might be working on challenging problem that doesn't have a clear solution. You'll learn a lot along the way. 
+4. Pay is good with refreshers if you are top tier."
+"199"	"Make good money, great staff"
+"200"	"Easy job 
+Great benefits
+Make Connections"
+"201"	"Innovative and fast paced work culture"
+"202"	"Decent pay, lots of learnings"
+"203"	"Pushed to identify problems and encouraged to independently find creative solutions."
+"204"	"great benefits and pay coming in the door"
+"205"	"Good benefits and hours. Great workplace environment. Unique culture."
+"206"	"Great benefits, great pay, many opportunities"
+"207"	"Weekly pay decent breaks clean"
+"208"	"Your opinion is valued and executed"
+"209"	"The company truly seems to care about their employees and tries to really take care of them. The benefit packages are very good."
+"210"	"Its easy going if you know what you doing"
+"211"	"Path for advancement, Benefits and Perks, Learning opportunities"
+"212"	"good pay, solid benefits, flexible options, a plus if you are trying to build a solid resume"
+"213"	"Fun to work at 
+Good pay"
+"214"	"Good money, meet new people, easy work"
+"215"	"*pay
+*meeting new people 
+*easy to learn"
+"216"	"Good salary nothing to say"
+"217"	"Overtime, decent pay and benefits"
+"218"	"It’s good with flexible works schedule"
+"219"	"It is really pretty easy"
+"220"	"good work atmosphere nice people great pay"
+"221"	"Ownership, stock , fast paced , technically very challenging"
+"222"	"Coworkers are pretty cool people, there is the occasional bonus, and if all packages are delivered early, you get paid for the whole shift anyways."
+"223"	"So much to learn from amazing projects."
+"224"	"Pay. Good benefits. Good hours"
+"225"	"Lots of tech stack options. From high to low level. Plenty of cool opportunities to hop into all new projects or well established. Moves fast
+
+Interview process is very well put together and structured from both sides."
+"226"	"If you want to work and make money this is an easy entry level job. No prior experience needed"
+"227"	"Benefits and steady hours a week"
+"228"	"A lot of smart people in the company."
+"229"	"Good day 1 benifits with decent accommodations"
+"230"	"Great pay and work life balance"
+"231"	"Good day 1 benifits with decent accommodations"
+"232"	"Great pay and work life balance"
+"233"	"the pay is really fantastic"
+"234"	"very good , nice place"
+"235"	"It is a great company"
+"236"	"Great community at Portland branch"
+"237"	"The experience and pay are great."
+"238"	"Benefits for the kids and the girls and the boys"
+"239"	"possibilities to move up and the 3 day weekends are nice."
+"240"	"Pay 
+Responsibilities
+Career growth 
+Great on a resume"
+"241"	"Good perks from Amazon company"
+"242"	"Leadership experience and growth opportunities. everyday you learn something new"
+"243"	"Very good recognition for hard work and dependability. They work very good around your schedule and the hours are great. Love the people I work with and the people I work for."
+"244"	"It’s a nice job and respectful to people"
+"245"	"Work is paid very well"
+"246"	"Everything looks great and prefect"
+"247"	"Flexible schedule to work with"
+"248"	"yes that is good thing"
+"249"	"Pay, benefits, opportunities for advancement."
+"250"	"good salary and work ."
+"251"	"Fast paced easy to promote"
+"252"	"Great benefits, pay, and mangers. All very friendly people. Plenty of UPT and PTO. Very understanding with your issues."
+"253"	"Pay
+Benefits
+Easy 
+Happy place
+Hard working people"
+"254"	"learn new things
+work with smart people"
+"255"	"High pay and good benefit"
+"256"	"Challenging problems to solve and freedom to invent"
+"257"	"Ability to learn both tech and leadership skills
+Ability to switch teams easily
+Higher TC with growth in stocks"
+"258"	"Benefits are great for this type of work. The 40 hours in 4 days makes for long days but having an extra day off is a plus. There are extra shifts available most weeks."
+"259"	"Individuals can chart their career growth"
+"260"	"Easy, laid back, flexible hours"
+"261"	"Nice people and good management"
+"262"	"Amazon is a good place to work at with good pay, good benefits, and different variety of people."
+"263"	"Pros are just benefits and salary and stocks"
+"264"	"Good Culture. Benefits. Opportunities for advancement"
+"265"	"Amazon is a great company to work for"
+"266"	"Less Physical
+Sense of Ownership
+Stay Busy"
+"267"	"it was amazing working at amazon"
+"268"	"Very active a steady schedule"
+"269"	"A lot of opportunity to move up with the company."
+"270"	"Good company and good salary"
+"271"	"Simple work
+Lots of OT
+Move up Fast"
+"272"	"It is never boring, great people to work with. Always want to see you improving."
+"273"	"Flexible schedules, reasonable pay, diversity, opportunities to move up, and good benefits"
+"274"	"Apply leadership principles 
+Use of narrative briefs are effective
+Good, smart people"
+"275"	"Great place to learn and grow."
+"276"	"You will be kept busy through out the year with new challenges and you get more opportunities to learn and grow."
+"277"	"Not to difficult work for decent pay"
+"278"	"Quick growth, fast paced, data driven"
+"279"	"401k benefits
+Health benefits 
+Discounts
+Paid time off"
+"280"	"Good pay, good benefits easy work"
+"281"	"Great company to work for and easy"
+"282"	"Flexibility with my daytime schedule"
+"283"	"Flexibility with hours and some others proes"
+"284"	"good data analyst through team players"
+"285"	"Really Takes care of employees"
+"286"	"Empowered culture - you can do anything
+Exciting technology
+Fast-paced
+Big impact
+Generous stock (RSUs)"
+"287"	"I love working for Amazon. Easy to move into new exciting roles once blue badged."
+"288"	"Fast paced work environment, can be rough to newcomers"
+"289"	"Always hiring, no experience needed
+decent pay, good benefits
+managers care about you once you get to know them"
+"290"	"Plenty of opportunities for growth"
+"291"	"Work at your own pace, Every day is different, no micro-managing"
+"292"	"Growth and plenty of work opportunities."
+"293"	"Working on important problems that directly improve customer experience"
+"294"	"Great pay, Can work from home, innovative,"
+"295"	"Good atmosphere
+Will learn a lot
+Provide opportunity for growth."
+"296"	"Great benefits are available for staff at all levels"
+"297"	"Fun place to work with very smart people. It is true that many people at Amazon have a strong bias for action."
+"298"	"I have a job so I am grateful."
+"299"	"good pay, nice environment, clean"
+"300"	"You get great benefits and time off."
+"301"	"Stock price, fast paced and innovative"
+"302"	"Interesting projects and you get to work with smart people."
+"303"	"Interesting problems and talented co-workers"
+"304"	"Fun, cool, sick, sweet, lol"
+"305"	"Long hours good pay weekly pay"
+"306"	"Good pay and benefits. Good choice if wanting to earn some work experience."
+"307"	"Good pay every week and good benefits"
+"308"	"- Compensation and Work is good
+- Lots to learn and room to grow
+- Fundamentals of LPs are good
+- SA Job Role is really good if you want to experiment different technologies without getting in the crux of implementation
+- Good Peers and Managers"
+"309"	"Work with you every step of the way in every aspect"
+"310"	"Brand value, stock price, exciting projects"
+"311"	"Work life balance is easy"
+"312"	"Easy scheduling and good pay."
+"313"	"Great pay, diversity, Fast paced and Great experience"
+"314"	"The benefits and management communications"
+"315"	"Pay time off flexible easy"
+"316"	"Good pay, benefits, and stock options"
+"317"	"The atmosphere is overall pretty good."
+"318"	"Coworkers
+Incentives
+Ability to learn and move up"
+"319"	"Can take time off as needed"
+"320"	"Great and very inclusive. It’s great!"
+"321"	"time management is a problem for most"
+"322"	"Very Good Company. Love the leadership Principles"
+"323"	"You can make a lot of money at this job."
+"324"	"you get to work with smart people. There is lots to learn here"
+"325"	"Great company to work for"
+"326"	"OT opportunities and great benefits"
+"327"	"There are some good benefits at Amazon"
+"328"	"Projects are interesting and high impact
+Good compensation"
+"329"	"excellent benefits at amazon warehouse"
+"330"	"Constant challenge, Fast paced, Innovative"

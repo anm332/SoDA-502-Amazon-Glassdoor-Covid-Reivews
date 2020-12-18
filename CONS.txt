@@ -1,0 +1,433 @@
+"x"
+"1"	"Starting out, especially with Covid, is difficult"
+"2"	"Covid-19
+No close contact with friends new or old
+Constant yelling 6 feet from Safety Champions"
+"3"	"Expected to work over holidays, equipment is restrictive if you want to travel and work, some schedules are long and there is no option to change it without medical reason, once you’re clocked in you’re glued to computer with no time to get up to get water or use restroom without getting in trouble which can be stressful and unhealthy, have been “seasonal” for 7+ months with no sense of job stability"
+"4"	"Not friendly for single parents that need a flexible schedule."
+"5"	"Highly physically demanding, and difficult to work with upon injury."
+"6"	"Bathroom breaks are timed. Time off task"
+"7"	"The only con that I can complain about is the HR system, it’s really bad. If you get a point it’s hard to get that back depending who’s working at the desk. There’s been times where they fixed it there and others seem like they can’t. Makes no sense. Keep in mind 6 points and they can terminate you. They can also charge time instead of points if you have time available. If HR can’t seem to fix it and you have actual proof of an error with the system, always try to talk to you Operations Manager to see what they can do!"
+"8"	"Do not over commit and expect overnight results or Monetary success. Its a hard job but takes commitment  and COVID is the downfall and hurdle EVERYDAY"
+"9"	"Can be physically demanding and has cases of covid on a daily"
+"10"	"hard labor, lackluster covid safeguards, i've received notification of about 10 employee positive diagnoses while at amazon just in the last few months."
+"11"	"It feels unsafe since COVID"
+"12"	"Low competitive pay, no COVID-19 hazard pay, low pay in general for the wages offered when taxes are taken into account. Over 20% of my pay is taken in taxes."
+"13"	"feel like a floating number of many and you got to make yourself well known or keep up on the research on all the provided programs if you want to continue to grow with the company. they got so many options and programs fun and career growth"
+"14"	"You have to be converted to a blue badge to get paid leaves! Unless it pertained to the covid 19."
+"15"	"Covid-19 precautions are taken but your worth as an employee is not taken highly"
+"16"	"Graveyard shift hours
+Long hours 10+ (during holidays)
+Pay is a bit low due to other locations throughout the USA that offer more
+Covid-19 restrictions, have to wear a mask and maintain 6-feet from coworkers while working in warehouse (really hard to maintain 6 feet at all times due to the work conditions)"
+"17"	"In my case, I got hurt on the job due to safety issues with how they had sortation set up and was out of work for 4 months and had to fight with a lawyer to even get my surgery done. They have new cases of COVID every week, and it is IMPOSSIBLE to maintain safe social distance the way they have us work in the warehouse."
+"18"	"-broken/manual processes that are not scalable
+-business does not care about what accounting needs if they want a product to launch (although we like to fool ourselves that we have 'influence')
+-lack of tech resources to create automated processes and decent reporting
+-difficult to find data you need
+-high burnout; no work/life balance"
+"19"	"Very hard work and can be very tiring"
+"20"	"Rushed products and some shoddy work"
+"21"	"Covid means virtual work which hampers getting to know team"
+"22"	"They carrot-and-stick you out several years, so that even when you'd do anything to quit, it feels financially irresponsible. They will get their money's worth out of you. There are no perks. Free coffee and tea in the kitchenette and $100 to spend at a set rate on qualified items on Amazon.com per year, and that's it."
+"23"	"Compensation, culture, leadership, lack of diversity"
+"24"	"Pay should be higher for how hard they work you, social distance guidelines are not up to standard and have caused a lot of covid cases"
+"25"	"-Poductivity is always the #1 priority, above safety especially during peak (Oct.-Dec.) or times of unusually high product volume (covid).
+-It is impossible to feel like you matter or have real job security given how replaceable you are. I'm unsure of if this policy is company wide or has changed but i was told when i started that the bottom 5% of employees in terms of productivity are fired on a regular basis."
+"26"	"Ton of travel before covid. There is no work life balance. Managers and Leaders are ruthless, heartless monsters. I was given 18 KPIs in addition to customer calls. Blog/Content producing process is arduous, arcane and unprofessional. You keep your mouth shut to survive. Despite what the company says outside, internal processes are ridden with extreme racism."
+"27"	"people, over worked, disfunctional, very socially poor work environment"
+"28"	"- Compensation heavily relies on the growth of stock. Base salary is much lower than the majority of other companies but the stock compensates for that. If you like your position and team, it's probably worth resting and vesting for the 4 years
+- They take frugality very seriously (being one of the LPs) and this gets a little frustrating at times - you know how well the company is doing and that the funds are there, but you have to justify hard for small work expenses you want compensated (anything under $50 rarely noticed but expenses over $100-150 taken more seriously). Especially during covid when you want to fit out your home office with basic needs (mouse, printer, shredder etc) - you have to buy a cheap mouse for e.g. because a good quality one one get approved. I mostly agree with being frugal, but certain things feel a little unnecessary"
+"29"	"Pay, took away \"hero pay\" 2 months into Covid-19, favoritism"
+"30"	"Nothing that I can see apart from working virtually due to COVID."
+"31"	"It may seem that you're just another ant working."
+"32"	"They intend you to be a machine, don't care about employees and do not follow covid-19 safe workplace guidelines."
+"33"	"Stressful aspect of quotas and constant comparison to other warehouses, relatively unclear guidelines for time off and breaks, going to the bathroom takes away from your quota/time quality (?!)"
+"34"	"Lots of rigid processes and red tape. Pretty disorganized in many ways. Terrible promo process."
+"35"	"Warehouse workers that actually strive to do work are few and far between,"
+"36"	"Min. wage and gets slow"
+"37"	"-finding public bathrooms because of COVID19"
+"38"	"The hours are long and you are on your feet on concrete all day/night.  I don’t mind it but it isn’t for everyone"
+"39"	"The shift assistant there that comes in at pick in stage time is quite rude like Every single day ."
+"40"	"Covid 19 has made the company more popular due to the Research and Development rendered by Amazon"
+"41"	"should pay more during covid 19. Risking getting the virus left and right."
+"42"	"Was good until this Covid19 pandemic came out. Too many workers on the market causing a supply and demand curve skew for current workers, which has been making Process assistants and managers more childish than usual, a person can't even do production anymore."
+"43"	"Low pay. Benefits aren't good enough to make up for it. Treated like slaves during Covid"
+"44"	"Hazard pay went away a little quicker than I believe it should have, but they did give a bonus for working through it."
+"45"	"Internal communication is horrendous, assistant shift managers have an attitude problem, to get a smile or a hello from them is like going to the dentist with a tooth infection.
+Since covid, safety measures have been implemented but shift assistant managers and operations managers are the biggest violators, so when they try to enforce they enfuriate alot of people."
+"46"	"Lots of stress, it’s hot in building, long hours, lack of covid 19. Currently working during pandemic and they won’t even tell if I worked with person that is infected or not."
+"47"	"FEET are SORE! BUY comfy shoes + workout Soles!!
+Mandatory overtime
+There are rates you are to hit (BoxesPerMinute)
+Kind of exhausting 
+Point system that may lead to you being fired if you rack up points"
+"48"	"Yes, we are frugal, no food in the kitchen :) (after so many years in startups I'm used to the free food)"
+"49"	"-Two short breaks within 10.5 hours of work time
+-work is repetitive and can be slow at times
+-normal schedules are work 4 days, rest for 3. They will throw in a mandatory week and make you work 10+ days in a row.
+-Management/HR does NOT care about their workers. You are just a worker ant they can dispose of anytime they want to and will not address schedule and health concerns.
+-Don't work here if you don't have good shoes and aren't used to hard labor. 
+-Micro managers keep track of how you do your job and you're either marked as a decent worker or a bad one. People are lucky to be labeled as decent. The rest are fired to let new employees in
+-Management just roams throughout the workday. Hard to find if you are in need of help
+-Bad food in break room. Be wary about the cold foods. I bought cold pasta and it turned out to be bad.
+-I heard amazon gives workers $75 zappos credit to buy shoes but they didn't send my paperwork to zappos to actually make this happen."
+"50"	"long hours, hot warehouse, repetitive work standing in 1 place, no sitting, mandatory overtime with little notice, difficult to move up in the company, very high expectations, faulty equipment, little if any downtime."
+"51"	"Physically demanding depending on placement, can be monotonous work."
+"52"	"I heard they over work you."
+"53"	"Not as many official holidays as other companies
+The idea of \"Amazon is a thousand small start-ups\" is not really true - everything is done under the mega Amazon umbrella"
+"54"	"Find the right division so you can truly thrive."
+"55"	"Expectations are high. The team is supportive but you will have to take the initiative to get involved, ask questions, and take ownership very early. Onboarding can be rogue so you'll need to figure it out on your own."
+"56"	"Apparently The pay isn't as high as Google or Apple? though I'm fine with it. I don't really have any other comparable frame of reference and I can make rent and save for retirement so to me it's fair"
+"57"	"I was hired as a seasonal full time overnights FC associate. Due to covid, talking with HR about anything is complicated. The environment at amazon is much different than anywhere else I’ve ever worked. Most come in, do their job and leave. No attempts to make friends and will hardly even make eye contact with you when you’re walking by. Not the job for making friends or social butterflies. Things like benefits are not explained, this could be due to covid but it shouldn’t matter. I was never explained how to leave a shift properly if I get sick and need to bail early during a shift even."
+"58"	"During covid they Make you wear the mask even when you are not around anyone. When temps excess 100° and you are running up 3 story apartments wearing a mask gets dangerous. but if someone on their couch sees you without one they report you and you get in trouble. And they say well its part of the uniform now. I am pro mask, but when no one is around and they see me on a camera and report me and i get in trouble is just mad. This company does not care about your saftey"
+"59"	"Here's where I have a LOT to say. First and foremost? Amazon is a VERY strange, dysfunctional place to do computer support. A large number of processes you'd do standard ways in other companies are handled at Amazon via custom-made web interfaces and tools instead. Need to disable a user account? Nope - you're not given access to that option in Active Directory on a Windows server. Instead, you go through a custom web tool that has it on a menu. Need to create an email distribution list? Again, it might be hosted on Exchange but they have a special web page you use to set that up instead. This would be ok, but it creates an unnecessary learning curve for people they hired who already knew how to do all of these tasks the normal way. But that's just the beginning! The bigger challenge is the lack of ability to find good documentation on almost anything you use or support. It generally exists, but there's a culture of \"tribal knowledge\" where it feels like you're always seeking out the \"right person\" who happens to know the esoteric command lines to issue on a Terminal or Command prompt to fix something. Searching for it in the official documentation involves poring through wikis, a knowledge base set of documents, articles posted on SharePoint, documents people put in the third-party Quip tool and work-logs and correspondence of old trouble tickets. Even then, you may be reading only outdated information that no longer applies, because everything changes at a rapid pace.
+
+I haven't worked for Amazon long enough to have a strong opinion of what goes on in middle to upper management. But it feels like many initiatives are done in \"silos\" and rolled out without a good understanding (or concern) if they cause problems for other teams. Core principles of the company often feel like double-edged swords that can be wise or detrimental, depending on their interpretation. For example? Amazon always speaks of the importance of making a quick decision over inaction, and of most choices being \"two way doors\" that you can back out of after starting if they don't work out. That's great until you see how much disorganization it encourages when hundreds or thousands of teams are all rushing to introduce changes and new ways to do things that they just throw out there rapidly."
+"60"	"Everything else:
+Bad Management
+Bad Employee treatment
+Inflexible Hours
+Inconsistency
+Physically Demanding
+Employees = Machines
+Standing for 8 hours straight 
+Sometimes they forgot to give you the 2nd 15 min breaks
+Bad Covid-19 PPE rules and precautions; no changes are made
+Cases keeps on piling up without any change/action."
+"61"	"Upper management is terrible. Way too many people on a team & people don’t care to come to work."
+"62"	"-the description of the position is not accurate. There are a lot of things that recruiters do not tell you about the position either. This is a do or die type of company. You really need to make sure that you are prepared for very long hours. They say in the description that the hours are 10-12 but they are really 12-14. You will be on your feet all day and you can barely take breaks. Breaks are actually frowned upon. Management expects a lot from you. I once had a partner that was literally a bully and they did nothing about it. Always have a backup job for this position and make sure that you are ready to walk away when ever. Do not let them take advantage of your time. Say no and keep it moving."
+"63"	"You should be able to have a chair in every station to do this task for 10 long hours"
+"64"	"The hiring process is all over the place but I can only chalk that up to the Covid-19 pandemic  going on right now. I can not speak for times when the pandemic is not occurring  because I do not have experience  with them prior  to the pandemic."
+"65"	"Fast paced can and is usually the discouraging due in part to the excessive churn It creates when there is opportunity to do more. You could be forging ahead on a project or deep into a pricing doc and with no notice Be told the next day it’s going to an executive review for approval BUT everything you’d been working on is deemed wrong and you have to change tact (that beautiful two way door mindset). Overnight you end up working with a team to devise a new metric to meet the expected whims of the executive who will be reviewing it. It has nothing to do with what the original goal or stated deliverable was and more about who it’s meant to impress."
+"66"	"They aren't doing well during this pandemic. You have to hit a certain production rate. No one tells you what that is in the beginning. You don't get very much training (not that it's needed) but to know the rate to hit right off the bat would be nice. Also, with having to wear masks it's kind of hard to breathe moving so fast."
+"67"	"* Normal expectations are to work nights and weekends - every week, every month of the year
+* There is no work life balance, work life harmony, whatever they want to call it -managers will blatantly ask you to work on the weekend
+* IT tools are poor at best - for example they use internal tool workdocs - here is how sharing goes - hey Dave when your in the file, name the file filename1_dave.doc, when your done name it filename2.doc, when I go in I'll name the file filename2_steve.doc that way you won't edit at the same time.   Alternative is Quip - a poor man google doc
+* expect to just have a mountain of work which you will never get through and be constantly hassled about it training, weekly reports, extracurricular contributions, etc. etc. the list goes on and on
+* because of this environment, it's getting harder and harder for Amazon to hire - there are reqs which are open for >10 months where they can't find someone to come in
+* don't expect to be promoted 90% of people come in and stay at same level or leave
+* compensation - mainly stock based, stock has been nearly flat or down for while, not sure how they will keep talent,  401k match is a joke"
+"68"	"Not a position suited for everyone. Lots of standing and repetitive motion."
+"69"	"You have to be self motivated. NO ONE will hold your hand and tell you that you're doing a great job. If you need constant affirmations from management, this company isn't for you."
+"70"	"The management process is abusive, and I'm currently a manager.  I've seen too much \"behind the wall\" and hate how our individual performers can be treated.  You are forced to ride people and stack rank employees...I've been forced to give good employees bad overall ratings because of politics and stack ranking."
+"71"	"- Can be overwhelming, very steep learning curve
+- Can be difficult to keep up if you are not self motivated"
+"72"	"No cons, so far - seriously. Like I said, I'm sure Amazon has some bad pockets in it here and there, but this is an amazing job, an amazing opportunity, and the biggest thing I have to complain about is that it's a little chilly in our building. I can live with that.
+
+Does Amazon demand high quality, measurable results? Yes! Is it hard work? Yes! Is it rewarding? Yes! So I'm not calling that a 'con'. Work/life balance seems comparable to other places I've worked - not worse."
+"73"	"- You're responsible for your own career progression and finding the places and teams that are doing the stuff you want to do. No one is going to take you by the hand and help you with that.
+- Amazon is built, quite deliberately, to be Darwinian. The strong survive and the weak perish (metaphorically speaking) and the 'bar' is constantly increasing. The level of performance that would have been acceptable five years ago will get you canned today.  It's a kind of crucible that'll help you develop a harder edge, if you can survive, that can serve you well in your career and in life, but it's often not a pleasant experience.
+
+I wouldn't recommend it as a place to work for just anyone."
+"74"	"Big company and yes sometimes it takes a while to find the information you are looking for.  Global company and sometimes that information is with someone who is on other side of the world."
+"75"	"Organizational skills are lacking bad"
+"76"	"No work life balance, and poor management."
+"77"	"Starting pay could be a little better."
+"78"	"While your team can help you there is a 'sink or swim' mentality where new hires will own a lot of things quickly and will be forced to execute."
+"79"	"Long hours very fast paced"
+"80"	"Depends heavily on which team you are assigned to and work time is rather long"
+"81"	"Starting out, especially with Covid, is difficult"
+"82"	"Covid-19
+No close contact with friends new or old
+Constant yelling 6 feet from Safety Champions"
+"83"	"Expected to work over holidays, equipment is restrictive if you want to travel and work, some schedules are long and there is no option to change it without medical reason, once you’re clocked in you’re glued to computer with no time to get up to get water or use restroom without getting in trouble which can be stressful and unhealthy, have been “seasonal” for 7+ months with no sense of job stability"
+"84"	"Not friendly for single parents that need a flexible schedule."
+"85"	"Highly physically demanding, and difficult to work with upon injury."
+"86"	"Bathroom breaks are timed. Time off task"
+"87"	"The only con that I can complain about is the HR system, it’s really bad. If you get a point it’s hard to get that back depending who’s working at the desk. There’s been times where they fixed it there and others seem like they can’t. Makes no sense. Keep in mind 6 points and they can terminate you. They can also charge time instead of points if you have time available. If HR can’t seem to fix it and you have actual proof of an error with the system, always try to talk to you Operations Manager to see what they can do!"
+"88"	"Do not over commit and expect overnight results or Monetary success. Its a hard job but takes commitment  and COVID is the downfall and hurdle EVERYDAY"
+"89"	"Can be physically demanding and has cases of covid on a daily"
+"90"	"hard labor, lackluster covid safeguards, i've received notification of about 10 employee positive diagnoses while at amazon just in the last few months."
+"91"	"work/life, strange hours, low base pay"
+"92"	"The initial shift is very late and not ideal"
+"93"	"No real growth professionally or career advancement."
+"94"	"The work is difficult on the body"
+"95"	"Mandatory overtime during christmas season"
+"96"	"Nothing much, you should love a job to be successful in a workplace"
+"97"	"Have to work nights and weekends."
+"98"	"Just started not to long ago so still having some beginning struggles."
+"99"	"Long hours and office politics might be involved."
+"100"	"Hard to advance to another position, preform Tech duties without being promoted to become a tech."
+"101"	"Very impersonal structure.
+Poor communication from upper levels."
+"102"	"Boring, long hours, hot, small raises"
+"103"	"there is a lot of things going on"
+"104"	"There are no cons that I can think of"
+"105"	"Steep learning curve. Ever growing service which also makes it very exciting"
+"106"	"Can be physically demanding and must meet rates."
+"107"	"Any company that scales to this level will have guard rails in place that sometime stifle autonomy as a means of standardizing during rapid growth. But I’ve learned that if you know the details of your business and communicate well, you can often overcome the obstacle by proving ROI."
+"108"	"Stressful job with a lot of responsibilities for little pay. Management changes out frequently,with good managers leaving often. Task and break tracking is unrealistic in most situations. Peak schedules will give you barely enough time to sleep/eat after commuting."
+"109"	"Might have to work a role you don't like"
+"110"	"Picking is the worst job as an associate"
+"111"	"You have to work nights and weekends with most shifts"
+"112"	"Weird scheduling and hours for Peak"
+"113"	"Factory work can get tiring"
+"114"	"highly competitive space in here"
+"115"	"Not a lot of cons, besides the commute"
+"116"	"Really like my time there"
+"117"	"Too many re-orgs (2-3 in 1.5 years for my team/org)"
+"118"	"Long hour shifts and mandatory overtime during the holidays. Otherwise it’s a choice for volunteer overtime."
+"119"	"Shuffled around a lot, new managers a lot"
+"120"	"Physical and demanding work, on feet all day"
+"121"	"Physical and demanding work, on feet all day"
+"122"	"Certain Ops Manager positions are very demanding and can impact some work life balance if not managed effectively."
+"123"	"Lot of competition makes you stressful"
+"124"	"If you don't know how to say no then the workload can be overwhelming"
+"125"	"Benefits are not as appealing as other tech companies"
+"126"	"Work life balance depending on your shift"
+"127"	"Weird hours for some positions"
+"128"	"Hard work and very early mornings"
+"129"	"Human Resources and leadership can be tough to deal with at times"
+"130"	"Efficiency and productivity is stressed, but can be hindered by the constant need to go through whole foods associates when an item is not found. Getting a shift is extremely difficult unless you're gold status or Mtr."
+"131"	"lots of work to due"
+"132"	"Pressure to succeed
+Monotonous work sometimes"
+"133"	"Extremely high expectations and high workload. No structure to most team"
+"134"	"Political sometimes which makes it tough getting things done"
+"135"	"Eh not too much I would say"
+"136"	"Mandatory extra time , can be inconvenient"
+"137"	"It can get boring at times, but all jobs are that way."
+"138"	"The hours are difficult sometimes"
+"139"	"None that I think is bad"
+"140"	"people micromanaging and competitive environment."
+"141"	"None that I think is bad"
+"142"	"people micromanaging and competitive environment."
+"143"	"Scattered, direction is lost from leadership at times"
+"144"	"I have none at the moment"
+"145"	"It is a Physically demanding job."
+"146"	"Demanding, long hours, can easily lose motivation"
+"147"	"More pressure and not very work-life balanced"
+"148"	"gets very busy, but that's expected"
+"149"	"Some management are power hungry."
+"150"	"Too many KNETs to do. Most are redundant."
+"151"	"Repetitive and the hours are long"
+"152"	"The long 12 hour shifts can be a challenge at times"
+"153"	"Not a team environment working in the picking part of the warehouse"
+"154"	"Your feet will hurt alot"
+"155"	"The internal promotion process is pretty difficult and time consuming, don't expect to grow directly within one team or department. You have to go well above and beyond for a long time to get considered for promotion. The upside is everyone who gets promoted absolutely deserves it. The downside is you can't move up the ladder very quickly"
+"156"	"There is a lot of manager churn so it’s hard to get promoted."
+"157"	"Long days, at times unorganized from leadership"
+"158"	"Lot of work. Typical Amazon."
+"159"	"There really aren’t any Cons with this company"
+"160"	"We are getting big and so our are challenges."
+"161"	"Amazon learning curve is slow but worth the experience"
+"162"	"work can be too much sometimes"
+"163"	"- I enjoy it, but some people struggle with the ambiguity."
+"164"	"Pay is crap for manager"
+"165"	"Work load could be heavy in some hard working teams
+Management styles are quite different across teams, and some randomly matched teams might not be suitable for new-hires, especially interns."
+"166"	"Hard to get recognized for other positions .
+Competing with everyone to move up is a headache"
+"167"	"Long hours during peak season"
+"168"	"lack of direct narrative for job"
+"169"	"Too many hours. You barely have time for yourself"
+"170"	"sometimes you will need to spend long hours completing a complex project"
+"171"	"Too many hours. You barely have time for yourself"
+"172"	"sometimes you will need to spend long hours completing a complex project"
+"173"	"Mundane work. The breaks are deceiving. Tiving 20 minute breaks when technically you only get 10 because of the walk from work station to break room"
+"174"	"Eclectic mix of people working there. Lots of turnover. Hard work."
+"175"	"Hard work and working on your feet"
+"176"	"Physical Work all day with 50 pound boxes"
+"177"	"Heavy job because you have to be stand up all day"
+"178"	"They work you like crazy"
+"179"	"HR is hard to contact at times in the past, but they recently hired a new team who is a lot better."
+"180"	"The work can be physically exhausting and hard on the body. This of course is a case by case con. At 50 it is harder on me than it would have been in my 20's or 30's.
+Some people take advantage of the generosity and lack of restrictions and it infurioates me."
+"181"	"May not get a raise if you think you're entitled to it"
+"182"	"1. As everyone notes, work life balance is hard to achieve, both because the work and demands are so high but also that the work is addicting and the drive to achieve becomes engrained in you.
+
+2. Promotions, especially to the senior level, are highly politicized and rare. Do not get caught up in the promotion rat race that everyone else is or you WILL burn out.
+
+3. Expectations are difficult for some to achieve on a consistent basis
+
+4. Too many recruiters at the company, causing a lot of in-fighting over candidate ownership and complex rule-sets around who/why/how to engage candidaets. Most of the biggest frustrations have come from arguing with other recruiters doing shady things.
+
+5. We are behind our competition in terms of pay, benefits, WLB, and industry reputation, making it hard to close tech candidates in an extremely competitive marketplace."
+"183"	"Large work force, quick turnover, hard to connect with associates that only tend to work there for less than 3 months."
+"184"	"Long hours during peak, main coaching focus is on what you’re doing wrong, getting into or out of the parking lot sometimes takes longer than the actual drive."
+"185"	"Long shifts with ignoring people"
+"186"	"back to the hours... if you’re on any shift other than RT; you will work a bare minimum of 13 hours per day x 4 days a week and RT works a minimum of 14.5 hours but for 3 days a week. hours are long but being off for 4 days a week isn’t bad 
+-you will WORK from hell to hell... lifting/pulling/running around, never sitting, constantly in motion while trying to juggle 5 things on your laptops that OPS needs 5 mins ago.
+75% of your day will be spend looking at reports and analyzing them.
+-You HAVE to be comfortable coaching, writing people up, and speaking in public, as well as presenting to the senior team
+-if you are disorganized you will fail
+-This job is not for everyone, there are 20 things happening at once and you have 30 people asking you questions or need something from you the whole shift is just non start to finish.
+-Amazon is a hard job to do really well at, but if you have the work ethic, you’ll be fine. lower performers are ridden hard by their ops so come out swinging."
+"187"	"Mandatory overtime during the holiday season"
+"188"	"Long shifts and short breaks"
+"189"	"Can feel chaotic when you initially join."
+"190"	"It is very hard work which requires a lot of dedication lots of people will not want to put in."
+"191"	"Long hours and some menial tasks"
+"192"	"From what I’ve seen personally there are none"
+"193"	"Job can be demanding sometimes"
+"194"	"High stress environment
+Very short deadlines for deliverables
+Constantly changing tools"
+"195"	"The technical aptitude required for this role makes it challenging at times, and you’re often working long hours. However, as mentioned above, you see the tangible results of your work, so it all makes it worth it!"
+"196"	"Need mental strength to work here
+Typical workplace drama
+Need to be an active person"
+"197"	"1. Your experience in Amazon would be very team dependent. You could go to a bad team that's all OE and no real projects and have bad WLB. However, all my teams so far have good WLB. 
+2. Competitive. You'll be put on a dev plan if you don't perform well. If you are not a very motivated person, stay away.
+3. Leadership principal is sort of cult-ish if you are not into them."
+"198"	"Long hours, no part time"
+"199"	"Be on your Ps and Qs"
+"200"	"High work load, especially in Q4"
+"201"	"Culture can be hard for some people to get used to"
+"202"	"Nothing at the current moment."
+"203"	"standing all day which can eventually take a toll"
+"204"	"OT not consistent. Laptops aren’t the best for WFH"
+"205"	"Heavy workload, production of everything"
+"206"	"High turnover not much really"
+"207"	"Long work hours and you caught up in office politics"
+"208"	"It is physical work and you are on your feet for 10 hours a day so be prepared and give it time for your body to adjust."
+"209"	"Gotta be on time q"
+"210"	"Large scale, could get lost in shuffle if unwilling to work."
+"211"	"Large scale, could get lost in shuffle if unwilling to work."
+"212"	"its not for the weak (not really a \"con\", but you understand), working conditions can be mediocre at times, extremely high paced at times many quotas and deadlines given"
+"213"	"Not very good pay
+Boring, office work"
+"214"	"Long hours and bad management"
+"215"	"* depending on where you work inside the warehouse your feet will hurt from standing all day, so switch shoes between break or wear comfortable shoes with soles"
+"216"	"Not worth it work hard for $15"
+"217"	"You feel like a number"
+"218"	"pay rate is not competitive with other logistics companies"
+"219"	"It can get boring easily"
+"220"	"six feet distancing sucks people get fired"
+"221"	"Could be stressful working with highly competitive individuals"
+"222"	"Long hours, high risk job"
+"223"	"Lack of career growth, non existent promotions or recognition"
+"224"	"It's 7 hours a day despite being able to be kept for longer than your shift for particularly long days with tons of packages. Also, as far as I know, there are no benefits. Not a job you would want to stay at for very long."
+"225"	"Culture at times can be a bit too much to handle."
+"226"	"None that i can think of"
+"227"	"Compensation is okay. Not best, not worst. 
+Priority shifts a lot but depends on org. This can result in stagnating skills or burn out. Some orgs have high turnover from this but the company is so large that it isn’t company wide."
+"228"	"Long hours with a up to 200+ packages to deliver in used/unstable vans"
+"229"	"Hard work And physically demanding"
+"230"	"Work life balance is not very good."
+"231"	"Repetitive work with leaders not understanding issues that slow production"
+"232"	"Have not found any yet"
+"233"	"I wish the culture was better"
+"234"	"bad managers , strict about time"
+"235"	"To long standing on feet"
+"236"	"Dislike working for Jeff Bezos"
+"237"	"There aren't any cons to list."
+"238"	"Be on feet a lot"
+"239"	"constantly working and the whole tracking your time can be annoying."
+"240"	"Really long hours
+Very fast pace"
+"241"	"Hectic schedule in Amazon company"
+"242"	"very fast paced but doable"
+"243"	"I honestly believe with the amount of risks the job has and the amount of work is put on us most of the days, the pay should be a little higher."
+"244"	"It’s a job so it sucks"
+"245"	"Hard labor favoritism and the"
+"246"	"there is no con to mention it here"
+"247"	"No cons as such... no"
+"248"	"I am really proud of my company"
+"249"	"There are no cons I can think of."
+"250"	"work load is more sometimes"
+"251"	"Fast paced isn’t for everyone"
+"252"	"Very hard on your body but otherwise very good job. Also if you complain about pain or anything because of the job safety will send you home unpaid to get a doctors note instead of working with you."
+"253"	"Need more hr employees 
+Could be better
+Some people are lazy
+Everything is automatic
+Boring sometimes"
+"254"	"work life balance, no free food"
+"255"	"Work a lot and no work life balance"
+"256"	"Having the ability to prioritize/influence the right work is key to success here; I have seen some struggle with their ability to work smarter and end up working harder."
+"257"	"manager centric company
+less work life balance"
+"258"	"It can be loud in the Fullfilment Center. Turnover is high because the days are looooong, but it is a well run building."
+"259"	"No Work Life Balance - You need to spend tons and tons of effort!"
+"260"	"Pay is no longer competitive"
+"261"	"Long hours and a lot of work"
+"262"	"Depending on who your manager is it might suck, but that is rare."
+"263"	"Cons are too much work pressure"
+"264"	"Long shifts can be tiring."
+"265"	"Nothing I can really think of. It’s a bit physically taxing but that’s it"
+"266"	"Long Hours
+Task Juggling
+Negative Engagements
+No Overtime Pay"
+"267"	"kind of hectic role but can cope up"
+"268"	"Not always work and have to keep a certain rate"
+"269"	"Need to have a flexible schedule and possibly work nights."
+"270"	"A lot of work - work/life balance"
+"271"	"Repetitive Work
+Low Base Pay
+Management is hit or miss"
+"272"	"Can be stressfull around the holiday season"
+"273"	"Hours can be long, depending on which department you are assigned the pay may or may not be worth it, and management is not always the best"
+"274"	"Many reorgs 
+Many pivots on active work"
+"275"	"A bad team will ruin your idea of what it means to work in tech. Underpaid compared to other big tech companies in Seattle."
+"276"	"Benefits are quite cheaper when compared to similar tech companies like Apple, Google, Microsoft and Facebook."
+"277"	"Difficult to move up, goes very slowly"
+"278"	"Ambiguous promotion track, long hours"
+"279"	"The Managers
+The heavy Work load
+Constant Physical labor
+Inconvenient Shift times"
+"280"	"ethics, morals, mental health is always affected"
+"281"	"Nothing much cuz amazon is coo"
+"282"	"more room for improvement through dedication"
+"283"	"Nothing the company is amazing"
+"284"	"High level of ambiguity for projects 
+Long development schedules (automotive)
+Modest salary"
+"285"	"Being seasonal and jumping through hoops to become permanent."
+"286"	"Requires a lot of sweat and tears. If you're not into working this probably isn't the job for you."
+"287"	"hard physical labor, menial
+employee management/statistics tracking system is blunt and can be discouraging"
+"288"	"Hard work. Not for everybody"
+"289"	"Days can be long, A lot of steps, Different supervisors operate and pay differently"
+"290"	"Challenging during holiday time with alot of overtime."
+"291"	"No provided free meals, only snacks"
+"292"	"Cutthroat, work life balance could be an issue"
+"293"	"Very metrics driven. Gotta meet the quota"
+"294"	"Very physically demanding and so tiring"
+"295"	"There seems to be a much longer path to management for minorities and other marginalized groups."
+"296"	"physically demanding, long hours, average pay"
+"297"	"work is tough on your body"
+"298"	"The warehouse is not climate controlled."
+"299"	"Talent reviews every year that force management to identify low performers"
+"300"	"Lots of work pressure, tight deadlines."
+"301"	"Talent reviews every year that force management to identify low performers"
+"302"	"Lots of work pressure, tight deadlines."
+"303"	"Impersonal office culture and strenuous work environment. Tops down culture."
+"304"	"Not fun, Fun, cool, sick, sweet, lol"
+"305"	"None that I can think of"
+"306"	"Long hours. Monotonous work. 10 hour work days for 4 days (11 hour work days for 5 days during peak season)."
+"307"	"Long hours. And work is mundane"
+"308"	"- Lots of commitment required, Amazon would give as much as you can take
+- Some LPs need some alteration for modern times"
+"309"	"There are no cons for me"
+"310"	"Stressful life
+Stale culture
+Too large to move quickly"
+"311"	"Peak sucks. Christmas time is the worst"
+"312"	"Too many different departments. Lots of times they don’t know what each other are doing."
+"313"	"*Not enough development opportunities
+*High stress"
+"314"	"You have to hit your rate or management could fire you"
+"315"	"Long hours management favoritism physical"
+"316"	"Long hours, no sitting down.
+No organized training regimen for any department at any site (I’ve worked in several)."
+"317"	"Long hours, management not on the same page. Cut corners as far as safety is concerned."
+"318"	"Disorganized
+A lot of other stuff"
+"319"	"Unforgiving with hours, regardless of issue"
+"320"	"Sometimes not great. But great too."
+"321"	"Sometimes not great. But great too."
+"322"	"not enough attention to detail"
+"323"	"Hate the politics in the company"
+"324"	"Having to walk up four floors can suck sometimes."
+"325"	"Work life balance is a mess"
+"326"	"No work life balance in the company"
+"327"	"A lot of screen time"
+"328"	"The work is stressful lots of doing the same things over and over again"
+"329"	"Experience can be very team dependent. Some teams overwork you or don't give you much to do"
+"330"	"long, tiring hours on your feet"

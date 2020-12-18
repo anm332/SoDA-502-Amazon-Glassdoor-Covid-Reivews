@@ -1,0 +1,3762 @@
+---
+title: "Clean Amazon_Glassdoor Project"
+author: "Amanda Moeller"
+date: "12/16/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Library the Glassdoor package
+```{r}
+library(devtools)
+# devtools::install_github("mguideng/gdscrapeR")
+library(gdscrapeR)
+library(rvest)
+```
+
+
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 1:
+```{r}
+# Covid-related section of reviews on Glassdoor
+
+# Walmart, Amazon, Yum!, Kroger, Home Depot, Berkshire Hathaway, FedEx, IBM, UPS, Target 
+## ("Fortune 500 Companies 2019: Who Made the List". Fortune. AND Forbes list of largest US Private Companies)
+
+# Need following html nodes: date, star rating, review title text, mean rating of company, pros text, cons text, location, job title, current employee
+
+
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 1:
+amazon_covid_reviews_url1 <-
+  'https://www.glassdoor.com/Reviews/Amazon-Reviews-E6036.htm?sort.sortType=COVID-19&sort.ascending=false&filter.iso3Language=eng'
+amazon_covid_webpage1 <- 
+  read_html(amazon_covid_reviews_url1)
+
+amazon_covid_titles1 <- 
+  read_html(amazon_covid_reviews_url1) %>% 
+  html_nodes(".strong.mt-0") %>% 
+  html_text()
+head(amazon_covid_titles1) # so this gives the title of users' reviews. Serves as a good summary for the review
+length(amazon_covid_titles1) # 11
+# remove value [3] from list (ad for Glassdoor jobs)
+amazon_covid_titles1 <- amazon_covid_titles1[-3]
+
+amazon_covid_starrating1 <- 
+  read_html(amazon_covid_reviews_url1) %>%
+  html_nodes(".v2__EIReviewsRatingsStylesV2__small") %>%
+  html_text()
+head(amazon_covid_starrating1)
+length(amazon_covid_starrating1) # 10
+
+amazon_covid_jobtitles1 <- 
+  read_html(amazon_covid_reviews_url1) %>%
+  html_nodes(".authorJobTitle") %>%
+  html_text()
+head(amazon_covid_jobtitles1)
+length(amazon_covid_jobtitles1) # 10
+
+amazon_covid_location1 <- 
+  read_html(amazon_covid_reviews_url1) %>%
+  html_nodes(".authorLocation") %>%
+  html_text()
+head(amazon_covid_location1)
+length(amazon_covid_location1) # 10
+
+amazon_covid_reviewdate1 <- 
+  read_html(amazon_covid_reviews_url1) %>%
+  html_nodes(".date") %>%
+  html_text()
+head(amazon_covid_reviewdate1)
+length(amazon_covid_reviewdate1) # 10
+
+amazon_covid_PROS1 <- 
+  read_html(amazon_covid_reviews_url1) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(1) span , #empReview_38489625 .v2__EIReviewDetailsV2__clickable:nth-child(1) .strong, .v2__EIReviewDetailsV2__clickable:nth-child(1) span") %>%
+  html_text()
+head(amazon_covid_PROS1)
+length(amazon_covid_PROS1) # 10
+
+amazon_covid_CONS1 <- 
+  read_html(amazon_covid_reviews_url1) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(2) span") %>%
+  html_text()
+head(amazon_covid_CONS1)
+length(amazon_covid_CONS1) # 10
+
+# PAGE 1 DF
+#amazon_covid_df_1 <- data.frame(amazon_covid_titles1, amazon_covid_starrating1, amazon_covid_jobtitles1, amazon_covid_location1, amazon_covid_reviewdate1, amazon_covid_CONS1, amazon_covid_PROS1)
+#head(amazon_covid_df_1)
+
+#id <- rownames(amazon_covid_df_1)
+#amazon_covid_df_1 <- cbind(id=id, amazon_covid_df_1)
+#head(amazon_covid_df_1)
+```
+
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 2:
+```{r}
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 2:
+amazon_covid_reviews_url2 <-
+  'https://www.glassdoor.com/Reviews/Amazon-Reviews-E6036_P2.htm?sort.sortType=COVID-19&sort.ascending=false&filter.iso3Language=eng'
+amazon_covid_webpage2 <- 
+  read_html(amazon_covid_reviews_url2)
+
+amazon_covid_titles2 <- 
+  read_html(amazon_covid_reviews_url2) %>% 
+  html_nodes(".strong.mt-0") %>% 
+  html_text()
+head(amazon_covid_titles2) # so this gives the title of users' reviews. Serves as a good summary for the review
+length(amazon_covid_titles2) # 11
+# remove value [3] from list (ad for Glassdoor jobs)
+amazon_covid_titles2 <- amazon_covid_titles2[-3]
+length(amazon_covid_titles2) # 10
+# remove 6 and 7 from all (missing locations data)
+amazon_covid_titles2 <- amazon_covid_titles2[-6] 
+amazon_covid_titles2 <- amazon_covid_titles2[-7]
+length(amazon_covid_titles2) # 8
+
+
+amazon_covid_starrating2 <- 
+  read_html(amazon_covid_reviews_url2) %>%
+  html_nodes(".v2__EIReviewsRatingsStylesV2__small") %>%
+  html_text()
+head(amazon_covid_starrating2)
+length(amazon_covid_starrating2) # 10
+# remove 6 and 7 from all (missing locations data)
+amazon_covid_starrating2 <- amazon_covid_starrating2[-6] 
+amazon_covid_starrating2 <- amazon_covid_starrating2[-7]
+length(amazon_covid_starrating2) # 8
+
+amazon_covid_jobtitles2 <- 
+  read_html(amazon_covid_reviews_url2) %>%
+  html_nodes(".authorJobTitle") %>%
+  html_text()
+head(amazon_covid_jobtitles2)
+length(amazon_covid_jobtitles2) # 10
+# remove 6 and 7 from all (missing locations data)
+amazon_covid_jobtitles2 <- amazon_covid_jobtitles2[-6] 
+amazon_covid_jobtitles2 <- amazon_covid_jobtitles2[-7]
+length(amazon_covid_jobtitles2) # 8
+
+amazon_covid_location2 <- 
+  read_html(amazon_covid_reviews_url2) %>%
+  html_nodes(".authorLocation") %>%
+  html_text()
+head(amazon_covid_location2)
+length(amazon_covid_location2) # 8
+
+amazon_covid_reviewdate2 <- 
+  read_html(amazon_covid_reviews_url2) %>%
+  html_nodes(".date") %>%
+  html_text()
+head(amazon_covid_reviewdate2)
+length(amazon_covid_reviewdate2) # 10
+# remove 6 and 7 from all (missing locations data)
+amazon_covid_reviewdate2 <- amazon_covid_reviewdate2[-6] 
+amazon_covid_reviewdate2 <- amazon_covid_reviewdate2[-7]
+length(amazon_covid_reviewdate2) # 8
+
+amazon_covid_PROS2 <- 
+  read_html(amazon_covid_reviews_url2) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(1) span , #empReview_38489625 .v2__EIReviewDetailsV2__clickable:nth-child(1) .strong, .v2__EIReviewDetailsV2__clickable:nth-child(1) span") %>%
+  html_text()
+head(amazon_covid_PROS2)
+length(amazon_covid_PROS2) # 10
+# remove 6 and 7 from all (missing locations data)
+amazon_covid_PROS2 <- amazon_covid_PROS2[-6] 
+amazon_covid_PROS2 <- amazon_covid_PROS2[-7]
+length(amazon_covid_PROS2) # 8
+
+amazon_covid_CONS2 <- 
+  read_html(amazon_covid_reviews_url2) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(2) span") %>%
+  html_text()
+head(amazon_covid_CONS2)
+length(amazon_covid_CONS2) # 10
+# remove 6 and 7 from all (missing locations data)
+amazon_covid_CONS2 <- amazon_covid_CONS2[-6] 
+amazon_covid_CONS2 <- amazon_covid_CONS2[-7]
+length(amazon_covid_CONS2) # 8
+
+# PAGE 2 DF
+#amazon_covid_df_2 <- data.frame(amazon_covid_titles2, amazon_covid_starrating2, amazon_covid_jobtitles2, amazon_covid_location2, amazon_covid_reviewdate2, amazon_covid_CONS2, amazon_covid_PROS2)
+#head(amazon_covid_df_2)
+
+#amazon_covid_df_1
+
+```
+
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 3:
+```{r}
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 3:
+## (criteria: current, FT employees in all US cities)
+
+
+amazon_covid_reviews_url3 <-
+  'https://www.glassdoor.com/Reviews/Amazon-US-Reviews-EI_IE6036.0,6_IL.7,9_IN1.htm?sort.sortType=COVID-19&sort.ascending=false&filter.iso3Language=eng&filter.includePastEmployees=false&filter.employmentStatus=REGULAR'
+amazon_covid_webpage3 <- 
+  read_html(amazon_covid_reviews_url3)
+
+amazon_covid_titles3 <- 
+  read_html(amazon_covid_reviews_url3) %>% 
+  html_nodes(".strong.mt-0") %>% 
+  html_text()
+head(amazon_covid_titles3) # so this gives the title of users' reviews. Serves as a good summary for the review
+length(amazon_covid_titles3) # 11
+# remove value [3] from list (ad for Glassdoor jobs)
+amazon_covid_titles3 <- amazon_covid_titles3[-3]
+
+amazon_covid_starrating3 <- 
+  read_html(amazon_covid_reviews_url3) %>%
+  html_nodes(".v2__EIReviewsRatingsStylesV2__small") %>%
+  html_text()
+head(amazon_covid_starrating3)
+length(amazon_covid_starrating3) # 10
+
+amazon_covid_jobtitles3 <- 
+  read_html(amazon_covid_reviews_url3) %>%
+  html_nodes(".authorJobTitle") %>%
+  html_text()
+head(amazon_covid_jobtitles3)
+length(amazon_covid_jobtitles3) # 10
+
+amazon_covid_location3 <- 
+  read_html(amazon_covid_reviews_url3) %>%
+  html_nodes(".authorLocation") %>%
+  html_text()
+head(amazon_covid_location3)
+length(amazon_covid_location3) # 10
+
+amazon_covid_reviewdate3 <- 
+  read_html(amazon_covid_reviews_url3) %>%
+  html_nodes(".date") %>%
+  html_text()
+head(amazon_covid_reviewdate3)
+length(amazon_covid_reviewdate3) # 10
+
+amazon_covid_PROS3 <- 
+  read_html(amazon_covid_reviews_url3) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(1) span , #empReview_38489625 .v2__EIReviewDetailsV2__clickable:nth-child(1) .strong, .v2__EIReviewDetailsV2__clickable:nth-child(1) span") %>%
+  html_text()
+head(amazon_covid_PROS3)
+length(amazon_covid_PROS3) # 10
+
+amazon_covid_CONS3 <- 
+  read_html(amazon_covid_reviews_url3) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(2) span") %>%
+  html_text()
+head(amazon_covid_CONS3)
+length(amazon_covid_CONS3) # 10
+
+# PAGE 1 DF
+amazon_covid_df_3 <- data.frame(amazon_covid_titles3, amazon_covid_starrating3, amazon_covid_jobtitles3, amazon_covid_location3, amazon_covid_reviewdate3, amazon_covid_CONS3, amazon_covid_PROS3)
+head(amazon_covid_df_3)
+```
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 4:
+```{r}
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 4:
+## (criteria: current, FT employees in all US cities)
+
+amazon_covid_reviews_url4 <-
+  'https://www.glassdoor.com/Reviews/Amazon-US-Reviews-EI_IE6036.0,6_IL.7,9_IN1_IP4.htm?sort.sortType=COVID-19&sort.ascending=false&filter.iso3Language=eng&filter.includePastEmployees=false&filter.employmentStatus=REGULAR'
+amazon_covid_webpage4 <- 
+  read_html(amazon_covid_reviews_url4)
+
+amazon_covid_titles4 <- 
+  read_html(amazon_covid_reviews_url4) %>% 
+  html_nodes(".strong.mt-0") %>% 
+  html_text()
+head(amazon_covid_titles4) # so this gives the title of users' reviews. Serves as a good summary for the review
+length(amazon_covid_titles4) # 11
+# remove value [3] from list (ad for Glassdoor jobs)
+amazon_covid_titles4 <- amazon_covid_titles4[-3]
+
+amazon_covid_starrating4 <- 
+  read_html(amazon_covid_reviews_url4) %>%
+  html_nodes(".v2__EIReviewsRatingsStylesV2__small") %>%
+  html_text()
+head(amazon_covid_starrating4)
+length(amazon_covid_starrating4) # 10
+
+amazon_covid_jobtitles4 <- 
+  read_html(amazon_covid_reviews_url4) %>%
+  html_nodes(".authorJobTitle") %>%
+  html_text()
+head(amazon_covid_jobtitles4)
+length(amazon_covid_jobtitles4) # 10
+
+amazon_covid_location4 <- 
+  read_html(amazon_covid_reviews_url4) %>%
+  html_nodes(".authorLocation") %>%
+  html_text()
+head(amazon_covid_location4)
+length(amazon_covid_location4) # 10
+
+amazon_covid_reviewdate4 <- 
+  read_html(amazon_covid_reviews_url4) %>%
+  html_nodes(".date") %>%
+  html_text()
+head(amazon_covid_reviewdate4)
+length(amazon_covid_reviewdate4) # 10
+
+amazon_covid_PROS4 <- 
+  read_html(amazon_covid_reviews_url4) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(1) span , #empReview_38489625 .v2__EIReviewDetailsV2__clickable:nth-child(1) .strong, .v2__EIReviewDetailsV2__clickable:nth-child(1) span") %>%
+  html_text()
+head(amazon_covid_PROS4)
+length(amazon_covid_PROS4) # 10
+
+amazon_covid_CONS4 <- 
+  read_html(amazon_covid_reviews_url4) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(2) span") %>%
+  html_text()
+head(amazon_covid_CONS4)
+length(amazon_covid_CONS4) # 10
+
+# PAGE 4 DF
+amazon_covid_df_4 <- data.frame(amazon_covid_titles4, amazon_covid_starrating4, amazon_covid_jobtitles4, amazon_covid_location4, amazon_covid_reviewdate4, amazon_covid_CONS4, amazon_covid_PROS4)
+head(amazon_covid_df_4)
+```
+
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 5:
+```{r}
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 5:
+## (criteria: current, FT employees in all US cities)
+
+amazon_covid_reviews_url5 <-
+  'https://www.glassdoor.com/Reviews/Amazon-US-Reviews-EI_IE6036.0,6_IL.7,9_IN1_IP5.htm?sort.sortType=COVID-19&sort.ascending=false&filter.iso3Language=eng&filter.includePastEmployees=false&filter.employmentStatus=REGULAR'
+amazon_covid_webpage5 <- 
+  read_html(amazon_covid_reviews_url5)
+
+amazon_covid_titles5 <- 
+  read_html(amazon_covid_reviews_url5) %>% 
+  html_nodes(".strong.mt-0") %>% 
+  html_text()
+head(amazon_covid_titles5) # so this gives the title of users' reviews. Serves as a good summary for the review
+length(amazon_covid_titles5) # 11
+# remove value [3] from list (ad for Glassdoor jobs)
+amazon_covid_titles5 <- amazon_covid_titles5[-3]
+
+amazon_covid_starrating5 <- 
+  read_html(amazon_covid_reviews_url5) %>%
+  html_nodes(".v2__EIReviewsRatingsStylesV2__small") %>%
+  html_text()
+head(amazon_covid_starrating5)
+length(amazon_covid_starrating5) # 10
+
+amazon_covid_jobtitles5 <- 
+  read_html(amazon_covid_reviews_url5) %>%
+  html_nodes(".authorJobTitle") %>%
+  html_text()
+head(amazon_covid_jobtitles5)
+length(amazon_covid_jobtitles5) # 10
+
+amazon_covid_location5 <- 
+  read_html(amazon_covid_reviews_url5) %>%
+  html_nodes(".authorLocation") %>%
+  html_text()
+head(amazon_covid_location5)
+length(amazon_covid_location5) # 10
+
+amazon_covid_reviewdate5 <- 
+  read_html(amazon_covid_reviews_url5) %>%
+  html_nodes(".date") %>%
+  html_text()
+head(amazon_covid_reviewdate5)
+length(amazon_covid_reviewdate5) # 10
+
+amazon_covid_PROS5 <- 
+  read_html(amazon_covid_reviews_url5) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(1) span , #empReview_38489625 .v2__EIReviewDetailsV2__clickable:nth-child(1) .strong, .v2__EIReviewDetailsV2__clickable:nth-child(1) span") %>%
+  html_text()
+head(amazon_covid_PROS5)
+length(amazon_covid_PROS5) # 10
+
+amazon_covid_CONS5 <- 
+  read_html(amazon_covid_reviews_url5) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(2) span") %>%
+  html_text()
+head(amazon_covid_CONS5)
+length(amazon_covid_CONS5) # 10
+
+# PAGE 5 DF
+amazon_covid_df_5 <- data.frame(amazon_covid_titles5, amazon_covid_starrating5, amazon_covid_jobtitles5, amazon_covid_location5, amazon_covid_reviewdate5, amazon_covid_CONS5, amazon_covid_PROS5)
+head(amazon_covid_df_5)
+```
+
+
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 6:
+```{r}
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 6:
+## (criteria: current, FT employees in all US cities)
+
+amazon_covid_reviews_url6 <-
+  'https://www.glassdoor.com/Reviews/Amazon-US-Reviews-EI_IE6036.0,6_IL.7,9_IN1_IP6.htm?sort.sortType=COVID-19&sort.ascending=false&filter.iso3Language=eng&filter.includePastEmployees=false&filter.employmentStatus=REGULAR'
+amazon_covid_webpage6 <- 
+  read_html(amazon_covid_reviews_url6)
+
+amazon_covid_titles6 <- 
+  read_html(amazon_covid_reviews_url6) %>% 
+  html_nodes(".strong.mt-0") %>% 
+  html_text()
+head(amazon_covid_titles6) # so this gives the title of users' reviews. Serves as a good summary for the review
+length(amazon_covid_titles6) # 11
+# remove value [3] from list (ad for Glassdoor jobs)
+amazon_covid_titles6 <- amazon_covid_titles6[-3]
+length(amazon_covid_titles6)
+
+amazon_covid_starrating6 <- 
+  read_html(amazon_covid_reviews_url6) %>%
+  html_nodes(".v2__EIReviewsRatingsStylesV2__small") %>%
+  html_text()
+head(amazon_covid_starrating6)
+length(amazon_covid_starrating6) # 10
+
+amazon_covid_jobtitles6 <- 
+  read_html(amazon_covid_reviews_url6) %>%
+  html_nodes(".authorJobTitle") %>%
+  html_text()
+head(amazon_covid_jobtitles6)
+length(amazon_covid_jobtitles6) # 10
+
+amazon_covid_location6 <- 
+  read_html(amazon_covid_reviews_url6) %>%
+  html_nodes(".authorLocation") %>%
+  html_text()
+head(amazon_covid_location6)
+length(amazon_covid_location6) # 10
+
+amazon_covid_reviewdate6 <- 
+  read_html(amazon_covid_reviews_url6) %>%
+  html_nodes(".date") %>%
+  html_text()
+head(amazon_covid_reviewdate6)
+length(amazon_covid_reviewdate6) # 10
+
+amazon_covid_PROS6 <- 
+  read_html(amazon_covid_reviews_url6) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(1) span , #empReview_38489625 .v2__EIReviewDetailsV2__clickable:nth-child(1) .strong, .v2__EIReviewDetailsV2__clickable:nth-child(1) span") %>%
+  html_text()
+head(amazon_covid_PROS6)
+length(amazon_covid_PROS6) # 10
+
+amazon_covid_CONS6 <- 
+  read_html(amazon_covid_reviews_url6) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(2) span") %>%
+  html_text()
+head(amazon_covid_CONS6)
+length(amazon_covid_CONS6) # 10
+
+# PAGE 6 DF
+amazon_covid_df_6 <- data.frame(amazon_covid_titles6, amazon_covid_starrating6, amazon_covid_jobtitles6, amazon_covid_location6, amazon_covid_reviewdate6, amazon_covid_CONS6, amazon_covid_PROS6)
+head(amazon_covid_df_6)
+```
+
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 7:
+```{r}
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 7:
+## (criteria: current, FT employees in all US cities)
+
+amazon_covid_reviews_url7 <-
+  'https://www.glassdoor.com/Reviews/Amazon-US-Reviews-EI_IE6036.0,6_IL.7,9_IN1_IP7.htm?sort.sortType=COVID-19&sort.ascending=false&filter.iso3Language=eng&filter.includePastEmployees=false&filter.employmentStatus=REGULAR'
+amazon_covid_webpage7 <- 
+  read_html(amazon_covid_reviews_url7)
+
+amazon_covid_titles7 <- 
+  read_html(amazon_covid_reviews_url7) %>% 
+  html_nodes(".strong.mt-0") %>% 
+  html_text()
+head(amazon_covid_titles7) # so this gives the title of users' reviews. Serves as a good summary for the review
+length(amazon_covid_titles7) # 11
+# remove value [3] from list (ad for Glassdoor jobs)
+amazon_covid_titles7 <- amazon_covid_titles7[-3]
+length(amazon_covid_titles7)
+
+amazon_covid_starrating7 <- 
+  read_html(amazon_covid_reviews_url7) %>%
+  html_nodes(".v2__EIReviewsRatingsStylesV2__small") %>%
+  html_text()
+head(amazon_covid_starrating7)
+length(amazon_covid_starrating7) # 10
+
+amazon_covid_jobtitles7 <- 
+  read_html(amazon_covid_reviews_url7) %>%
+  html_nodes(".authorJobTitle") %>%
+  html_text()
+head(amazon_covid_jobtitles7)
+length(amazon_covid_jobtitles7) # 10
+
+amazon_covid_location7 <- 
+  read_html(amazon_covid_reviews_url7) %>%
+  html_nodes(".authorLocation") %>%
+  html_text()
+head(amazon_covid_location7)
+length(amazon_covid_location7) # 10
+
+amazon_covid_reviewdate7 <- 
+  read_html(amazon_covid_reviews_url7) %>%
+  html_nodes(".date") %>%
+  html_text()
+head(amazon_covid_reviewdate7)
+length(amazon_covid_reviewdate7) # 10
+
+amazon_covid_PROS7 <- 
+  read_html(amazon_covid_reviews_url7) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(1) span , #empReview_38489625 .v2__EIReviewDetailsV2__clickable:nth-child(1) .strong, .v2__EIReviewDetailsV2__clickable:nth-child(1) span") %>%
+  html_text()
+head(amazon_covid_PROS7)
+length(amazon_covid_PROS7) # 10
+
+amazon_covid_CONS7 <- 
+  read_html(amazon_covid_reviews_url7) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(2) span") %>%
+  html_text()
+head(amazon_covid_CONS7)
+length(amazon_covid_CONS7) # 10
+
+# PAGE 7 DF
+amazon_covid_df_7 <- data.frame(amazon_covid_titles7, amazon_covid_starrating7, amazon_covid_jobtitles7, amazon_covid_location7, amazon_covid_reviewdate7, amazon_covid_CONS7, amazon_covid_PROS7)
+head(amazon_covid_df_7)
+```
+
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 8:
+```{r}
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 8:
+## (criteria: current, FT employees in all US cities)
+
+amazon_covid_reviews_url8 <-
+  'https://www.glassdoor.com/Reviews/Amazon-US-Reviews-EI_IE6036.0,6_IL.7,9_IN1_IP8.htm?sort.sortType=COVID-19&sort.ascending=false&filter.iso3Language=eng&filter.includePastEmployees=false&filter.employmentStatus=REGULAR'
+amazon_covid_webpage8 <- 
+  read_html(amazon_covid_reviews_url8)
+
+amazon_covid_titles8 <- 
+  read_html(amazon_covid_reviews_url8) %>% 
+  html_nodes(".strong.mt-0") %>% 
+  html_text()
+head(amazon_covid_titles8) # so this gives the title of users' reviews. Serves as a good summary for the review
+length(amazon_covid_titles8) # 11
+# remove value [3] from list (ad for Glassdoor jobs)
+amazon_covid_titles8 <- amazon_covid_titles8[-3]
+length(amazon_covid_titles8)
+
+amazon_covid_starrating8 <- 
+  read_html(amazon_covid_reviews_url8) %>%
+  html_nodes(".v2__EIReviewsRatingsStylesV2__small") %>%
+  html_text()
+head(amazon_covid_starrating8)
+length(amazon_covid_starrating8) # 10
+
+amazon_covid_jobtitles8 <- 
+  read_html(amazon_covid_reviews_url8) %>%
+  html_nodes(".authorJobTitle") %>%
+  html_text()
+head(amazon_covid_jobtitles8)
+length(amazon_covid_jobtitles8) # 10
+
+amazon_covid_location8 <- 
+  read_html(amazon_covid_reviews_url8) %>%
+  html_nodes(".authorLocation") %>%
+  html_text()
+head(amazon_covid_location8)
+length(amazon_covid_location8) # 10
+
+amazon_covid_reviewdate8 <- 
+  read_html(amazon_covid_reviews_url8) %>%
+  html_nodes(".date") %>%
+  html_text()
+head(amazon_covid_reviewdate8)
+length(amazon_covid_reviewdate8) # 10
+
+amazon_covid_PROS8 <- 
+  read_html(amazon_covid_reviews_url8) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(1) span , #empReview_38489625 .v2__EIReviewDetailsV2__clickable:nth-child(1) .strong, .v2__EIReviewDetailsV2__clickable:nth-child(1) span") %>%
+  html_text()
+head(amazon_covid_PROS8)
+length(amazon_covid_PROS8) # 10
+
+amazon_covid_CONS8 <- 
+  read_html(amazon_covid_reviews_url8) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(2) span") %>%
+  html_text()
+head(amazon_covid_CONS8)
+length(amazon_covid_CONS8) # 10
+
+# PAGE 8 DF
+amazon_covid_df_8 <- data.frame(amazon_covid_titles8, amazon_covid_starrating8, amazon_covid_jobtitles8, amazon_covid_location8, amazon_covid_reviewdate8, amazon_covid_CONS8, amazon_covid_PROS8)
+head(amazon_covid_df_8)
+```
+
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 9:
+```{r}
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 9:
+## (criteria: current, FT employees in all US cities)
+
+amazon_covid_reviews_url9 <-
+  'https://www.glassdoor.com/Reviews/Amazon-US-Reviews-EI_IE6036.0,6_IL.7,9_IN1_IP9.htm?sort.sortType=COVID-19&sort.ascending=false&filter.iso3Language=eng&filter.includePastEmployees=false&filter.employmentStatus=REGULAR'
+amazon_covid_webpage9 <- 
+  read_html(amazon_covid_reviews_url9)
+
+amazon_covid_titles9 <- 
+  read_html(amazon_covid_reviews_url9) %>% 
+  html_nodes(".strong.mt-0") %>% 
+  html_text()
+head(amazon_covid_titles9) # so this gives the title of users' reviews. Serves as a good summary for the review
+length(amazon_covid_titles9) # 11
+# remove value [3] from list (ad for Glassdoor jobs)
+amazon_covid_titles9 <- amazon_covid_titles9[-3]
+length(amazon_covid_titles9)
+
+amazon_covid_starrating9 <- 
+  read_html(amazon_covid_reviews_url9) %>%
+  html_nodes(".v2__EIReviewsRatingsStylesV2__small") %>%
+  html_text()
+head(amazon_covid_starrating9)
+length(amazon_covid_starrating9) # 10
+
+amazon_covid_jobtitles9 <- 
+  read_html(amazon_covid_reviews_url9) %>%
+  html_nodes(".authorJobTitle") %>%
+  html_text()
+head(amazon_covid_jobtitles9)
+length(amazon_covid_jobtitles9) # 10
+
+amazon_covid_location9 <- 
+  read_html(amazon_covid_reviews_url9) %>%
+  html_nodes(".authorLocation") %>%
+  html_text()
+head(amazon_covid_location9)
+length(amazon_covid_location9) # 10
+
+amazon_covid_reviewdate9 <- 
+  read_html(amazon_covid_reviews_url9) %>%
+  html_nodes(".date") %>%
+  html_text()
+head(amazon_covid_reviewdate9)
+length(amazon_covid_reviewdate9) # 10
+
+amazon_covid_PROS9 <- 
+  read_html(amazon_covid_reviews_url9) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(1) span , #empReview_38489625 .v2__EIReviewDetailsV2__clickable:nth-child(1) .strong, .v2__EIReviewDetailsV2__clickable:nth-child(1) span") %>%
+  html_text()
+head(amazon_covid_PROS9)
+length(amazon_covid_PROS9) # 10
+
+amazon_covid_CONS9 <- 
+  read_html(amazon_covid_reviews_url9) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(2) span") %>%
+  html_text()
+head(amazon_covid_CONS9)
+length(amazon_covid_CONS9) # 10
+
+# PAGE 9 DF
+amazon_covid_df_9 <- data.frame(amazon_covid_titles9, amazon_covid_starrating9, amazon_covid_jobtitles9, amazon_covid_location9, amazon_covid_reviewdate9, amazon_covid_CONS9, amazon_covid_PROS9)
+head(amazon_covid_df_9)
+```
+
+
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 10:
+```{r}
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 10:
+## (criteria: current, FT employees in all US cities)
+
+amazon_covid_reviews_url10 <-
+  'https://www.glassdoor.com/Reviews/Amazon-US-Reviews-EI_IE6036.0,6_IL.7,9_IN1_IP10.htm?sort.sortType=COVID-19&sort.ascending=false&filter.iso3Language=eng&filter.includePastEmployees=false&filter.employmentStatus=REGULAR'
+amazon_covid_webpage10 <- 
+  read_html(amazon_covid_reviews_url10)
+
+amazon_covid_titles10 <- 
+  read_html(amazon_covid_reviews_url10) %>% 
+  html_nodes(".strong.mt-0") %>% 
+  html_text()
+head(amazon_covid_titles10) # so this gives the title of users' reviews. Serves as a good summary for the review
+length(amazon_covid_titles10) # 11
+# remove value [3] from list (ad for Glassdoor jobs)
+amazon_covid_titles10 <- amazon_covid_titles10[-3]
+length(amazon_covid_titles10)
+
+amazon_covid_starrating10 <- 
+  read_html(amazon_covid_reviews_url10) %>%
+  html_nodes(".v2__EIReviewsRatingsStylesV2__small") %>%
+  html_text()
+head(amazon_covid_starrating10)
+length(amazon_covid_starrating10) # 10
+
+amazon_covid_jobtitles10 <- 
+  read_html(amazon_covid_reviews_url10) %>%
+  html_nodes(".authorJobTitle") %>%
+  html_text()
+head(amazon_covid_jobtitles10)
+length(amazon_covid_jobtitles10) # 10
+
+amazon_covid_location10 <- 
+  read_html(amazon_covid_reviews_url10) %>%
+  html_nodes(".authorLocation") %>%
+  html_text()
+head(amazon_covid_location10)
+length(amazon_covid_location10) # 10
+
+amazon_covid_reviewdate10 <- 
+  read_html(amazon_covid_reviews_url10) %>%
+  html_nodes(".date") %>%
+  html_text()
+head(amazon_covid_reviewdate10)
+length(amazon_covid_reviewdate10) # 10
+
+amazon_covid_PROS10 <- 
+  read_html(amazon_covid_reviews_url10) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(1) span , #empReview_38489625 .v2__EIReviewDetailsV2__clickable:nth-child(1) .strong, .v2__EIReviewDetailsV2__clickable:nth-child(1) span") %>%
+  html_text()
+head(amazon_covid_PROS10)
+length(amazon_covid_PROS10) # 10
+
+amazon_covid_CONS10 <- 
+  read_html(amazon_covid_reviews_url10) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(2) span") %>%
+  html_text()
+head(amazon_covid_CONS10)
+length(amazon_covid_CONS10) # 10
+
+# PAGE 10 DF
+amazon_covid_df_10 <- data.frame(amazon_covid_titles10, amazon_covid_starrating10, amazon_covid_jobtitles10, amazon_covid_location10, amazon_covid_reviewdate10, amazon_covid_CONS10, amazon_covid_PROS10)
+head(amazon_covid_df_10)
+```
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 11:
+```{r}
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 11:
+## (criteria: current, FT employees in all US cities)
+
+amazon_covid_reviews_url11 <-
+  'https://www.glassdoor.com/Reviews/Amazon-US-Reviews-EI_IE6036.0,6_IL.7,9_IN1.htm?sort.sortType=COVID-19&sort.ascending=false&filter.iso3Language=eng&filter.includePastEmployees=false&filter.employmentStatus=REGULAR'
+amazon_covid_webpage11 <- 
+  read_html(amazon_covid_reviews_url11)
+
+amazon_covid_titles11 <- 
+  read_html(amazon_covid_reviews_url11) %>% 
+  html_nodes(".strong.mt-0") %>% 
+  html_text()
+head(amazon_covid_titles11) # so this gives the title of users' reviews. Serves as a good summary for the review
+length(amazon_covid_titles11) # 11
+# remove value [3] from list (ad for Glassdoor jobs)
+amazon_covid_titles11 <- amazon_covid_titles11[-3]
+length(amazon_covid_titles11)
+
+amazon_covid_starrating11 <- 
+  read_html(amazon_covid_reviews_url11) %>%
+  html_nodes(".v2__EIReviewsRatingsStylesV2__small") %>%
+  html_text()
+head(amazon_covid_starrating11)
+length(amazon_covid_starrating11) # 10
+
+amazon_covid_jobtitles11 <- 
+  read_html(amazon_covid_reviews_url11) %>%
+  html_nodes(".authorJobTitle") %>%
+  html_text()
+head(amazon_covid_jobtitles11)
+length(amazon_covid_jobtitles11) # 10
+
+amazon_covid_location11 <- 
+  read_html(amazon_covid_reviews_url11) %>%
+  html_nodes(".authorLocation") %>%
+  html_text()
+head(amazon_covid_location11)
+length(amazon_covid_location11) # 10
+
+amazon_covid_reviewdate11 <- 
+  read_html(amazon_covid_reviews_url11) %>%
+  html_nodes(".date") %>%
+  html_text()
+head(amazon_covid_reviewdate11)
+length(amazon_covid_reviewdate11) # 10
+
+amazon_covid_PROS11 <- 
+  read_html(amazon_covid_reviews_url11) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(1) span , #empReview_38489625 .v2__EIReviewDetailsV2__clickable:nth-child(1) .strong, .v2__EIReviewDetailsV2__clickable:nth-child(1) span") %>%
+  html_text()
+head(amazon_covid_PROS11)
+length(amazon_covid_PROS11) # 10
+
+amazon_covid_CONS11 <- 
+  read_html(amazon_covid_reviews_url11) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(2) span") %>%
+  html_text()
+head(amazon_covid_CONS11)
+length(amazon_covid_CONS11) # 10
+
+# PAGE 11 DF
+amazon_covid_df_11 <- data.frame(amazon_covid_titles11, amazon_covid_starrating11, amazon_covid_jobtitles11, amazon_covid_location11, amazon_covid_reviewdate11, amazon_covid_CONS11, amazon_covid_PROS11)
+head(amazon_covid_df_11)
+
+```
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 12:
+```{r}
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 12:
+## (criteria: current, FT employees in all US cities)
+
+amazon_covid_reviews_url12 <-
+  'https://www.glassdoor.com/Reviews/Amazon-US-Reviews-EI_IE6036.0,6_IL.7,9_IN1_IP12.htm?sort.sortType=COVID-19&sort.ascending=false&filter.iso3Language=eng&filter.includePastEmployees=false&filter.employmentStatus=REGULAR'
+amazon_covid_webpage12 <- 
+  read_html(amazon_covid_reviews_url12)
+
+amazon_covid_titles12 <- 
+  read_html(amazon_covid_reviews_url12) %>% 
+  html_nodes(".strong.mt-0") %>% 
+  html_text()
+head(amazon_covid_titles12) # so this gives the title of users' reviews. Serves as a good summary for the review
+length(amazon_covid_titles12) # 11
+# remove value [3] from list (ad for Glassdoor jobs)
+amazon_covid_titles12 <- amazon_covid_titles12[-3]
+length(amazon_covid_titles12)
+
+amazon_covid_starrating12 <- 
+  read_html(amazon_covid_reviews_url12) %>%
+  html_nodes(".v2__EIReviewsRatingsStylesV2__small") %>%
+  html_text()
+head(amazon_covid_starrating12)
+length(amazon_covid_starrating12) # 10
+
+amazon_covid_jobtitles12 <- 
+  read_html(amazon_covid_reviews_url12) %>%
+  html_nodes(".authorJobTitle") %>%
+  html_text()
+head(amazon_covid_jobtitles12)
+length(amazon_covid_jobtitles12) # 10
+
+amazon_covid_location12 <- 
+  read_html(amazon_covid_reviews_url12) %>%
+  html_nodes(".authorLocation") %>%
+  html_text()
+head(amazon_covid_location12)
+length(amazon_covid_location12) # 10
+
+amazon_covid_reviewdate12 <- 
+  read_html(amazon_covid_reviews_url12) %>%
+  html_nodes(".date") %>%
+  html_text()
+head(amazon_covid_reviewdate12)
+length(amazon_covid_reviewdate12) # 10
+
+amazon_covid_PROS12 <- 
+  read_html(amazon_covid_reviews_url12) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(1) span , #empReview_38489625 .v2__EIReviewDetailsV2__clickable:nth-child(1) .strong, .v2__EIReviewDetailsV2__clickable:nth-child(1) span") %>%
+  html_text()
+head(amazon_covid_PROS12)
+length(amazon_covid_PROS12) # 10
+
+amazon_covid_CONS12 <- 
+  read_html(amazon_covid_reviews_url12) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(2) span") %>%
+  html_text()
+head(amazon_covid_CONS12)
+length(amazon_covid_CONS12) # 10
+
+# PAGE 12 DF
+amazon_covid_df_12 <- data.frame(amazon_covid_titles12, amazon_covid_starrating12, amazon_covid_jobtitles12, amazon_covid_location12, amazon_covid_reviewdate12, amazon_covid_CONS12, amazon_covid_PROS12)
+head(amazon_covid_df_12)
+
+```
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 13 :
+```{r}
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 13:
+## (criteria: current, FT employees in all US cities)
+
+amazon_covid_reviews_url13 <-
+  'https://www.glassdoor.com/Reviews/Amazon-US-Reviews-EI_IE6036.0,6_IL.7,9_IN1_IP13.htm?sort.sortType=COVID-19&sort.ascending=false&filter.iso3Language=eng&filter.includePastEmployees=false&filter.employmentStatus=REGULAR'
+amazon_covid_webpage13 <- 
+  read_html(amazon_covid_reviews_url13)
+
+amazon_covid_titles13 <- 
+  read_html(amazon_covid_reviews_url13) %>% 
+  html_nodes(".strong.mt-0") %>% 
+  html_text()
+head(amazon_covid_titles13) # so this gives the title of users' reviews. Serves as a good summary for the review
+length(amazon_covid_titles13) # 11
+# remove value [3] from list (ad for Glassdoor jobs)
+amazon_covid_titles13 <- amazon_covid_titles13[-3]
+length(amazon_covid_titles13)
+
+amazon_covid_starrating13 <- 
+  read_html(amazon_covid_reviews_url13) %>%
+  html_nodes(".v2__EIReviewsRatingsStylesV2__small") %>%
+  html_text()
+head(amazon_covid_starrating13)
+length(amazon_covid_starrating13) # 10
+
+amazon_covid_jobtitles13 <- 
+  read_html(amazon_covid_reviews_url13) %>%
+  html_nodes(".authorJobTitle") %>%
+  html_text()
+head(amazon_covid_jobtitles13)
+length(amazon_covid_jobtitles13) # 10
+
+amazon_covid_location13 <- 
+  read_html(amazon_covid_reviews_url13) %>%
+  html_nodes(".authorLocation") %>%
+  html_text()
+head(amazon_covid_location13)
+length(amazon_covid_location13) # 10
+
+amazon_covid_reviewdate13 <- 
+  read_html(amazon_covid_reviews_url13) %>%
+  html_nodes(".date") %>%
+  html_text()
+head(amazon_covid_reviewdate13)
+length(amazon_covid_reviewdate13) # 10
+
+amazon_covid_PROS13 <- 
+  read_html(amazon_covid_reviews_url13) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(1) span , #empReview_38489625 .v2__EIReviewDetailsV2__clickable:nth-child(1) .strong, .v2__EIReviewDetailsV2__clickable:nth-child(1) span") %>%
+  html_text()
+head(amazon_covid_PROS13)
+length(amazon_covid_PROS13) # 10
+
+amazon_covid_CONS13 <- 
+  read_html(amazon_covid_reviews_url13) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(2) span") %>%
+  html_text()
+head(amazon_covid_CONS13)
+length(amazon_covid_CONS13) # 10
+
+# PAGE 13 DF
+amazon_covid_df_13 <- data.frame(amazon_covid_titles13, amazon_covid_starrating13, amazon_covid_jobtitles13, amazon_covid_location13, amazon_covid_reviewdate13, amazon_covid_CONS13, amazon_covid_PROS13)
+head(amazon_covid_df_13)
+
+```
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 14 :
+```{r}
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 14:
+## (criteria: current, FT employees in all US cities)
+
+amazon_covid_reviews_url14 <-
+  'https://www.glassdoor.com/Reviews/Amazon-US-Reviews-EI_IE6036.0,6_IL.7,9_IN1_IP14.htm?sort.sortType=COVID-19&sort.ascending=false&filter.iso3Language=eng&filter.includePastEmployees=false&filter.employmentStatus=REGULAR'
+amazon_covid_webpage14 <- 
+  read_html(amazon_covid_reviews_url14)
+
+amazon_covid_titles14 <- 
+  read_html(amazon_covid_reviews_url14) %>% 
+  html_nodes(".strong.mt-0") %>% 
+  html_text()
+head(amazon_covid_titles14) # so this gives the title of users' reviews. Serves as a good summary for the review
+length(amazon_covid_titles14) # 11
+# remove value [3] from list (ad for Glassdoor jobs)
+amazon_covid_titles14 <- amazon_covid_titles14[-3]
+length(amazon_covid_titles14)
+
+amazon_covid_starrating14 <- 
+  read_html(amazon_covid_reviews_url14) %>%
+  html_nodes(".v2__EIReviewsRatingsStylesV2__small") %>%
+  html_text()
+head(amazon_covid_starrating14)
+length(amazon_covid_starrating14) # 10
+
+amazon_covid_jobtitles14 <- 
+  read_html(amazon_covid_reviews_url14) %>%
+  html_nodes(".authorJobTitle") %>%
+  html_text()
+head(amazon_covid_jobtitles14)
+length(amazon_covid_jobtitles14) # 10
+
+amazon_covid_location14 <- 
+  read_html(amazon_covid_reviews_url14) %>%
+  html_nodes(".authorLocation") %>%
+  html_text()
+head(amazon_covid_location14)
+length(amazon_covid_location14) # 10
+
+amazon_covid_reviewdate14 <- 
+  read_html(amazon_covid_reviews_url14) %>%
+  html_nodes(".date") %>%
+  html_text()
+head(amazon_covid_reviewdate14)
+length(amazon_covid_reviewdate14) # 10
+
+amazon_covid_PROS14 <- 
+  read_html(amazon_covid_reviews_url14) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(1) span , #empReview_38489625 .v2__EIReviewDetailsV2__clickable:nth-child(1) .strong, .v2__EIReviewDetailsV2__clickable:nth-child(1) span") %>%
+  html_text()
+head(amazon_covid_PROS14)
+length(amazon_covid_PROS14) # 10
+
+amazon_covid_CONS14 <- 
+  read_html(amazon_covid_reviews_url14) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(2) span") %>%
+  html_text()
+head(amazon_covid_CONS14)
+length(amazon_covid_CONS14) # 10
+
+# PAGE 14 DF
+amazon_covid_df_14 <- data.frame(amazon_covid_titles14, amazon_covid_starrating14, amazon_covid_jobtitles14, amazon_covid_location14, amazon_covid_reviewdate14, amazon_covid_CONS14, amazon_covid_PROS14)
+head(amazon_covid_df_14)
+
+
+
+```
+
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 15 :
+```{r}
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 15:
+## (criteria: current, FT employees in all US cities)
+
+amazon_covid_reviews_url15 <-
+  'https://www.glassdoor.com/Reviews/Amazon-US-Reviews-EI_IE6036.0,6_IL.7,9_IN1_IP15.htm?sort.sortType=COVID-19&sort.ascending=false&filter.iso3Language=eng&filter.includePastEmployees=false&filter.employmentStatus=REGULAR'
+amazon_covid_webpage15 <- 
+  read_html(amazon_covid_reviews_url15)
+
+amazon_covid_titles15 <- 
+  read_html(amazon_covid_reviews_url15) %>% 
+  html_nodes(".strong.mt-0") %>% 
+  html_text()
+head(amazon_covid_titles15) # so this gives the title of users' reviews. Serves as a good summary for the review
+length(amazon_covid_titles15) # 11
+# remove value [3] from list (ad for Glassdoor jobs)
+amazon_covid_titles15 <- amazon_covid_titles15[-3]
+length(amazon_covid_titles15)
+
+amazon_covid_starrating15 <- 
+  read_html(amazon_covid_reviews_url15) %>%
+  html_nodes(".v2__EIReviewsRatingsStylesV2__small") %>%
+  html_text()
+head(amazon_covid_starrating15)
+length(amazon_covid_starrating15) # 10
+
+amazon_covid_jobtitles15 <- 
+  read_html(amazon_covid_reviews_url15) %>%
+  html_nodes(".authorJobTitle") %>%
+  html_text()
+head(amazon_covid_jobtitles15)
+length(amazon_covid_jobtitles15) # 10
+
+amazon_covid_location15 <- 
+  read_html(amazon_covid_reviews_url15) %>%
+  html_nodes(".authorLocation") %>%
+  html_text()
+head(amazon_covid_location15)
+length(amazon_covid_location15) # 10
+
+amazon_covid_reviewdate15 <- 
+  read_html(amazon_covid_reviews_url15) %>%
+  html_nodes(".date") %>%
+  html_text()
+head(amazon_covid_reviewdate15)
+length(amazon_covid_reviewdate15) # 10
+
+amazon_covid_PROS15 <- 
+  read_html(amazon_covid_reviews_url15) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(1) span , #empReview_38489625 .v2__EIReviewDetailsV2__clickable:nth-child(1) .strong, .v2__EIReviewDetailsV2__clickable:nth-child(1) span") %>%
+  html_text()
+head(amazon_covid_PROS15)
+length(amazon_covid_PROS15) # 10
+
+amazon_covid_CONS15 <- 
+  read_html(amazon_covid_reviews_url15) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(2) span") %>%
+  html_text()
+head(amazon_covid_CONS15)
+length(amazon_covid_CONS15) # 10
+
+# PAGE 15 DF
+amazon_covid_df_15 <- data.frame(amazon_covid_titles15, amazon_covid_starrating15, amazon_covid_jobtitles15, amazon_covid_location15, amazon_covid_reviewdate15, amazon_covid_CONS15, amazon_covid_PROS15)
+head(amazon_covid_df_15)
+
+```
+
+
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 16 :
+```{r}
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 16:
+## (criteria: current, FT employees in all US cities)
+
+amazon_covid_reviews_url16 <-
+  'https://www.glassdoor.com/Reviews/Amazon-US-Reviews-EI_IE6036.0,6_IL.7,9_IN1_IP16.htm?sort.sortType=COVID-19&sort.ascending=false&filter.iso3Language=eng&filter.includePastEmployees=false&filter.employmentStatus=REGULAR'
+amazon_covid_webpage16 <- 
+  read_html(amazon_covid_reviews_url16)
+
+amazon_covid_titles16 <- 
+  read_html(amazon_covid_reviews_url16) %>% 
+  html_nodes(".strong.mt-0") %>% 
+  html_text()
+head(amazon_covid_titles16) # so this gives the title of users' reviews. Serves as a good summary for the review
+length(amazon_covid_titles16) # 11
+# remove value [3] from list (ad for Glassdoor jobs)
+amazon_covid_titles16 <- amazon_covid_titles16[-3]
+length(amazon_covid_titles16)
+
+amazon_covid_starrating16 <- 
+  read_html(amazon_covid_reviews_url16) %>%
+  html_nodes(".v2__EIReviewsRatingsStylesV2__small") %>%
+  html_text()
+head(amazon_covid_starrating16)
+length(amazon_covid_starrating16) # 10
+
+amazon_covid_jobtitles16 <- 
+  read_html(amazon_covid_reviews_url16) %>%
+  html_nodes(".authorJobTitle") %>%
+  html_text()
+head(amazon_covid_jobtitles16)
+length(amazon_covid_jobtitles16) # 10
+
+amazon_covid_location16 <- 
+  read_html(amazon_covid_reviews_url16) %>%
+  html_nodes(".authorLocation") %>%
+  html_text()
+head(amazon_covid_location16)
+length(amazon_covid_location16) # 10
+
+amazon_covid_reviewdate16 <- 
+  read_html(amazon_covid_reviews_url16) %>%
+  html_nodes(".date") %>%
+  html_text()
+head(amazon_covid_reviewdate16)
+length(amazon_covid_reviewdate16) # 10
+
+amazon_covid_PROS16 <- 
+  read_html(amazon_covid_reviews_url16) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(1) span , #empReview_38489625 .v2__EIReviewDetailsV2__clickable:nth-child(1) .strong, .v2__EIReviewDetailsV2__clickable:nth-child(1) span") %>%
+  html_text()
+head(amazon_covid_PROS16)
+length(amazon_covid_PROS16) # 10
+
+amazon_covid_CONS16 <- 
+  read_html(amazon_covid_reviews_url16) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(2) span") %>%
+  html_text()
+head(amazon_covid_CONS16)
+length(amazon_covid_CONS16) # 10
+
+# PAGE 16 DF
+amazon_covid_df_16 <- data.frame(amazon_covid_titles16, amazon_covid_starrating16, amazon_covid_jobtitles16, amazon_covid_location16, amazon_covid_reviewdate16, amazon_covid_CONS16, amazon_covid_PROS16)
+head(amazon_covid_df_16)
+
+```
+
+
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 17 :
+```{r}
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 17:
+## (criteria: current, FT employees in all US cities)
+
+amazon_covid_reviews_url17 <-
+  'https://www.glassdoor.com/Reviews/Amazon-US-Reviews-EI_IE6036.0,6_IL.7,9_IN1_IP17.htm?sort.sortType=COVID-19&sort.ascending=false&filter.iso3Language=eng&filter.includePastEmployees=false&filter.employmentStatus=REGULAR'
+amazon_covid_webpage17 <- 
+  read_html(amazon_covid_reviews_url17)
+
+amazon_covid_titles17 <- 
+  read_html(amazon_covid_reviews_url17) %>% 
+  html_nodes(".strong.mt-0") %>% 
+  html_text()
+head(amazon_covid_titles17) # so this gives the title of users' reviews. Serves as a good summary for the review
+length(amazon_covid_titles17) # 11
+# remove value [3] from list (ad for Glassdoor jobs)
+amazon_covid_titles17 <- amazon_covid_titles17[-3]
+length(amazon_covid_titles17)
+
+amazon_covid_starrating17 <- 
+  read_html(amazon_covid_reviews_url17) %>%
+  html_nodes(".v2__EIReviewsRatingsStylesV2__small") %>%
+  html_text()
+head(amazon_covid_starrating17)
+length(amazon_covid_starrating17) # 10
+
+amazon_covid_jobtitles17 <- 
+  read_html(amazon_covid_reviews_url17) %>%
+  html_nodes(".authorJobTitle") %>%
+  html_text()
+head(amazon_covid_jobtitles17)
+length(amazon_covid_jobtitles17) # 10
+
+amazon_covid_location17 <- 
+  read_html(amazon_covid_reviews_url17) %>%
+  html_nodes(".authorLocation") %>%
+  html_text()
+head(amazon_covid_location17)
+length(amazon_covid_location17) # 10
+
+amazon_covid_reviewdate17 <- 
+  read_html(amazon_covid_reviews_url17) %>%
+  html_nodes(".date") %>%
+  html_text()
+head(amazon_covid_reviewdate17)
+length(amazon_covid_reviewdate17) # 10
+
+amazon_covid_PROS17 <- 
+  read_html(amazon_covid_reviews_url17) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(1) span , #empReview_38489625 .v2__EIReviewDetailsV2__clickable:nth-child(1) .strong, .v2__EIReviewDetailsV2__clickable:nth-child(1) span") %>%
+  html_text()
+head(amazon_covid_PROS17)
+length(amazon_covid_PROS17) # 10
+
+amazon_covid_CONS17 <- 
+  read_html(amazon_covid_reviews_url17) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(2) span") %>%
+  html_text()
+head(amazon_covid_CONS17)
+length(amazon_covid_CONS17) # 10
+
+# PAGE 17 DF
+amazon_covid_df_17 <- data.frame(amazon_covid_titles17, amazon_covid_starrating17, amazon_covid_jobtitles17, amazon_covid_location17, amazon_covid_reviewdate17, amazon_covid_CONS17, amazon_covid_PROS17)
+head(amazon_covid_df_17)
+
+```
+
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 18 :
+```{r}
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 18:
+## (criteria: current, FT employees in all US cities)
+
+amazon_covid_reviews_url18 <-
+  'https://www.glassdoor.com/Reviews/Amazon-US-Reviews-EI_IE6036.0,6_IL.7,9_IN1_IP18.htm?sort.sortType=COVID-19&sort.ascending=false&filter.iso3Language=eng&filter.includePastEmployees=false&filter.employmentStatus=REGULAR'
+amazon_covid_webpage18 <- 
+  read_html(amazon_covid_reviews_url18)
+
+amazon_covid_titles18 <- 
+  read_html(amazon_covid_reviews_url18) %>% 
+  html_nodes(".strong.mt-0") %>% 
+  html_text()
+head(amazon_covid_titles18) # so this gives the title of users' reviews. Serves as a good summary for the review
+length(amazon_covid_titles18) # 11
+# remove value [3] from list (ad for Glassdoor jobs)
+amazon_covid_titles18 <- amazon_covid_titles18[-3]
+length(amazon_covid_titles18)
+
+amazon_covid_starrating18 <- 
+  read_html(amazon_covid_reviews_url18) %>%
+  html_nodes(".v2__EIReviewsRatingsStylesV2__small") %>%
+  html_text()
+head(amazon_covid_starrating18)
+length(amazon_covid_starrating18) # 10
+
+amazon_covid_jobtitles18 <- 
+  read_html(amazon_covid_reviews_url18) %>%
+  html_nodes(".authorJobTitle") %>%
+  html_text()
+head(amazon_covid_jobtitles18)
+length(amazon_covid_jobtitles18) # 10
+
+amazon_covid_location18 <- 
+  read_html(amazon_covid_reviews_url18) %>%
+  html_nodes(".authorLocation") %>%
+  html_text()
+head(amazon_covid_location18)
+length(amazon_covid_location18) # 10
+
+amazon_covid_reviewdate18 <- 
+  read_html(amazon_covid_reviews_url18) %>%
+  html_nodes(".date") %>%
+  html_text()
+head(amazon_covid_reviewdate18)
+length(amazon_covid_reviewdate18) # 10
+
+amazon_covid_PROS18 <- 
+  read_html(amazon_covid_reviews_url18) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(1) span , #empReview_38489625 .v2__EIReviewDetailsV2__clickable:nth-child(1) .strong, .v2__EIReviewDetailsV2__clickable:nth-child(1) span") %>%
+  html_text()
+head(amazon_covid_PROS18)
+length(amazon_covid_PROS18) # 10
+
+amazon_covid_CONS18 <- 
+  read_html(amazon_covid_reviews_url18) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(2) span") %>%
+  html_text()
+head(amazon_covid_CONS18)
+length(amazon_covid_CONS18) # 10
+
+# PAGE 18 DF
+amazon_covid_df_18 <- data.frame(amazon_covid_titles18, amazon_covid_starrating18, amazon_covid_jobtitles18, amazon_covid_location18, amazon_covid_reviewdate18, amazon_covid_CONS18, amazon_covid_PROS18)
+head(amazon_covid_df_18)
+
+```
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 19 :
+```{r}
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 19:
+## (criteria: current, FT employees in all US cities)
+
+amazon_covid_reviews_url19 <-
+  'https://www.glassdoor.com/Reviews/Amazon-US-Reviews-EI_IE6036.0,6_IL.7,9_IN1_IP19.htm?sort.sortType=COVID-19&sort.ascending=false&filter.iso3Language=eng&filter.includePastEmployees=false&filter.employmentStatus=REGULAR'
+amazon_covid_webpage19 <- 
+  read_html(amazon_covid_reviews_url19)
+
+amazon_covid_titles19 <- 
+  read_html(amazon_covid_reviews_url19) %>% 
+  html_nodes(".strong.mt-0") %>% 
+  html_text()
+head(amazon_covid_titles19) # so this gives the title of users' reviews. Serves as a good summary for the review
+length(amazon_covid_titles19) # 11
+# remove value [3] from list (ad for Glassdoor jobs)
+amazon_covid_titles19 <- amazon_covid_titles19[-3]
+length(amazon_covid_titles19)
+
+amazon_covid_starrating19 <- 
+  read_html(amazon_covid_reviews_url19) %>%
+  html_nodes(".v2__EIReviewsRatingsStylesV2__small") %>%
+  html_text()
+head(amazon_covid_starrating19)
+length(amazon_covid_starrating19) # 10
+
+amazon_covid_jobtitles19 <- 
+  read_html(amazon_covid_reviews_url19) %>%
+  html_nodes(".authorJobTitle") %>%
+  html_text()
+head(amazon_covid_jobtitles19)
+length(amazon_covid_jobtitles19) # 10
+
+amazon_covid_location19 <- 
+  read_html(amazon_covid_reviews_url19) %>%
+  html_nodes(".authorLocation") %>%
+  html_text()
+head(amazon_covid_location19)
+length(amazon_covid_location19) # 10
+
+amazon_covid_reviewdate19 <- 
+  read_html(amazon_covid_reviews_url19) %>%
+  html_nodes(".date") %>%
+  html_text()
+head(amazon_covid_reviewdate19)
+length(amazon_covid_reviewdate19) # 10
+
+amazon_covid_PROS19 <- 
+  read_html(amazon_covid_reviews_url19) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(1) span , #empReview_38489625 .v2__EIReviewDetailsV2__clickable:nth-child(1) .strong, .v2__EIReviewDetailsV2__clickable:nth-child(1) span") %>%
+  html_text()
+head(amazon_covid_PROS19)
+length(amazon_covid_PROS19) # 10
+
+amazon_covid_CONS19 <- 
+  read_html(amazon_covid_reviews_url19) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(2) span") %>%
+  html_text()
+head(amazon_covid_CONS19)
+length(amazon_covid_CONS19) # 10
+
+# PAGE 19 DF
+amazon_covid_df_19 <- data.frame(amazon_covid_titles19, amazon_covid_starrating19, amazon_covid_jobtitles19, amazon_covid_location19, amazon_covid_reviewdate19, amazon_covid_CONS19, amazon_covid_PROS19)
+head(amazon_covid_df_19)
+
+```
+
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 20 :
+```{r}
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 20:
+## (criteria: current, FT employees in all US cities)
+
+amazon_covid_reviews_url20 <-
+  'https://www.glassdoor.com/Reviews/Amazon-US-Reviews-EI_IE6036.0,6_IL.7,9_IN1_IP20.htm?sort.sortType=COVID-19&sort.ascending=false&filter.iso3Language=eng&filter.includePastEmployees=false&filter.employmentStatus=REGULAR'
+amazon_covid_webpage20 <- 
+  read_html(amazon_covid_reviews_url20)
+
+amazon_covid_titles20 <- 
+  read_html(amazon_covid_reviews_url20) %>% 
+  html_nodes(".strong.mt-0") %>% 
+  html_text()
+head(amazon_covid_titles20) # so this gives the title of users' reviews. Serves as a good summary for the review
+length(amazon_covid_titles20) # 11
+# remove value [3] from list (ad for Glassdoor jobs)
+amazon_covid_titles20 <- amazon_covid_titles20[-3]
+length(amazon_covid_titles20)
+
+amazon_covid_starrating20 <- 
+  read_html(amazon_covid_reviews_url20) %>%
+  html_nodes(".v2__EIReviewsRatingsStylesV2__small") %>%
+  html_text()
+head(amazon_covid_starrating20)
+length(amazon_covid_starrating20) # 10
+
+amazon_covid_jobtitles20 <- 
+  read_html(amazon_covid_reviews_url20) %>%
+  html_nodes(".authorJobTitle") %>%
+  html_text()
+head(amazon_covid_jobtitles20)
+length(amazon_covid_jobtitles20) # 10
+
+amazon_covid_location20 <- 
+  read_html(amazon_covid_reviews_url20) %>%
+  html_nodes(".authorLocation") %>%
+  html_text()
+head(amazon_covid_location20)
+length(amazon_covid_location20) # 10
+
+amazon_covid_reviewdate20 <- 
+  read_html(amazon_covid_reviews_url20) %>%
+  html_nodes(".date") %>%
+  html_text()
+head(amazon_covid_reviewdate20)
+length(amazon_covid_reviewdate20) # 10
+
+amazon_covid_PROS20 <- 
+  read_html(amazon_covid_reviews_url20) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(1) span , #empReview_38489625 .v2__EIReviewDetailsV2__clickable:nth-child(1) .strong, .v2__EIReviewDetailsV2__clickable:nth-child(1) span") %>%
+  html_text()
+head(amazon_covid_PROS20)
+length(amazon_covid_PROS20) # 10
+
+amazon_covid_CONS20 <- 
+  read_html(amazon_covid_reviews_url20) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(2) span") %>%
+  html_text()
+head(amazon_covid_CONS20)
+length(amazon_covid_CONS20) # 10
+
+# PAGE 20 DF
+amazon_covid_df_20 <- data.frame(amazon_covid_titles20, amazon_covid_starrating20, amazon_covid_jobtitles20, amazon_covid_location20, amazon_covid_reviewdate20, amazon_covid_CONS20, amazon_covid_PROS20)
+head(amazon_covid_df_20)
+
+```
+
+
+
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 21 :
+```{r}
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 21:
+## (criteria: current, FT employees in all US cities)
+
+amazon_covid_reviews_url21 <-
+  'https://www.glassdoor.com/Reviews/Amazon-US-Reviews-EI_IE6036.0,6_IL.7,9_IN1_IP21.htm?sort.sortType=COVID-19&sort.ascending=false&filter.iso3Language=eng&filter.includePastEmployees=false&filter.employmentStatus=REGULAR'
+amazon_covid_webpage21 <- 
+  read_html(amazon_covid_reviews_url21)
+
+amazon_covid_titles21 <- 
+  read_html(amazon_covid_reviews_url21) %>% 
+  html_nodes(".strong.mt-0") %>% 
+  html_text()
+head(amazon_covid_titles21) # so this gives the title of users' reviews. Serves as a good summary for the review
+length(amazon_covid_titles21) # 11
+# remove value [3] from list (ad for Glassdoor jobs)
+amazon_covid_titles21 <- amazon_covid_titles21[-3]
+length(amazon_covid_titles21)
+
+amazon_covid_starrating21 <- 
+  read_html(amazon_covid_reviews_url21) %>%
+  html_nodes(".v2__EIReviewsRatingsStylesV2__small") %>%
+  html_text()
+head(amazon_covid_starrating21)
+length(amazon_covid_starrating21) # 10
+
+amazon_covid_jobtitles21 <- 
+  read_html(amazon_covid_reviews_url21) %>%
+  html_nodes(".authorJobTitle") %>%
+  html_text()
+head(amazon_covid_jobtitles21)
+length(amazon_covid_jobtitles21) # 10
+
+amazon_covid_location21 <- 
+  read_html(amazon_covid_reviews_url21) %>%
+  html_nodes(".authorLocation") %>%
+  html_text()
+head(amazon_covid_location21)
+length(amazon_covid_location21) # 10
+
+amazon_covid_reviewdate21 <- 
+  read_html(amazon_covid_reviews_url21) %>%
+  html_nodes(".date") %>%
+  html_text()
+head(amazon_covid_reviewdate21)
+length(amazon_covid_reviewdate21) # 10
+
+amazon_covid_PROS21 <- 
+  read_html(amazon_covid_reviews_url21) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(1) span , #empReview_38489625 .v2__EIReviewDetailsV2__clickable:nth-child(1) .strong, .v2__EIReviewDetailsV2__clickable:nth-child(1) span") %>%
+  html_text()
+head(amazon_covid_PROS21)
+length(amazon_covid_PROS21) # 10
+
+amazon_covid_CONS21 <- 
+  read_html(amazon_covid_reviews_url21) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(2) span") %>%
+  html_text()
+head(amazon_covid_CONS21)
+length(amazon_covid_CONS21) # 10
+
+# PAGE 21 DF
+amazon_covid_df_21 <- data.frame(amazon_covid_titles21, amazon_covid_starrating21, amazon_covid_jobtitles21, amazon_covid_location21, amazon_covid_reviewdate21, amazon_covid_CONS21, amazon_covid_PROS21)
+head(amazon_covid_df_21)
+
+```
+
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 22 :
+```{r}
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 22:
+## (criteria: current, FT employees in all US cities)
+
+amazon_covid_reviews_url22 <-
+  'https://www.glassdoor.com/Reviews/Amazon-US-Reviews-EI_IE6036.0,6_IL.7,9_IN1_IP22.htm?sort.sortType=COVID-19&sort.ascending=false&filter.iso3Language=eng&filter.includePastEmployees=false&filter.employmentStatus=REGULAR'
+amazon_covid_webpage22 <- 
+  read_html(amazon_covid_reviews_url22)
+
+amazon_covid_titles22 <- 
+  read_html(amazon_covid_reviews_url22) %>% 
+  html_nodes(".strong.mt-0") %>% 
+  html_text()
+head(amazon_covid_titles22) # so this gives the title of users' reviews. Serves as a good summary for the review
+length(amazon_covid_titles22) # 11
+# remove value [3] from list (ad for Glassdoor jobs)
+amazon_covid_titles22 <- amazon_covid_titles22[-3]
+length(amazon_covid_titles22)
+
+amazon_covid_starrating22 <- 
+  read_html(amazon_covid_reviews_url22) %>%
+  html_nodes(".v2__EIReviewsRatingsStylesV2__small") %>%
+  html_text()
+head(amazon_covid_starrating22)
+length(amazon_covid_starrating22) # 10
+
+amazon_covid_jobtitles22 <- 
+  read_html(amazon_covid_reviews_url22) %>%
+  html_nodes(".authorJobTitle") %>%
+  html_text()
+head(amazon_covid_jobtitles22)
+length(amazon_covid_jobtitles22) # 10
+
+amazon_covid_location22 <- 
+  read_html(amazon_covid_reviews_url22) %>%
+  html_nodes(".authorLocation") %>%
+  html_text()
+head(amazon_covid_location22)
+length(amazon_covid_location22) # 10
+
+amazon_covid_reviewdate22 <- 
+  read_html(amazon_covid_reviews_url22) %>%
+  html_nodes(".date") %>%
+  html_text()
+head(amazon_covid_reviewdate22)
+length(amazon_covid_reviewdate22) # 10
+
+amazon_covid_PROS22 <- 
+  read_html(amazon_covid_reviews_url22) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(1) span , #empReview_38489625 .v2__EIReviewDetailsV2__clickable:nth-child(1) .strong, .v2__EIReviewDetailsV2__clickable:nth-child(1) span") %>%
+  html_text()
+head(amazon_covid_PROS22)
+length(amazon_covid_PROS22) # 10
+
+amazon_covid_CONS22 <- 
+  read_html(amazon_covid_reviews_url22) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(2) span") %>%
+  html_text()
+head(amazon_covid_CONS22)
+length(amazon_covid_CONS22) # 10
+
+# PAGE 22 DF
+amazon_covid_df_22 <- data.frame(amazon_covid_titles22, amazon_covid_starrating22, amazon_covid_jobtitles22, amazon_covid_location22, amazon_covid_reviewdate22, amazon_covid_CONS22, amazon_covid_PROS22)
+head(amazon_covid_df_22)
+
+```
+
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 23 :
+```{r}
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 23:
+## (criteria: current, FT employees in all US cities)
+
+amazon_covid_reviews_url23 <-
+  'https://www.glassdoor.com/Reviews/Amazon-US-Reviews-EI_IE6036.0,6_IL.7,9_IN1_IP23.htm?sort.sortType=COVID-19&sort.ascending=false&filter.iso3Language=eng&filter.includePastEmployees=false&filter.employmentStatus=REGULAR'
+amazon_covid_webpage23 <- 
+  read_html(amazon_covid_reviews_url23)
+
+amazon_covid_titles23 <- 
+  read_html(amazon_covid_reviews_url23) %>% 
+  html_nodes(".strong.mt-0") %>% 
+  html_text()
+head(amazon_covid_titles23) # so this gives the title of users' reviews. Serves as a good summary for the review
+length(amazon_covid_titles23) # 11
+# remove value [3] from list (ad for Glassdoor jobs)
+amazon_covid_titles23 <- amazon_covid_titles23[-3]
+length(amazon_covid_titles23)
+
+amazon_covid_starrating23 <- 
+  read_html(amazon_covid_reviews_url23) %>%
+  html_nodes(".v2__EIReviewsRatingsStylesV2__small") %>%
+  html_text()
+head(amazon_covid_starrating23)
+length(amazon_covid_starrating23) # 10
+
+amazon_covid_jobtitles23 <- 
+  read_html(amazon_covid_reviews_url23) %>%
+  html_nodes(".authorJobTitle") %>%
+  html_text()
+head(amazon_covid_jobtitles23)
+length(amazon_covid_jobtitles23) # 10
+
+amazon_covid_location23 <- 
+  read_html(amazon_covid_reviews_url23) %>%
+  html_nodes(".authorLocation") %>%
+  html_text()
+head(amazon_covid_location23)
+length(amazon_covid_location23) # 10
+
+amazon_covid_reviewdate23 <- 
+  read_html(amazon_covid_reviews_url23) %>%
+  html_nodes(".date") %>%
+  html_text()
+head(amazon_covid_reviewdate23)
+length(amazon_covid_reviewdate23) # 10
+
+amazon_covid_PROS23 <- 
+  read_html(amazon_covid_reviews_url23) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(1) span , #empReview_38489625 .v2__EIReviewDetailsV2__clickable:nth-child(1) .strong, .v2__EIReviewDetailsV2__clickable:nth-child(1) span") %>%
+  html_text()
+head(amazon_covid_PROS23)
+length(amazon_covid_PROS23) # 10
+
+amazon_covid_CONS23 <- 
+  read_html(amazon_covid_reviews_url23) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(2) span") %>%
+  html_text()
+head(amazon_covid_CONS23)
+length(amazon_covid_CONS23) # 10
+
+# PAGE 23 DF
+amazon_covid_df_23 <- data.frame(amazon_covid_titles23, amazon_covid_starrating23, amazon_covid_jobtitles23, amazon_covid_location23, amazon_covid_reviewdate23, amazon_covid_CONS23, amazon_covid_PROS23)
+head(amazon_covid_df_23)
+
+```
+
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 24 :
+```{r}
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 24:
+## (criteria: current, FT employees in all US cities)
+
+amazon_covid_reviews_url24 <-
+  'https://www.glassdoor.com/Reviews/Amazon-US-Reviews-EI_IE6036.0,6_IL.7,9_IN1_IP24.htm?sort.sortType=COVID-19&sort.ascending=false&filter.iso3Language=eng&filter.includePastEmployees=false&filter.employmentStatus=REGULAR'
+amazon_covid_webpage24 <- 
+  read_html(amazon_covid_reviews_url24)
+
+amazon_covid_titles24 <- 
+  read_html(amazon_covid_reviews_url24) %>% 
+  html_nodes(".strong.mt-0") %>% 
+  html_text()
+head(amazon_covid_titles24) # so this gives the title of users' reviews. Serves as a good summary for the review
+length(amazon_covid_titles24) # 11
+# remove value [3] from list (ad for Glassdoor jobs)
+amazon_covid_titles24 <- amazon_covid_titles24[-3]
+length(amazon_covid_titles24)
+
+amazon_covid_starrating24 <- 
+  read_html(amazon_covid_reviews_url24) %>%
+  html_nodes(".v2__EIReviewsRatingsStylesV2__small") %>%
+  html_text()
+head(amazon_covid_starrating24)
+length(amazon_covid_starrating24) # 10
+
+amazon_covid_jobtitles24 <- 
+  read_html(amazon_covid_reviews_url24) %>%
+  html_nodes(".authorJobTitle") %>%
+  html_text()
+head(amazon_covid_jobtitles24)
+length(amazon_covid_jobtitles24) # 10
+
+amazon_covid_location24 <- 
+  read_html(amazon_covid_reviews_url24) %>%
+  html_nodes(".authorLocation") %>%
+  html_text()
+head(amazon_covid_location24)
+length(amazon_covid_location24) # 10
+
+amazon_covid_reviewdate24 <- 
+  read_html(amazon_covid_reviews_url24) %>%
+  html_nodes(".date") %>%
+  html_text()
+head(amazon_covid_reviewdate24)
+length(amazon_covid_reviewdate24) # 10
+
+amazon_covid_PROS24 <- 
+  read_html(amazon_covid_reviews_url24) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(1) span , #empReview_38489625 .v2__EIReviewDetailsV2__clickable:nth-child(1) .strong, .v2__EIReviewDetailsV2__clickable:nth-child(1) span") %>%
+  html_text()
+head(amazon_covid_PROS24)
+length(amazon_covid_PROS24) # 10
+
+amazon_covid_CONS24 <- 
+  read_html(amazon_covid_reviews_url24) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(2) span") %>%
+  html_text()
+head(amazon_covid_CONS24)
+length(amazon_covid_CONS24) # 10
+
+# PAGE 24 DF
+amazon_covid_df_24 <- data.frame(amazon_covid_titles24, amazon_covid_starrating24, amazon_covid_jobtitles24, amazon_covid_location24, amazon_covid_reviewdate24, amazon_covid_CONS24, amazon_covid_PROS24)
+head(amazon_covid_df_24)
+
+```
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 25 :
+```{r}
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 25:
+## (criteria: current, FT employees in all US cities)
+
+amazon_covid_reviews_url25 <-
+  'https://www.glassdoor.com/Reviews/Amazon-US-Reviews-EI_IE6036.0,6_IL.7,9_IN1_IP25.htm?sort.sortType=COVID-19&sort.ascending=false&filter.iso3Language=eng&filter.includePastEmployees=false&filter.employmentStatus=REGULAR'
+amazon_covid_webpage25 <- 
+  read_html(amazon_covid_reviews_url25)
+
+amazon_covid_titles25 <- 
+  read_html(amazon_covid_reviews_url25) %>% 
+  html_nodes(".strong.mt-0") %>% 
+  html_text()
+head(amazon_covid_titles25) # so this gives the title of users' reviews. Serves as a good summary for the review
+length(amazon_covid_titles25) # 11
+# remove value [3] from list (ad for Glassdoor jobs)
+amazon_covid_titles25 <- amazon_covid_titles25[-3]
+length(amazon_covid_titles25)
+
+amazon_covid_starrating25 <- 
+  read_html(amazon_covid_reviews_url25) %>%
+  html_nodes(".v2__EIReviewsRatingsStylesV2__small") %>%
+  html_text()
+head(amazon_covid_starrating25)
+length(amazon_covid_starrating25) # 10
+
+amazon_covid_jobtitles25 <- 
+  read_html(amazon_covid_reviews_url25) %>%
+  html_nodes(".authorJobTitle") %>%
+  html_text()
+head(amazon_covid_jobtitles25)
+length(amazon_covid_jobtitles25) # 10
+
+amazon_covid_location25 <- 
+  read_html(amazon_covid_reviews_url25) %>%
+  html_nodes(".authorLocation") %>%
+  html_text()
+head(amazon_covid_location25)
+length(amazon_covid_location25) # 10
+
+amazon_covid_reviewdate25 <- 
+  read_html(amazon_covid_reviews_url25) %>%
+  html_nodes(".date") %>%
+  html_text()
+head(amazon_covid_reviewdate25)
+length(amazon_covid_reviewdate25) # 10
+
+amazon_covid_PROS25 <- 
+  read_html(amazon_covid_reviews_url25) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(1) span , #empReview_38489625 .v2__EIReviewDetailsV2__clickable:nth-child(1) .strong, .v2__EIReviewDetailsV2__clickable:nth-child(1) span") %>%
+  html_text()
+head(amazon_covid_PROS25)
+length(amazon_covid_PROS25) # 10
+
+amazon_covid_CONS25 <- 
+  read_html(amazon_covid_reviews_url25) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(2) span") %>%
+  html_text()
+head(amazon_covid_CONS25)
+length(amazon_covid_CONS25) # 10
+
+# PAGE 25 DF
+amazon_covid_df_25 <- data.frame(amazon_covid_titles25, amazon_covid_starrating25, amazon_covid_jobtitles25, amazon_covid_location25, amazon_covid_reviewdate25, amazon_covid_CONS25, amazon_covid_PROS25)
+head(amazon_covid_df_25)
+
+```
+
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 26 :
+```{r}
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 26:
+## (criteria: current, FT employees in all US cities)
+
+amazon_covid_reviews_url26 <-
+  'https://www.glassdoor.com/Reviews/Amazon-US-Reviews-EI_IE6036.0,6_IL.7,9_IN1_IP26.htm?sort.sortType=COVID-19&sort.ascending=false&filter.iso3Language=eng&filter.includePastEmployees=false&filter.employmentStatus=REGULAR'
+amazon_covid_webpage26 <- 
+  read_html(amazon_covid_reviews_url26)
+
+amazon_covid_titles26 <- 
+  read_html(amazon_covid_reviews_url26) %>% 
+  html_nodes(".strong.mt-0") %>% 
+  html_text()
+head(amazon_covid_titles26) # so this gives the title of users' reviews. Serves as a good summary for the review
+length(amazon_covid_titles26) # 11
+# remove value [3] from list (ad for Glassdoor jobs)
+amazon_covid_titles26 <- amazon_covid_titles26[-3]
+length(amazon_covid_titles26)
+
+amazon_covid_starrating26 <- 
+  read_html(amazon_covid_reviews_url26) %>%
+  html_nodes(".v2__EIReviewsRatingsStylesV2__small") %>%
+  html_text()
+head(amazon_covid_starrating26)
+length(amazon_covid_starrating26) # 10
+
+amazon_covid_jobtitles26 <- 
+  read_html(amazon_covid_reviews_url26) %>%
+  html_nodes(".authorJobTitle") %>%
+  html_text()
+head(amazon_covid_jobtitles26)
+length(amazon_covid_jobtitles26) # 10
+
+amazon_covid_location26 <- 
+  read_html(amazon_covid_reviews_url26) %>%
+  html_nodes(".authorLocation") %>%
+  html_text()
+head(amazon_covid_location26)
+length(amazon_covid_location26) # 10
+
+amazon_covid_reviewdate26 <- 
+  read_html(amazon_covid_reviews_url26) %>%
+  html_nodes(".date") %>%
+  html_text()
+head(amazon_covid_reviewdate26)
+length(amazon_covid_reviewdate26) # 10
+
+amazon_covid_PROS26 <- 
+  read_html(amazon_covid_reviews_url26) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(1) span , #empReview_38489626 .v2__EIReviewDetailsV2__clickable:nth-child(1) .strong, .v2__EIReviewDetailsV2__clickable:nth-child(1) span") %>%
+  html_text()
+head(amazon_covid_PROS26)
+length(amazon_covid_PROS26) # 10
+
+amazon_covid_CONS26 <- 
+  read_html(amazon_covid_reviews_url26) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(2) span") %>%
+  html_text()
+head(amazon_covid_CONS26)
+length(amazon_covid_CONS26) # 10
+
+# PAGE 26 DF
+amazon_covid_df_26 <- data.frame(amazon_covid_titles26, amazon_covid_starrating26, amazon_covid_jobtitles26, amazon_covid_location26, amazon_covid_reviewdate26, amazon_covid_CONS26, amazon_covid_PROS26)
+head(amazon_covid_df_26)
+
+```
+
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 27 :
+```{r}
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 27:
+## (criteria: current, FT employees in all US cities)
+
+amazon_covid_reviews_url27 <-
+  'https://www.glassdoor.com/Reviews/Amazon-US-Reviews-EI_IE6036.0,6_IL.7,9_IN1_IP27.htm?sort.sortType=COVID-19&sort.ascending=false&filter.iso3Language=eng&filter.includePastEmployees=false&filter.employmentStatus=REGULAR'
+amazon_covid_webpage27 <- 
+  read_html(amazon_covid_reviews_url27)
+
+amazon_covid_titles27 <- 
+  read_html(amazon_covid_reviews_url27) %>% 
+  html_nodes(".strong.mt-0") %>% 
+  html_text()
+head(amazon_covid_titles27) # so this gives the title of users' reviews. Serves as a good summary for the review
+length(amazon_covid_titles27) # 11
+# remove value [3] from list (ad for Glassdoor jobs)
+amazon_covid_titles27 <- amazon_covid_titles27[-3]
+length(amazon_covid_titles27)
+
+amazon_covid_starrating27 <- 
+  read_html(amazon_covid_reviews_url27) %>%
+  html_nodes(".v2__EIReviewsRatingsStylesV2__small") %>%
+  html_text()
+head(amazon_covid_starrating27)
+length(amazon_covid_starrating27) # 10
+
+amazon_covid_jobtitles27 <- 
+  read_html(amazon_covid_reviews_url27) %>%
+  html_nodes(".authorJobTitle") %>%
+  html_text()
+head(amazon_covid_jobtitles27)
+length(amazon_covid_jobtitles27) # 10
+
+amazon_covid_location27 <- 
+  read_html(amazon_covid_reviews_url27) %>%
+  html_nodes(".authorLocation") %>%
+  html_text()
+head(amazon_covid_location27)
+length(amazon_covid_location27) # 10
+
+amazon_covid_reviewdate27 <- 
+  read_html(amazon_covid_reviews_url27) %>%
+  html_nodes(".date") %>%
+  html_text()
+head(amazon_covid_reviewdate27)
+length(amazon_covid_reviewdate27) # 10
+
+amazon_covid_PROS27 <- 
+  read_html(amazon_covid_reviews_url27) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(1) span , #empReview_38489626 .v2__EIReviewDetailsV2__clickable:nth-child(1) .strong, .v2__EIReviewDetailsV2__clickable:nth-child(1) span") %>%
+  html_text()
+head(amazon_covid_PROS27)
+length(amazon_covid_PROS27) # 10
+
+amazon_covid_CONS27 <- 
+  read_html(amazon_covid_reviews_url27) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(2) span") %>%
+  html_text()
+head(amazon_covid_CONS27)
+length(amazon_covid_CONS27) # 10
+
+# PAGE 27 DF
+amazon_covid_df_27 <- data.frame(amazon_covid_titles27, amazon_covid_starrating27, amazon_covid_jobtitles27, amazon_covid_location27, amazon_covid_reviewdate27, amazon_covid_CONS27, amazon_covid_PROS27)
+head(amazon_covid_df_27)
+
+```
+
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 28 :
+```{r}
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 28:
+## (criteria: current, FT employees in all US cities)
+
+amazon_covid_reviews_url28 <-
+  'https://www.glassdoor.com/Reviews/Amazon-US-Reviews-EI_IE6036.0,6_IL.7,9_IN1_IP28.htm?sort.sortType=COVID-19&sort.ascending=false&filter.iso3Language=eng&filter.includePastEmployees=false&filter.employmentStatus=REGULAR'
+amazon_covid_webpage28 <- 
+  read_html(amazon_covid_reviews_url28)
+
+amazon_covid_titles28 <- 
+  read_html(amazon_covid_reviews_url28) %>% 
+  html_nodes(".strong.mt-0") %>% 
+  html_text()
+head(amazon_covid_titles28) # so this gives the title of users' reviews. Serves as a good summary for the review
+length(amazon_covid_titles28) # 11
+# remove value [3] from list (ad for Glassdoor jobs)
+amazon_covid_titles28 <- amazon_covid_titles28[-3]
+length(amazon_covid_titles28)
+
+amazon_covid_starrating28 <- 
+  read_html(amazon_covid_reviews_url28) %>%
+  html_nodes(".v2__EIReviewsRatingsStylesV2__small") %>%
+  html_text()
+head(amazon_covid_starrating28)
+length(amazon_covid_starrating28) # 10
+
+amazon_covid_jobtitles28 <- 
+  read_html(amazon_covid_reviews_url28) %>%
+  html_nodes(".authorJobTitle") %>%
+  html_text()
+head(amazon_covid_jobtitles28)
+length(amazon_covid_jobtitles28) # 10
+
+amazon_covid_location28 <- 
+  read_html(amazon_covid_reviews_url28) %>%
+  html_nodes(".authorLocation") %>%
+  html_text()
+head(amazon_covid_location28)
+length(amazon_covid_location28) # 10
+
+amazon_covid_reviewdate28 <- 
+  read_html(amazon_covid_reviews_url28) %>%
+  html_nodes(".date") %>%
+  html_text()
+head(amazon_covid_reviewdate28)
+length(amazon_covid_reviewdate28) # 10
+
+amazon_covid_PROS28 <- 
+  read_html(amazon_covid_reviews_url28) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(1) span , #empReview_38489626 .v2__EIReviewDetailsV2__clickable:nth-child(1) .strong, .v2__EIReviewDetailsV2__clickable:nth-child(1) span") %>%
+  html_text()
+head(amazon_covid_PROS28)
+length(amazon_covid_PROS28) # 10
+
+amazon_covid_CONS28 <- 
+  read_html(amazon_covid_reviews_url28) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(2) span") %>%
+  html_text()
+head(amazon_covid_CONS28)
+length(amazon_covid_CONS28) # 10
+
+# PAGE 28 DF
+amazon_covid_df_28 <- data.frame(amazon_covid_titles28, amazon_covid_starrating28, amazon_covid_jobtitles28, amazon_covid_location28, amazon_covid_reviewdate28, amazon_covid_CONS28, amazon_covid_PROS28)
+head(amazon_covid_df_28)
+
+```
+
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 29 :
+```{r}
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 29:
+## (criteria: current, FT employees in all US cities)
+
+amazon_covid_reviews_url29 <-
+  'https://www.glassdoor.com/Reviews/Amazon-US-Reviews-EI_IE6036.0,6_IL.7,9_IN1_IP29.htm?sort.sortType=COVID-19&sort.ascending=false&filter.iso3Language=eng&filter.includePastEmployees=false&filter.employmentStatus=REGULAR'
+amazon_covid_webpage29 <- 
+  read_html(amazon_covid_reviews_url29)
+
+amazon_covid_titles29 <- 
+  read_html(amazon_covid_reviews_url29) %>% 
+  html_nodes(".strong.mt-0") %>% 
+  html_text()
+head(amazon_covid_titles29) # so this gives the title of users' reviews. Serves as a good summary for the review
+length(amazon_covid_titles29) # 11
+# remove value [3] from list (ad for Glassdoor jobs)
+amazon_covid_titles29 <- amazon_covid_titles29[-3]
+length(amazon_covid_titles29)
+
+amazon_covid_starrating29 <- 
+  read_html(amazon_covid_reviews_url29) %>%
+  html_nodes(".v2__EIReviewsRatingsStylesV2__small") %>%
+  html_text()
+head(amazon_covid_starrating29)
+length(amazon_covid_starrating29) # 10
+
+amazon_covid_jobtitles29 <- 
+  read_html(amazon_covid_reviews_url29) %>%
+  html_nodes(".authorJobTitle") %>%
+  html_text()
+head(amazon_covid_jobtitles29)
+length(amazon_covid_jobtitles29) # 10
+
+amazon_covid_location29 <- 
+  read_html(amazon_covid_reviews_url29) %>%
+  html_nodes(".authorLocation") %>%
+  html_text()
+head(amazon_covid_location29)
+length(amazon_covid_location29) # 10
+
+amazon_covid_reviewdate29 <- 
+  read_html(amazon_covid_reviews_url29) %>%
+  html_nodes(".date") %>%
+  html_text()
+head(amazon_covid_reviewdate29)
+length(amazon_covid_reviewdate29) # 10
+
+amazon_covid_PROS29 <- 
+  read_html(amazon_covid_reviews_url29) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(1) span , #empReview_38489626 .v2__EIReviewDetailsV2__clickable:nth-child(1) .strong, .v2__EIReviewDetailsV2__clickable:nth-child(1) span") %>%
+  html_text()
+head(amazon_covid_PROS29)
+length(amazon_covid_PROS29) # 10
+
+amazon_covid_CONS29 <- 
+  read_html(amazon_covid_reviews_url29) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(2) span") %>%
+  html_text()
+head(amazon_covid_CONS29)
+length(amazon_covid_CONS29) # 10
+
+# PAGE 29 DF
+amazon_covid_df_29 <- data.frame(amazon_covid_titles29, amazon_covid_starrating29, amazon_covid_jobtitles29, amazon_covid_location29, amazon_covid_reviewdate29, amazon_covid_CONS29, amazon_covid_PROS29)
+head(amazon_covid_df_29)
+
+```
+
+
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 30 :
+```{r}
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 30:
+## (criteria: current, FT employees in all US cities)
+
+amazon_covid_reviews_url30 <-
+  'https://www.glassdoor.com/Reviews/Amazon-US-Reviews-EI_IE6036.0,6_IL.7,9_IN1_IP30.htm?sort.sortType=COVID-19&sort.ascending=false&filter.iso3Language=eng&filter.includePastEmployees=false&filter.employmentStatus=REGULAR'
+amazon_covid_webpage30 <- 
+  read_html(amazon_covid_reviews_url30)
+
+amazon_covid_titles30 <- 
+  read_html(amazon_covid_reviews_url30) %>% 
+  html_nodes(".strong.mt-0") %>% 
+  html_text()
+head(amazon_covid_titles30)  # so this gives the title of users reviews. Serves as a good summary for the review
+length(amazon_covid_titles30) # 11
+# remove value [3] from list (ad for Glassdoor jobs)
+amazon_covid_titles30 <- amazon_covid_titles30[-3]
+length(amazon_covid_titles30)
+
+amazon_covid_starrating30 <- 
+  read_html(amazon_covid_reviews_url30) %>%
+  html_nodes(".v2__EIReviewsRatingsStylesV2__small") %>%
+  html_text()
+head(amazon_covid_starrating30)
+length(amazon_covid_starrating30) # 10
+
+amazon_covid_jobtitles30 <- 
+  read_html(amazon_covid_reviews_url30) %>%
+  html_nodes(".authorJobTitle") %>%
+  html_text()
+head(amazon_covid_jobtitles30)
+length(amazon_covid_jobtitles30) # 10
+
+amazon_covid_location30 <- 
+  read_html(amazon_covid_reviews_url30) %>%
+  html_nodes(".authorLocation") %>%
+  html_text()
+head(amazon_covid_location30)
+length(amazon_covid_location30) # 10
+
+amazon_covid_reviewdate30 <- 
+  read_html(amazon_covid_reviews_url30) %>%
+  html_nodes(".date") %>%
+  html_text()
+head(amazon_covid_reviewdate30)
+length(amazon_covid_reviewdate30) # 10
+
+amazon_covid_PROS30 <- 
+  read_html(amazon_covid_reviews_url30) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(1) span , #empReview_38489626 .v2__EIReviewDetailsV2__clickable:nth-child(1) .strong, .v2__EIReviewDetailsV2__clickable:nth-child(1) span") %>%
+  html_text()
+head(amazon_covid_PROS30)
+length(amazon_covid_PROS30) # 10
+
+amazon_covid_CONS30 <- 
+  read_html(amazon_covid_reviews_url30) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(2) span") %>%
+  html_text()
+head(amazon_covid_CONS30)
+length(amazon_covid_CONS30) # 10
+
+# PAGE 30 DF
+amazon_covid_df_30 <- data.frame(amazon_covid_titles30, amazon_covid_starrating30, amazon_covid_jobtitles30, amazon_covid_location30, amazon_covid_reviewdate30, amazon_covid_CONS30, amazon_covid_PROS30)
+head(amazon_covid_df_30)
+
+```
+
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 31 :
+```{r}
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 31:
+## (criteria: current, FT employees in all US cities)
+
+amazon_covid_reviews_url31 <-
+  'https://www.glassdoor.com/Reviews/Amazon-US-Reviews-EI_IE6036.0,6_IL.7,9_IN1_IP31.htm?sort.sortType=COVID-19&sort.ascending=false&filter.iso3Language=eng&filter.includePastEmployees=false&filter.employmentStatus=REGULAR'
+amazon_covid_webpage31 <- 
+  read_html(amazon_covid_reviews_url31)
+
+amazon_covid_titles31 <- 
+  read_html(amazon_covid_reviews_url31) %>% 
+  html_nodes(".strong.mt-0") %>% 
+  html_text()
+head(amazon_covid_titles31)  # so this gives the title of users reviews. Serves as a good summary for the review
+length(amazon_covid_titles31) # 11
+# remove value [3] from list (ad for Glassdoor jobs)
+amazon_covid_titles31 <- amazon_covid_titles31[-3]
+length(amazon_covid_titles31)
+
+amazon_covid_starrating31 <- 
+  read_html(amazon_covid_reviews_url31) %>%
+  html_nodes(".v2__EIReviewsRatingsStylesV2__small") %>%
+  html_text()
+head(amazon_covid_starrating31)
+length(amazon_covid_starrating31) # 10
+
+amazon_covid_jobtitles31 <- 
+  read_html(amazon_covid_reviews_url31) %>%
+  html_nodes(".authorJobTitle") %>%
+  html_text()
+head(amazon_covid_jobtitles31)
+length(amazon_covid_jobtitles31) # 10
+
+amazon_covid_location31 <- 
+  read_html(amazon_covid_reviews_url31) %>%
+  html_nodes(".authorLocation") %>%
+  html_text()
+head(amazon_covid_location31)
+length(amazon_covid_location31) # 10
+
+amazon_covid_reviewdate31 <- 
+  read_html(amazon_covid_reviews_url31) %>%
+  html_nodes(".date") %>%
+  html_text()
+head(amazon_covid_reviewdate31)
+length(amazon_covid_reviewdate31) # 10
+
+amazon_covid_PROS31 <- 
+  read_html(amazon_covid_reviews_url31) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(1) span , #empReview_38489626 .v2__EIReviewDetailsV2__clickable:nth-child(1) .strong, .v2__EIReviewDetailsV2__clickable:nth-child(1) span") %>%
+  html_text()
+head(amazon_covid_PROS31)
+length(amazon_covid_PROS31) # 10
+
+amazon_covid_CONS31 <- 
+  read_html(amazon_covid_reviews_url31) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(2) span") %>%
+  html_text()
+head(amazon_covid_CONS31)
+length(amazon_covid_CONS31) # 10
+
+# PAGE 31 DF
+amazon_covid_df_31 <- data.frame(amazon_covid_titles31, amazon_covid_starrating31, amazon_covid_jobtitles31, amazon_covid_location31, amazon_covid_reviewdate31, amazon_covid_CONS31, amazon_covid_PROS31)
+head(amazon_covid_df_31)
+
+```
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 32 :
+```{r}
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 32:
+## (criteria: current, FT employees in all US cities)
+
+amazon_covid_reviews_url32 <-
+  'https://www.glassdoor.com/Reviews/Amazon-US-Reviews-EI_IE6036.0,6_IL.7,9_IN1_IP32.htm?sort.sortType=COVID-19&sort.ascending=false&filter.iso3Language=eng&filter.includePastEmployees=false&filter.employmentStatus=REGULAR'
+amazon_covid_webpage32 <- 
+  read_html(amazon_covid_reviews_url32)
+
+amazon_covid_titles32 <- 
+  read_html(amazon_covid_reviews_url32) %>% 
+  html_nodes(".strong.mt-0") %>% 
+  html_text()
+head(amazon_covid_titles32)  # so this gives the title of users reviews. Serves as a good summary for the review
+length(amazon_covid_titles32) # 11
+# remove value [3] from list (ad for Glassdoor jobs)
+amazon_covid_titles32 <- amazon_covid_titles32[-3]
+length(amazon_covid_titles32)
+
+amazon_covid_starrating32 <- 
+  read_html(amazon_covid_reviews_url32) %>%
+  html_nodes(".v2__EIReviewsRatingsStylesV2__small") %>%
+  html_text()
+head(amazon_covid_starrating32)
+length(amazon_covid_starrating32) # 10
+
+amazon_covid_jobtitles32 <- 
+  read_html(amazon_covid_reviews_url32) %>%
+  html_nodes(".authorJobTitle") %>%
+  html_text()
+head(amazon_covid_jobtitles32)
+length(amazon_covid_jobtitles32) # 10
+
+amazon_covid_location32 <- 
+  read_html(amazon_covid_reviews_url32) %>%
+  html_nodes(".authorLocation") %>%
+  html_text()
+head(amazon_covid_location32)
+length(amazon_covid_location32) # 10
+
+amazon_covid_reviewdate32 <- 
+  read_html(amazon_covid_reviews_url32) %>%
+  html_nodes(".date") %>%
+  html_text()
+head(amazon_covid_reviewdate32)
+length(amazon_covid_reviewdate32) # 10
+
+amazon_covid_PROS32 <- 
+  read_html(amazon_covid_reviews_url32) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(1) span , #empReview_38489626 .v2__EIReviewDetailsV2__clickable:nth-child(1) .strong, .v2__EIReviewDetailsV2__clickable:nth-child(1) span") %>%
+  html_text()
+head(amazon_covid_PROS32)
+length(amazon_covid_PROS32) # 10
+
+amazon_covid_CONS32 <- 
+  read_html(amazon_covid_reviews_url32) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(2) span") %>%
+  html_text()
+head(amazon_covid_CONS32)
+length(amazon_covid_CONS32) # 10
+
+# PAGE 32 DF
+amazon_covid_df_32 <- data.frame(amazon_covid_titles32, amazon_covid_starrating32, amazon_covid_jobtitles32, amazon_covid_location32, amazon_covid_reviewdate32, amazon_covid_CONS32, amazon_covid_PROS32)
+head(amazon_covid_df_32)
+
+```
+
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 33 :
+```{r}
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 33:
+## (criteria: current, FT employees in all US cities)
+
+amazon_covid_reviews_url33 <-
+  'https://www.glassdoor.com/Reviews/Amazon-US-Reviews-EI_IE6036.0,6_IL.7,9_IN1_IP33.htm?sort.sortType=COVID-19&sort.ascending=false&filter.iso3Language=eng&filter.includePastEmployees=false&filter.employmentStatus=REGULAR'
+amazon_covid_webpage33 <- 
+  read_html(amazon_covid_reviews_url33)
+
+amazon_covid_titles33 <- 
+  read_html(amazon_covid_reviews_url33) %>% 
+  html_nodes(".strong.mt-0") %>% 
+  html_text()
+head(amazon_covid_titles33)  # so this gives the title of users reviews. Serves as a good summary for the review
+length(amazon_covid_titles33) # 11
+# remove value [3] from list (ad for Glassdoor jobs)
+amazon_covid_titles33 <- amazon_covid_titles33[-3]
+length(amazon_covid_titles33)
+
+amazon_covid_starrating33 <- 
+  read_html(amazon_covid_reviews_url33) %>%
+  html_nodes(".v2__EIReviewsRatingsStylesV2__small") %>%
+  html_text()
+head(amazon_covid_starrating33)
+length(amazon_covid_starrating33) # 10
+
+amazon_covid_jobtitles33 <- 
+  read_html(amazon_covid_reviews_url33) %>%
+  html_nodes(".authorJobTitle") %>%
+  html_text()
+head(amazon_covid_jobtitles33)
+length(amazon_covid_jobtitles33) # 10
+
+amazon_covid_location33 <- 
+  read_html(amazon_covid_reviews_url33) %>%
+  html_nodes(".authorLocation") %>%
+  html_text()
+head(amazon_covid_location33)
+length(amazon_covid_location33) # 10
+
+amazon_covid_reviewdate33 <- 
+  read_html(amazon_covid_reviews_url33) %>%
+  html_nodes(".date") %>%
+  html_text()
+head(amazon_covid_reviewdate33)
+length(amazon_covid_reviewdate33) # 10
+
+amazon_covid_PROS33 <- 
+  read_html(amazon_covid_reviews_url33) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(1) span , #empReview_38489626 .v2__EIReviewDetailsV2__clickable:nth-child(1) .strong, .v2__EIReviewDetailsV2__clickable:nth-child(1) span") %>%
+  html_text()
+head(amazon_covid_PROS33)
+length(amazon_covid_PROS33) # 10
+
+amazon_covid_CONS33 <- 
+  read_html(amazon_covid_reviews_url33) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(2) span") %>%
+  html_text()
+head(amazon_covid_CONS33)
+length(amazon_covid_CONS33) # 10
+
+# PAGE 33 DF
+amazon_covid_df_33 <- data.frame(amazon_covid_titles33, amazon_covid_starrating33, amazon_covid_jobtitles33, amazon_covid_location33, amazon_covid_reviewdate33, amazon_covid_CONS33, amazon_covid_PROS33)
+head(amazon_covid_df_33)
+
+```
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 34 :
+```{r}
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 34:
+## (criteria: current, FT employees in all US cities)
+
+amazon_covid_reviews_url34 <-
+  'https://www.glassdoor.com/Reviews/Amazon-US-Reviews-EI_IE6036.0,6_IL.7,9_IN1_IP34.htm?sort.sortType=COVID-19&sort.ascending=false&filter.iso3Language=eng&filter.includePastEmployees=false&filter.employmentStatus=REGULAR'
+amazon_covid_webpage34 <- 
+  read_html(amazon_covid_reviews_url34)
+
+amazon_covid_titles34 <- 
+  read_html(amazon_covid_reviews_url34) %>% 
+  html_nodes(".strong.mt-0") %>% 
+  html_text()
+head(amazon_covid_titles34)  # so this gives the title of users reviews. Serves as a good summary for the review
+length(amazon_covid_titles34) # 11
+# remove value [3] from list (ad for Glassdoor jobs)
+amazon_covid_titles34 <- amazon_covid_titles34[-3]
+length(amazon_covid_titles34)
+
+amazon_covid_starrating34 <- 
+  read_html(amazon_covid_reviews_url34) %>%
+  html_nodes(".v2__EIReviewsRatingsStylesV2__small") %>%
+  html_text()
+head(amazon_covid_starrating34)
+length(amazon_covid_starrating34) # 10
+
+amazon_covid_jobtitles34 <- 
+  read_html(amazon_covid_reviews_url34) %>%
+  html_nodes(".authorJobTitle") %>%
+  html_text()
+head(amazon_covid_jobtitles34)
+length(amazon_covid_jobtitles34) # 10
+
+amazon_covid_location34 <- 
+  read_html(amazon_covid_reviews_url34) %>%
+  html_nodes(".authorLocation") %>%
+  html_text()
+head(amazon_covid_location34)
+length(amazon_covid_location34) # 10
+
+amazon_covid_reviewdate34 <- 
+  read_html(amazon_covid_reviews_url34) %>%
+  html_nodes(".date") %>%
+  html_text()
+head(amazon_covid_reviewdate34)
+length(amazon_covid_reviewdate34) # 10
+
+amazon_covid_PROS34 <- 
+  read_html(amazon_covid_reviews_url34) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(1) span , #empReview_38489626 .v2__EIReviewDetailsV2__clickable:nth-child(1) .strong, .v2__EIReviewDetailsV2__clickable:nth-child(1) span") %>%
+  html_text()
+head(amazon_covid_PROS34)
+length(amazon_covid_PROS34) # 10
+
+amazon_covid_CONS34 <- 
+  read_html(amazon_covid_reviews_url34) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(2) span") %>%
+  html_text()
+head(amazon_covid_CONS34)
+length(amazon_covid_CONS34) # 10
+
+# PAGE 34 DF
+amazon_covid_df_34 <- data.frame(amazon_covid_titles34, amazon_covid_starrating34, amazon_covid_jobtitles34, amazon_covid_location34, amazon_covid_reviewdate34, amazon_covid_CONS34, amazon_covid_PROS34)
+head(amazon_covid_df_34)
+
+```
+
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 35 :
+```{r}
+# AMAZON \\ COVID-19 REVIEWS \\ PAGE 35:
+## (criteria: current, FT employees in all US cities)
+
+amazon_covid_reviews_url35 <-
+  'https://www.glassdoor.com/Reviews/Amazon-US-Reviews-EI_IE6036.0,6_IL.7,9_IN1_IP35.htm?sort.sortType=COVID-19&sort.ascending=false&filter.iso3Language=eng&filter.includePastEmployees=false&filter.employmentStatus=REGULAR'
+amazon_covid_webpage35 <- 
+  read_html(amazon_covid_reviews_url35)
+
+amazon_covid_titles35 <- 
+  read_html(amazon_covid_reviews_url35) %>% 
+  html_nodes(".strong.mt-0") %>% 
+  html_text()
+head(amazon_covid_titles35)  # so this gives the title of users reviews. Serves as a good summary for the review
+length(amazon_covid_titles35) # 11
+# remove value [3] from list (ad for Glassdoor jobs)
+amazon_covid_titles35 <- amazon_covid_titles35[-3]
+length(amazon_covid_titles35)
+
+amazon_covid_starrating35 <- 
+  read_html(amazon_covid_reviews_url35) %>%
+  html_nodes(".v2__EIReviewsRatingsStylesV2__small") %>%
+  html_text()
+head(amazon_covid_starrating35)
+length(amazon_covid_starrating35) # 10
+
+amazon_covid_jobtitles35 <- 
+  read_html(amazon_covid_reviews_url35) %>%
+  html_nodes(".authorJobTitle") %>%
+  html_text()
+head(amazon_covid_jobtitles35)
+length(amazon_covid_jobtitles35) # 10
+
+amazon_covid_location35 <- 
+  read_html(amazon_covid_reviews_url35) %>%
+  html_nodes(".authorLocation") %>%
+  html_text()
+head(amazon_covid_location35)
+length(amazon_covid_location35) # 10
+
+amazon_covid_reviewdate35 <- 
+  read_html(amazon_covid_reviews_url35) %>%
+  html_nodes(".date") %>%
+  html_text()
+head(amazon_covid_reviewdate35)
+length(amazon_covid_reviewdate35) # 10
+
+amazon_covid_PROS35 <- 
+  read_html(amazon_covid_reviews_url35) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(1) span , #empReview_38489626 .v2__EIReviewDetailsV2__clickable:nth-child(1) .strong, .v2__EIReviewDetailsV2__clickable:nth-child(1) span") %>%
+  html_text()
+head(amazon_covid_PROS35)
+length(amazon_covid_PROS35) # 10
+
+amazon_covid_CONS35 <- 
+  read_html(amazon_covid_reviews_url35) %>%
+  html_nodes(".v2__EIReviewDetailsV2__fullWidth:nth-child(2) span") %>%
+  html_text()
+head(amazon_covid_CONS35)
+length(amazon_covid_CONS35) # 10
+
+# PAGE 35 DF
+amazon_covid_df_35 <- data.frame(amazon_covid_titles35, amazon_covid_starrating35, amazon_covid_jobtitles35, amazon_covid_location35, amazon_covid_reviewdate35, amazon_covid_CONS35, amazon_covid_PROS35)
+head(amazon_covid_df_35)
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+# rename columns in all the dataframes so I can merge them lol
+
+#colnames(amazon_covid_df_1)
+# rename columsn to remove 1
+#names(amazon_covid_df_1)[names(amazon_covid_df_1) == "amazon_covid_titles1"] <- "amazon_covid_titles"
+#names(amazon_covid_df_1)[names(amazon_covid_df_1) == "amazon_covid_starrating1"] <- "amazon_covid_starrating"
+#names(amazon_covid_df_1)[names(amazon_covid_df_1) == "amazon_covid_jobtitles1"] <- "amazon_covid_jobtitles"
+#names(amazon_covid_df_1)[names(amazon_covid_df_1) == "amazon_covid_location1"] <- "amazon_covid_location"
+#names(amazon_covid_df_1)[names(amazon_covid_df_1) == "amazon_covid_reviewdate1"] <- "amazon_covid_reviewdate"
+#names(amazon_covid_df_1)[names(amazon_covid_df_1) == "amazon_covid_CONS1"] <- "amazon_covid_CONS"
+#names(amazon_covid_df_1)[names(amazon_covid_df_1) == "amazon_covid_PROS1"] <- "amazon_covid_PROS"
+#colnames(amazon_covid_df_1)
+# rename columns to remove 3
+names(amazon_covid_df_3)[names(amazon_covid_df_3) == "amazon_covid_titles3"] <- "amazon_covid_titles"
+names(amazon_covid_df_3)[names(amazon_covid_df_3) == "amazon_covid_starrating3"] <- "amazon_covid_starrating"
+names(amazon_covid_df_3)[names(amazon_covid_df_3) == "amazon_covid_jobtitles3"] <- "amazon_covid_jobtitles"
+names(amazon_covid_df_3)[names(amazon_covid_df_3) == "amazon_covid_location3"] <- "amazon_covid_location"
+names(amazon_covid_df_3)[names(amazon_covid_df_3) == "amazon_covid_reviewdate3"] <- "amazon_covid_reviewdate"
+names(amazon_covid_df_3)[names(amazon_covid_df_3) == "amazon_covid_CONS3"] <- "amazon_covid_CONS"
+names(amazon_covid_df_3)[names(amazon_covid_df_3) == "amazon_covid_PROS3"] <- "amazon_covid_PROS"
+colnames(amazon_covid_df_3)
+# rename columsn to remove 4
+names(amazon_covid_df_4)[names(amazon_covid_df_4) == "amazon_covid_titles4"] <- "amazon_covid_titles"
+names(amazon_covid_df_4)[names(amazon_covid_df_4) == "amazon_covid_starrating4"] <- "amazon_covid_starrating"
+names(amazon_covid_df_4)[names(amazon_covid_df_4) == "amazon_covid_jobtitles4"] <- "amazon_covid_jobtitles"
+names(amazon_covid_df_4)[names(amazon_covid_df_4) == "amazon_covid_location4"] <- "amazon_covid_location"
+names(amazon_covid_df_4)[names(amazon_covid_df_4) == "amazon_covid_reviewdate4"] <- "amazon_covid_reviewdate"
+names(amazon_covid_df_4)[names(amazon_covid_df_4) == "amazon_covid_CONS4"] <- "amazon_covid_CONS"
+names(amazon_covid_df_4)[names(amazon_covid_df_4) == "amazon_covid_PROS4"] <- "amazon_covid_PROS"
+colnames(amazon_covid_df_4)
+# rename columsn to remove 5
+names(amazon_covid_df_5)[names(amazon_covid_df_5) == "amazon_covid_titles5"] <- "amazon_covid_titles"
+names(amazon_covid_df_5)[names(amazon_covid_df_5) == "amazon_covid_starrating5"] <- "amazon_covid_starrating"
+names(amazon_covid_df_5)[names(amazon_covid_df_5) == "amazon_covid_jobtitles5"] <- "amazon_covid_jobtitles"
+names(amazon_covid_df_5)[names(amazon_covid_df_5) == "amazon_covid_location5"] <- "amazon_covid_location"
+names(amazon_covid_df_5)[names(amazon_covid_df_5) == "amazon_covid_reviewdate5"] <- "amazon_covid_reviewdate"
+names(amazon_covid_df_5)[names(amazon_covid_df_5) == "amazon_covid_CONS5"] <- "amazon_covid_CONS"
+names(amazon_covid_df_5)[names(amazon_covid_df_5) == "amazon_covid_PROS5"] <- "amazon_covid_PROS"
+colnames(amazon_covid_df_5)
+# rename columsn to remove 6
+names(amazon_covid_df_6)[names(amazon_covid_df_6) == "amazon_covid_titles6"] <- "amazon_covid_titles"
+names(amazon_covid_df_6)[names(amazon_covid_df_6) == "amazon_covid_starrating6"] <- "amazon_covid_starrating"
+names(amazon_covid_df_6)[names(amazon_covid_df_6) == "amazon_covid_jobtitles6"] <- "amazon_covid_jobtitles"
+names(amazon_covid_df_6)[names(amazon_covid_df_6) == "amazon_covid_location6"] <- "amazon_covid_location"
+names(amazon_covid_df_6)[names(amazon_covid_df_6) == "amazon_covid_reviewdate6"] <- "amazon_covid_reviewdate"
+names(amazon_covid_df_6)[names(amazon_covid_df_6) == "amazon_covid_CONS6"] <- "amazon_covid_CONS"
+names(amazon_covid_df_6)[names(amazon_covid_df_6) == "amazon_covid_PROS6"] <- "amazon_covid_PROS"
+colnames(amazon_covid_df_6)
+# rename columns to remove 7
+names(amazon_covid_df_7)[names(amazon_covid_df_7) == "amazon_covid_titles7"] <- "amazon_covid_titles"
+names(amazon_covid_df_7)[names(amazon_covid_df_7) == "amazon_covid_starrating7"] <- "amazon_covid_starrating"
+names(amazon_covid_df_7)[names(amazon_covid_df_7) == "amazon_covid_jobtitles7"] <- "amazon_covid_jobtitles"
+names(amazon_covid_df_7)[names(amazon_covid_df_7) == "amazon_covid_location7"] <- "amazon_covid_location"
+names(amazon_covid_df_7)[names(amazon_covid_df_7) == "amazon_covid_reviewdate7"] <- "amazon_covid_reviewdate"
+names(amazon_covid_df_7)[names(amazon_covid_df_7) == "amazon_covid_CONS7"] <- "amazon_covid_CONS"
+names(amazon_covid_df_7)[names(amazon_covid_df_7) == "amazon_covid_PROS7"] <- "amazon_covid_PROS"
+colnames(amazon_covid_df_7)
+# rename columns to remove 8
+names(amazon_covid_df_8)[names(amazon_covid_df_8) == "amazon_covid_titles8"] <- "amazon_covid_titles"
+names(amazon_covid_df_8)[names(amazon_covid_df_8) == "amazon_covid_starrating8"] <- "amazon_covid_starrating"
+names(amazon_covid_df_8)[names(amazon_covid_df_8) == "amazon_covid_jobtitles8"] <- "amazon_covid_jobtitles"
+names(amazon_covid_df_8)[names(amazon_covid_df_8) == "amazon_covid_location8"] <- "amazon_covid_location"
+names(amazon_covid_df_8)[names(amazon_covid_df_8) == "amazon_covid_reviewdate8"] <- "amazon_covid_reviewdate"
+names(amazon_covid_df_8)[names(amazon_covid_df_8) == "amazon_covid_CONS8"] <- "amazon_covid_CONS"
+names(amazon_covid_df_8)[names(amazon_covid_df_8) == "amazon_covid_PROS8"] <- "amazon_covid_PROS"
+colnames(amazon_covid_df_8)
+# rename columns to remove 9
+names(amazon_covid_df_9)[names(amazon_covid_df_9) == "amazon_covid_titles9"] <- "amazon_covid_titles"
+names(amazon_covid_df_9)[names(amazon_covid_df_9) == "amazon_covid_starrating9"] <- "amazon_covid_starrating"
+names(amazon_covid_df_9)[names(amazon_covid_df_9) == "amazon_covid_jobtitles9"] <- "amazon_covid_jobtitles"
+names(amazon_covid_df_9)[names(amazon_covid_df_9) == "amazon_covid_location9"] <- "amazon_covid_location"
+names(amazon_covid_df_9)[names(amazon_covid_df_9) == "amazon_covid_reviewdate9"] <- "amazon_covid_reviewdate"
+names(amazon_covid_df_9)[names(amazon_covid_df_9) == "amazon_covid_CONS9"] <- "amazon_covid_CONS"
+names(amazon_covid_df_9)[names(amazon_covid_df_9) == "amazon_covid_PROS9"] <- "amazon_covid_PROS"
+colnames(amazon_covid_df_9)
+# rename columns to remove 10
+names(amazon_covid_df_10)[names(amazon_covid_df_10) == "amazon_covid_titles10"] <- "amazon_covid_titles"
+names(amazon_covid_df_10)[names(amazon_covid_df_10) == "amazon_covid_starrating10"] <- "amazon_covid_starrating"
+names(amazon_covid_df_10)[names(amazon_covid_df_10) == "amazon_covid_jobtitles10"] <- "amazon_covid_jobtitles"
+names(amazon_covid_df_10)[names(amazon_covid_df_10) == "amazon_covid_location10"] <- "amazon_covid_location"
+names(amazon_covid_df_10)[names(amazon_covid_df_10) == "amazon_covid_reviewdate10"] <- "amazon_covid_reviewdate"
+names(amazon_covid_df_10)[names(amazon_covid_df_10) == "amazon_covid_CONS10"] <- "amazon_covid_CONS"
+names(amazon_covid_df_10)[names(amazon_covid_df_10) == "amazon_covid_PROS10"] <- "amazon_covid_PROS"
+colnames(amazon_covid_df_10)
+# rename columns to remove 11
+names(amazon_covid_df_11)[names(amazon_covid_df_11) == "amazon_covid_titles11"] <- "amazon_covid_titles"
+names(amazon_covid_df_11)[names(amazon_covid_df_11) == "amazon_covid_starrating11"] <- "amazon_covid_starrating"
+names(amazon_covid_df_11)[names(amazon_covid_df_11) == "amazon_covid_jobtitles11"] <- "amazon_covid_jobtitles"
+names(amazon_covid_df_11)[names(amazon_covid_df_11) == "amazon_covid_location11"] <- "amazon_covid_location"
+names(amazon_covid_df_11)[names(amazon_covid_df_11) == "amazon_covid_reviewdate11"] <- "amazon_covid_reviewdate"
+names(amazon_covid_df_11)[names(amazon_covid_df_11) == "amazon_covid_CONS11"] <- "amazon_covid_CONS"
+names(amazon_covid_df_11)[names(amazon_covid_df_11) == "amazon_covid_PROS11"] <- "amazon_covid_PROS"
+colnames(amazon_covid_df_11)
+# rename columns to remove 12
+names(amazon_covid_df_12)[names(amazon_covid_df_12) == "amazon_covid_titles12"] <- "amazon_covid_titles"
+names(amazon_covid_df_12)[names(amazon_covid_df_12) == "amazon_covid_starrating12"] <- "amazon_covid_starrating"
+names(amazon_covid_df_12)[names(amazon_covid_df_12) == "amazon_covid_jobtitles12"] <- "amazon_covid_jobtitles"
+names(amazon_covid_df_12)[names(amazon_covid_df_12) == "amazon_covid_location12"] <- "amazon_covid_location"
+names(amazon_covid_df_12)[names(amazon_covid_df_12) == "amazon_covid_reviewdate12"] <- "amazon_covid_reviewdate"
+names(amazon_covid_df_12)[names(amazon_covid_df_12) == "amazon_covid_CONS12"] <- "amazon_covid_CONS"
+names(amazon_covid_df_12)[names(amazon_covid_df_12) == "amazon_covid_PROS12"] <- "amazon_covid_PROS"
+colnames(amazon_covid_df_12)
+# rename columns to remove 13
+names(amazon_covid_df_13)[names(amazon_covid_df_13) == "amazon_covid_titles13"] <- "amazon_covid_titles"
+names(amazon_covid_df_13)[names(amazon_covid_df_13) == "amazon_covid_starrating13"] <- "amazon_covid_starrating"
+names(amazon_covid_df_13)[names(amazon_covid_df_13) == "amazon_covid_jobtitles13"] <- "amazon_covid_jobtitles"
+names(amazon_covid_df_13)[names(amazon_covid_df_13) == "amazon_covid_location13"] <- "amazon_covid_location"
+names(amazon_covid_df_13)[names(amazon_covid_df_13) == "amazon_covid_reviewdate13"] <- "amazon_covid_reviewdate"
+names(amazon_covid_df_13)[names(amazon_covid_df_13) == "amazon_covid_CONS13"] <- "amazon_covid_CONS"
+names(amazon_covid_df_13)[names(amazon_covid_df_13) == "amazon_covid_PROS13"] <- "amazon_covid_PROS"
+colnames(amazon_covid_df_13)
+# rename columns to remove 14
+names(amazon_covid_df_14)[names(amazon_covid_df_14) == "amazon_covid_titles14"] <- "amazon_covid_titles"
+names(amazon_covid_df_14)[names(amazon_covid_df_14) == "amazon_covid_starrating14"] <- "amazon_covid_starrating"
+names(amazon_covid_df_14)[names(amazon_covid_df_14) == "amazon_covid_jobtitles14"] <- "amazon_covid_jobtitles"
+names(amazon_covid_df_14)[names(amazon_covid_df_14) == "amazon_covid_location14"] <- "amazon_covid_location"
+names(amazon_covid_df_14)[names(amazon_covid_df_14) == "amazon_covid_reviewdate14"] <- "amazon_covid_reviewdate"
+names(amazon_covid_df_14)[names(amazon_covid_df_14) == "amazon_covid_CONS14"] <- "amazon_covid_CONS"
+names(amazon_covid_df_14)[names(amazon_covid_df_14) == "amazon_covid_PROS14"] <- "amazon_covid_PROS"
+colnames(amazon_covid_df_14)
+# rename columns to remove 15
+names(amazon_covid_df_15)[names(amazon_covid_df_15) == "amazon_covid_titles15"] <- "amazon_covid_titles"
+names(amazon_covid_df_15)[names(amazon_covid_df_15) == "amazon_covid_starrating15"] <- "amazon_covid_starrating"
+names(amazon_covid_df_15)[names(amazon_covid_df_15) == "amazon_covid_jobtitles15"] <- "amazon_covid_jobtitles"
+names(amazon_covid_df_15)[names(amazon_covid_df_15) == "amazon_covid_location15"] <- "amazon_covid_location"
+names(amazon_covid_df_15)[names(amazon_covid_df_15) == "amazon_covid_reviewdate15"] <- "amazon_covid_reviewdate"
+names(amazon_covid_df_15)[names(amazon_covid_df_15) == "amazon_covid_CONS15"] <- "amazon_covid_CONS"
+names(amazon_covid_df_15)[names(amazon_covid_df_15) == "amazon_covid_PROS15"] <- "amazon_covid_PROS"
+colnames(amazon_covid_df_15)
+# rename columns to remove 16
+names(amazon_covid_df_16)[names(amazon_covid_df_16) == "amazon_covid_titles16"] <- "amazon_covid_titles"
+names(amazon_covid_df_16)[names(amazon_covid_df_16) == "amazon_covid_starrating16"] <- "amazon_covid_starrating"
+names(amazon_covid_df_16)[names(amazon_covid_df_16) == "amazon_covid_jobtitles16"] <- "amazon_covid_jobtitles"
+names(amazon_covid_df_16)[names(amazon_covid_df_16) == "amazon_covid_location16"] <- "amazon_covid_location"
+names(amazon_covid_df_16)[names(amazon_covid_df_16) == "amazon_covid_reviewdate16"] <- "amazon_covid_reviewdate"
+names(amazon_covid_df_16)[names(amazon_covid_df_16) == "amazon_covid_CONS16"] <- "amazon_covid_CONS"
+names(amazon_covid_df_16)[names(amazon_covid_df_16) == "amazon_covid_PROS16"] <- "amazon_covid_PROS"
+colnames(amazon_covid_df_16)
+# rename columns to remove 17
+names(amazon_covid_df_17)[names(amazon_covid_df_17) == "amazon_covid_titles17"] <- "amazon_covid_titles"
+names(amazon_covid_df_17)[names(amazon_covid_df_17) == "amazon_covid_starrating17"] <- "amazon_covid_starrating"
+names(amazon_covid_df_17)[names(amazon_covid_df_17) == "amazon_covid_jobtitles17"] <- "amazon_covid_jobtitles"
+names(amazon_covid_df_17)[names(amazon_covid_df_17) == "amazon_covid_location17"] <- "amazon_covid_location"
+names(amazon_covid_df_17)[names(amazon_covid_df_17) == "amazon_covid_reviewdate17"] <- "amazon_covid_reviewdate"
+names(amazon_covid_df_17)[names(amazon_covid_df_17) == "amazon_covid_CONS17"] <- "amazon_covid_CONS"
+names(amazon_covid_df_17)[names(amazon_covid_df_17) == "amazon_covid_PROS17"] <- "amazon_covid_PROS"
+colnames(amazon_covid_df_17)
+# rename columns to remove 18
+names(amazon_covid_df_18)[names(amazon_covid_df_18) == "amazon_covid_titles18"] <- "amazon_covid_titles"
+names(amazon_covid_df_18)[names(amazon_covid_df_18) == "amazon_covid_starrating18"] <- "amazon_covid_starrating"
+names(amazon_covid_df_18)[names(amazon_covid_df_18) == "amazon_covid_jobtitles18"] <- "amazon_covid_jobtitles"
+names(amazon_covid_df_18)[names(amazon_covid_df_18) == "amazon_covid_location18"] <- "amazon_covid_location"
+names(amazon_covid_df_18)[names(amazon_covid_df_18) == "amazon_covid_reviewdate18"] <- "amazon_covid_reviewdate"
+names(amazon_covid_df_18)[names(amazon_covid_df_18) == "amazon_covid_CONS18"] <- "amazon_covid_CONS"
+names(amazon_covid_df_18)[names(amazon_covid_df_18) == "amazon_covid_PROS18"] <- "amazon_covid_PROS"
+colnames(amazon_covid_df_18)
+# rename columns to remove 19
+names(amazon_covid_df_19)[names(amazon_covid_df_19) == "amazon_covid_titles19"] <- "amazon_covid_titles"
+names(amazon_covid_df_19)[names(amazon_covid_df_19) == "amazon_covid_starrating19"] <- "amazon_covid_starrating"
+names(amazon_covid_df_19)[names(amazon_covid_df_19) == "amazon_covid_jobtitles19"] <- "amazon_covid_jobtitles"
+names(amazon_covid_df_19)[names(amazon_covid_df_19) == "amazon_covid_location19"] <- "amazon_covid_location"
+names(amazon_covid_df_19)[names(amazon_covid_df_19) == "amazon_covid_reviewdate19"] <- "amazon_covid_reviewdate"
+names(amazon_covid_df_19)[names(amazon_covid_df_19) == "amazon_covid_CONS19"] <- "amazon_covid_CONS"
+names(amazon_covid_df_19)[names(amazon_covid_df_19) == "amazon_covid_PROS19"] <- "amazon_covid_PROS"
+colnames(amazon_covid_df_19)
+# rename columns to remove 20
+names(amazon_covid_df_20)[names(amazon_covid_df_20) == "amazon_covid_titles20"] <- "amazon_covid_titles"
+names(amazon_covid_df_20)[names(amazon_covid_df_20) == "amazon_covid_starrating20"] <- "amazon_covid_starrating"
+names(amazon_covid_df_20)[names(amazon_covid_df_20) == "amazon_covid_jobtitles20"] <- "amazon_covid_jobtitles"
+names(amazon_covid_df_20)[names(amazon_covid_df_20) == "amazon_covid_location20"] <- "amazon_covid_location"
+names(amazon_covid_df_20)[names(amazon_covid_df_20) == "amazon_covid_reviewdate20"] <- "amazon_covid_reviewdate"
+names(amazon_covid_df_20)[names(amazon_covid_df_20) == "amazon_covid_CONS20"] <- "amazon_covid_CONS"
+names(amazon_covid_df_20)[names(amazon_covid_df_20) == "amazon_covid_PROS20"] <- "amazon_covid_PROS"
+colnames(amazon_covid_df_20)
+# rename columns to remove 21
+names(amazon_covid_df_21)[names(amazon_covid_df_21) == "amazon_covid_titles21"] <- "amazon_covid_titles"
+names(amazon_covid_df_21)[names(amazon_covid_df_21) == "amazon_covid_starrating21"] <- "amazon_covid_starrating"
+names(amazon_covid_df_21)[names(amazon_covid_df_21) == "amazon_covid_jobtitles21"] <- "amazon_covid_jobtitles"
+names(amazon_covid_df_21)[names(amazon_covid_df_21) == "amazon_covid_location21"] <- "amazon_covid_location"
+names(amazon_covid_df_21)[names(amazon_covid_df_21) == "amazon_covid_reviewdate21"] <- "amazon_covid_reviewdate"
+names(amazon_covid_df_21)[names(amazon_covid_df_21) == "amazon_covid_CONS21"] <- "amazon_covid_CONS"
+names(amazon_covid_df_21)[names(amazon_covid_df_21) == "amazon_covid_PROS21"] <- "amazon_covid_PROS"
+colnames(amazon_covid_df_21)
+# rename columns to remove 22
+names(amazon_covid_df_22)[names(amazon_covid_df_22) == "amazon_covid_titles22"] <- "amazon_covid_titles"
+names(amazon_covid_df_22)[names(amazon_covid_df_22) == "amazon_covid_starrating22"] <- "amazon_covid_starrating"
+names(amazon_covid_df_22)[names(amazon_covid_df_22) == "amazon_covid_jobtitles22"] <- "amazon_covid_jobtitles"
+names(amazon_covid_df_22)[names(amazon_covid_df_22) == "amazon_covid_location22"] <- "amazon_covid_location"
+names(amazon_covid_df_22)[names(amazon_covid_df_22) == "amazon_covid_reviewdate22"] <- "amazon_covid_reviewdate"
+names(amazon_covid_df_22)[names(amazon_covid_df_22) == "amazon_covid_CONS22"] <- "amazon_covid_CONS"
+names(amazon_covid_df_22)[names(amazon_covid_df_22) == "amazon_covid_PROS22"] <- "amazon_covid_PROS"
+colnames(amazon_covid_df_22)
+# rename columns to remove 23
+names(amazon_covid_df_23)[names(amazon_covid_df_23) == "amazon_covid_titles23"] <- "amazon_covid_titles"
+names(amazon_covid_df_23)[names(amazon_covid_df_23) == "amazon_covid_starrating23"] <- "amazon_covid_starrating"
+names(amazon_covid_df_23)[names(amazon_covid_df_23) == "amazon_covid_jobtitles23"] <- "amazon_covid_jobtitles"
+names(amazon_covid_df_23)[names(amazon_covid_df_23) == "amazon_covid_location23"] <- "amazon_covid_location"
+names(amazon_covid_df_23)[names(amazon_covid_df_23) == "amazon_covid_reviewdate23"] <- "amazon_covid_reviewdate"
+names(amazon_covid_df_23)[names(amazon_covid_df_23) == "amazon_covid_CONS23"] <- "amazon_covid_CONS"
+names(amazon_covid_df_23)[names(amazon_covid_df_23) == "amazon_covid_PROS23"] <- "amazon_covid_PROS"
+colnames(amazon_covid_df_23)
+# rename columns to remove 24
+names(amazon_covid_df_24)[names(amazon_covid_df_24) == "amazon_covid_titles24"] <- "amazon_covid_titles"
+names(amazon_covid_df_24)[names(amazon_covid_df_24) == "amazon_covid_starrating24"] <- "amazon_covid_starrating"
+names(amazon_covid_df_24)[names(amazon_covid_df_24) == "amazon_covid_jobtitles24"] <- "amazon_covid_jobtitles"
+names(amazon_covid_df_24)[names(amazon_covid_df_24) == "amazon_covid_location24"] <- "amazon_covid_location"
+names(amazon_covid_df_24)[names(amazon_covid_df_24) == "amazon_covid_reviewdate24"] <- "amazon_covid_reviewdate"
+names(amazon_covid_df_24)[names(amazon_covid_df_24) == "amazon_covid_CONS24"] <- "amazon_covid_CONS"
+names(amazon_covid_df_24)[names(amazon_covid_df_24) == "amazon_covid_PROS24"] <- "amazon_covid_PROS"
+colnames(amazon_covid_df_24)
+# rename columns to remove 25
+names(amazon_covid_df_25)[names(amazon_covid_df_25) == "amazon_covid_titles25"] <- "amazon_covid_titles"
+names(amazon_covid_df_25)[names(amazon_covid_df_25) == "amazon_covid_starrating25"] <- "amazon_covid_starrating"
+names(amazon_covid_df_25)[names(amazon_covid_df_25) == "amazon_covid_jobtitles25"] <- "amazon_covid_jobtitles"
+names(amazon_covid_df_25)[names(amazon_covid_df_25) == "amazon_covid_location25"] <- "amazon_covid_location"
+names(amazon_covid_df_25)[names(amazon_covid_df_25) == "amazon_covid_reviewdate25"] <- "amazon_covid_reviewdate"
+names(amazon_covid_df_25)[names(amazon_covid_df_25) == "amazon_covid_CONS25"] <- "amazon_covid_CONS"
+names(amazon_covid_df_25)[names(amazon_covid_df_25) == "amazon_covid_PROS25"] <- "amazon_covid_PROS"
+colnames(amazon_covid_df_25)
+# rename columns to remove 26
+names(amazon_covid_df_26)[names(amazon_covid_df_26) == "amazon_covid_titles26"] <- "amazon_covid_titles"
+names(amazon_covid_df_26)[names(amazon_covid_df_26) == "amazon_covid_starrating26"] <- "amazon_covid_starrating"
+names(amazon_covid_df_26)[names(amazon_covid_df_26) == "amazon_covid_jobtitles26"] <- "amazon_covid_jobtitles"
+names(amazon_covid_df_26)[names(amazon_covid_df_26) == "amazon_covid_location26"] <- "amazon_covid_location"
+names(amazon_covid_df_26)[names(amazon_covid_df_26) == "amazon_covid_reviewdate26"] <- "amazon_covid_reviewdate"
+names(amazon_covid_df_26)[names(amazon_covid_df_26) == "amazon_covid_CONS26"] <- "amazon_covid_CONS"
+names(amazon_covid_df_26)[names(amazon_covid_df_26) == "amazon_covid_PROS26"] <- "amazon_covid_PROS"
+colnames(amazon_covid_df_26)
+# rename columns to remove 27
+names(amazon_covid_df_27)[names(amazon_covid_df_27) == "amazon_covid_titles27"] <- "amazon_covid_titles"
+names(amazon_covid_df_27)[names(amazon_covid_df_27) == "amazon_covid_starrating27"] <- "amazon_covid_starrating"
+names(amazon_covid_df_27)[names(amazon_covid_df_27) == "amazon_covid_jobtitles27"] <- "amazon_covid_jobtitles"
+names(amazon_covid_df_27)[names(amazon_covid_df_27) == "amazon_covid_location27"] <- "amazon_covid_location"
+names(amazon_covid_df_27)[names(amazon_covid_df_27) == "amazon_covid_reviewdate27"] <- "amazon_covid_reviewdate"
+names(amazon_covid_df_27)[names(amazon_covid_df_27) == "amazon_covid_CONS27"] <- "amazon_covid_CONS"
+names(amazon_covid_df_27)[names(amazon_covid_df_27) == "amazon_covid_PROS27"] <- "amazon_covid_PROS"
+colnames(amazon_covid_df_27)
+# rename columns to remove 28
+names(amazon_covid_df_28)[names(amazon_covid_df_28) == "amazon_covid_titles28"] <- "amazon_covid_titles"
+names(amazon_covid_df_28)[names(amazon_covid_df_28) == "amazon_covid_starrating28"] <- "amazon_covid_starrating"
+names(amazon_covid_df_28)[names(amazon_covid_df_28) == "amazon_covid_jobtitles28"] <- "amazon_covid_jobtitles"
+names(amazon_covid_df_28)[names(amazon_covid_df_28) == "amazon_covid_location28"] <- "amazon_covid_location"
+names(amazon_covid_df_28)[names(amazon_covid_df_28) == "amazon_covid_reviewdate28"] <- "amazon_covid_reviewdate"
+names(amazon_covid_df_28)[names(amazon_covid_df_28) == "amazon_covid_CONS28"] <- "amazon_covid_CONS"
+names(amazon_covid_df_28)[names(amazon_covid_df_28) == "amazon_covid_PROS28"] <- "amazon_covid_PROS"
+colnames(amazon_covid_df_28)
+# rename columns to remove 29
+names(amazon_covid_df_29)[names(amazon_covid_df_29) == "amazon_covid_titles29"] <- "amazon_covid_titles"
+names(amazon_covid_df_29)[names(amazon_covid_df_29) == "amazon_covid_starrating29"] <- "amazon_covid_starrating"
+names(amazon_covid_df_29)[names(amazon_covid_df_29) == "amazon_covid_jobtitles29"] <- "amazon_covid_jobtitles"
+names(amazon_covid_df_29)[names(amazon_covid_df_29) == "amazon_covid_location29"] <- "amazon_covid_location"
+names(amazon_covid_df_29)[names(amazon_covid_df_29) == "amazon_covid_reviewdate29"] <- "amazon_covid_reviewdate"
+names(amazon_covid_df_29)[names(amazon_covid_df_29) == "amazon_covid_CONS29"] <- "amazon_covid_CONS"
+names(amazon_covid_df_29)[names(amazon_covid_df_29) == "amazon_covid_PROS29"] <- "amazon_covid_PROS"
+colnames(amazon_covid_df_29)
+# rename columns to remove 30
+names(amazon_covid_df_30)[names(amazon_covid_df_30) == "amazon_covid_titles30"] <- "amazon_covid_titles"
+names(amazon_covid_df_30)[names(amazon_covid_df_30) == "amazon_covid_starrating30"] <- "amazon_covid_starrating"
+names(amazon_covid_df_30)[names(amazon_covid_df_30) == "amazon_covid_jobtitles30"] <- "amazon_covid_jobtitles"
+names(amazon_covid_df_30)[names(amazon_covid_df_30) == "amazon_covid_location30"] <- "amazon_covid_location"
+names(amazon_covid_df_30)[names(amazon_covid_df_30) == "amazon_covid_reviewdate30"] <- "amazon_covid_reviewdate"
+names(amazon_covid_df_30)[names(amazon_covid_df_30) == "amazon_covid_CONS30"] <- "amazon_covid_CONS"
+names(amazon_covid_df_30)[names(amazon_covid_df_30) == "amazon_covid_PROS30"] <- "amazon_covid_PROS"
+colnames(amazon_covid_df_30)
+# rename columns to remove 31
+names(amazon_covid_df_31)[names(amazon_covid_df_31) == "amazon_covid_titles31"] <- "amazon_covid_titles"
+names(amazon_covid_df_31)[names(amazon_covid_df_31) == "amazon_covid_starrating31"] <- "amazon_covid_starrating"
+names(amazon_covid_df_31)[names(amazon_covid_df_31) == "amazon_covid_jobtitles31"] <- "amazon_covid_jobtitles"
+names(amazon_covid_df_31)[names(amazon_covid_df_31) == "amazon_covid_location31"] <- "amazon_covid_location"
+names(amazon_covid_df_31)[names(amazon_covid_df_31) == "amazon_covid_reviewdate31"] <- "amazon_covid_reviewdate"
+names(amazon_covid_df_31)[names(amazon_covid_df_31) == "amazon_covid_CONS31"] <- "amazon_covid_CONS"
+names(amazon_covid_df_31)[names(amazon_covid_df_31) == "amazon_covid_PROS31"] <- "amazon_covid_PROS"
+colnames(amazon_covid_df_31)
+# rename columns to remove 32
+names(amazon_covid_df_32)[names(amazon_covid_df_32) == "amazon_covid_titles32"] <- "amazon_covid_titles"
+names(amazon_covid_df_32)[names(amazon_covid_df_32) == "amazon_covid_starrating32"] <- "amazon_covid_starrating"
+names(amazon_covid_df_32)[names(amazon_covid_df_32) == "amazon_covid_jobtitles32"] <- "amazon_covid_jobtitles"
+names(amazon_covid_df_32)[names(amazon_covid_df_32) == "amazon_covid_location32"] <- "amazon_covid_location"
+names(amazon_covid_df_32)[names(amazon_covid_df_32) == "amazon_covid_reviewdate32"] <- "amazon_covid_reviewdate"
+names(amazon_covid_df_32)[names(amazon_covid_df_32) == "amazon_covid_CONS32"] <- "amazon_covid_CONS"
+names(amazon_covid_df_32)[names(amazon_covid_df_32) == "amazon_covid_PROS32"] <- "amazon_covid_PROS"
+colnames(amazon_covid_df_32)
+# rename columns to remove 33
+names(amazon_covid_df_33)[names(amazon_covid_df_33) == "amazon_covid_titles33"] <- "amazon_covid_titles"
+names(amazon_covid_df_33)[names(amazon_covid_df_33) == "amazon_covid_starrating33"] <- "amazon_covid_starrating"
+names(amazon_covid_df_33)[names(amazon_covid_df_33) == "amazon_covid_jobtitles33"] <- "amazon_covid_jobtitles"
+names(amazon_covid_df_33)[names(amazon_covid_df_33) == "amazon_covid_location33"] <- "amazon_covid_location"
+names(amazon_covid_df_33)[names(amazon_covid_df_33) == "amazon_covid_reviewdate33"] <- "amazon_covid_reviewdate"
+names(amazon_covid_df_33)[names(amazon_covid_df_33) == "amazon_covid_CONS33"] <- "amazon_covid_CONS"
+names(amazon_covid_df_33)[names(amazon_covid_df_33) == "amazon_covid_PROS33"] <- "amazon_covid_PROS"
+colnames(amazon_covid_df_33)
+# rename columns to remove 34
+names(amazon_covid_df_34)[names(amazon_covid_df_34) == "amazon_covid_titles34"] <- "amazon_covid_titles"
+names(amazon_covid_df_34)[names(amazon_covid_df_34) == "amazon_covid_starrating34"] <- "amazon_covid_starrating"
+names(amazon_covid_df_34)[names(amazon_covid_df_34) == "amazon_covid_jobtitles34"] <- "amazon_covid_jobtitles"
+names(amazon_covid_df_34)[names(amazon_covid_df_34) == "amazon_covid_location34"] <- "amazon_covid_location"
+names(amazon_covid_df_34)[names(amazon_covid_df_34) == "amazon_covid_reviewdate34"] <- "amazon_covid_reviewdate"
+names(amazon_covid_df_34)[names(amazon_covid_df_34) == "amazon_covid_CONS34"] <- "amazon_covid_CONS"
+names(amazon_covid_df_34)[names(amazon_covid_df_34) == "amazon_covid_PROS34"] <- "amazon_covid_PROS"
+colnames(amazon_covid_df_34)
+# rename columns to remove 35
+names(amazon_covid_df_35)[names(amazon_covid_df_35) == "amazon_covid_titles35"] <- "amazon_covid_titles"
+names(amazon_covid_df_35)[names(amazon_covid_df_35) == "amazon_covid_starrating35"] <- "amazon_covid_starrating"
+names(amazon_covid_df_35)[names(amazon_covid_df_35) == "amazon_covid_jobtitles35"] <- "amazon_covid_jobtitles"
+names(amazon_covid_df_35)[names(amazon_covid_df_35) == "amazon_covid_location35"] <- "amazon_covid_location"
+names(amazon_covid_df_35)[names(amazon_covid_df_35) == "amazon_covid_reviewdate35"] <- "amazon_covid_reviewdate"
+names(amazon_covid_df_35)[names(amazon_covid_df_35) == "amazon_covid_CONS35"] <- "amazon_covid_CONS"
+names(amazon_covid_df_35)[names(amazon_covid_df_35) == "amazon_covid_PROS35"] <- "amazon_covid_PROS"
+colnames(amazon_covid_df_35)
+
+
+
+
+
+
+#big_amazon_data <- rbind(amazon_covid_df_1, amazon_covid_df_3) 
+#colnames(big_amazon_data)
+big_amazon_data <- rbind(amazon_covid_df_3, amazon_covid_df_4)
+colnames(big_amazon_data)
+big_amazon_data <- rbind(big_amazon_data, amazon_covid_df_5) 
+colnames(big_amazon_data)
+big_amazon_data <- rbind(big_amazon_data, amazon_covid_df_6)
+colnames(big_amazon_data)
+big_amazon_data <- rbind(big_amazon_data, amazon_covid_df_7)
+colnames(big_amazon_data)
+big_amazon_data <- rbind(big_amazon_data, amazon_covid_df_8)
+colnames(big_amazon_data)
+big_amazon_data <- rbind(big_amazon_data, amazon_covid_df_9)
+colnames(big_amazon_data)
+big_amazon_data <- rbind(big_amazon_data, amazon_covid_df_10)
+colnames(big_amazon_data)
+big_amazon_data <- rbind(big_amazon_data, amazon_covid_df_11)
+colnames(big_amazon_data)
+big_amazon_data <- rbind(big_amazon_data, amazon_covid_df_12)
+colnames(big_amazon_data)
+big_amazon_data <- rbind(big_amazon_data, amazon_covid_df_13)
+colnames(big_amazon_data)
+big_amazon_data <- rbind(big_amazon_data, amazon_covid_df_14)
+colnames(big_amazon_data)
+big_amazon_data <- rbind(big_amazon_data, amazon_covid_df_15) 
+colnames(big_amazon_data)
+big_amazon_data <- rbind(big_amazon_data, amazon_covid_df_16)
+colnames(big_amazon_data)
+big_amazon_data <- rbind(big_amazon_data, amazon_covid_df_17)
+colnames(big_amazon_data)
+big_amazon_data <- rbind(big_amazon_data, amazon_covid_df_18)
+colnames(big_amazon_data)
+big_amazon_data <- rbind(big_amazon_data, amazon_covid_df_19)
+colnames(big_amazon_data)
+big_amazon_data <- rbind(big_amazon_data, amazon_covid_df_20) 
+colnames(big_amazon_data)
+# n=190
+big_amazon_data <- rbind(big_amazon_data, amazon_covid_df_21)
+colnames(big_amazon_data)
+big_amazon_data <- rbind(big_amazon_data, amazon_covid_df_22)
+colnames(big_amazon_data)
+big_amazon_data <- rbind(big_amazon_data, amazon_covid_df_23)
+colnames(big_amazon_data)
+big_amazon_data <- rbind(big_amazon_data, amazon_covid_df_24)
+colnames(big_amazon_data)
+big_amazon_data <- rbind(big_amazon_data, amazon_covid_df_25) 
+colnames(big_amazon_data)
+big_amazon_data <- rbind(big_amazon_data, amazon_covid_df_26)
+colnames(big_amazon_data)
+big_amazon_data <- rbind(big_amazon_data, amazon_covid_df_27)
+colnames(big_amazon_data)
+big_amazon_data <- rbind(big_amazon_data, amazon_covid_df_28)
+colnames(big_amazon_data)
+big_amazon_data <- rbind(big_amazon_data, amazon_covid_df_29)
+colnames(big_amazon_data)
+big_amazon_data <- rbind(big_amazon_data, amazon_covid_df_30) 
+colnames(big_amazon_data)
+# n = 290
+big_amazon_data <- rbind(big_amazon_data, amazon_covid_df_31) 
+colnames(big_amazon_data)
+big_amazon_data <- rbind(big_amazon_data, amazon_covid_df_32) 
+colnames(big_amazon_data)
+big_amazon_data <- rbind(big_amazon_data, amazon_covid_df_33) 
+colnames(big_amazon_data)
+big_amazon_data <- rbind(big_amazon_data, amazon_covid_df_34) 
+colnames(big_amazon_data)
+big_amazon_data <- rbind(big_amazon_data, amazon_covid_df_35) 
+colnames(big_amazon_data)
+
+# add state column to big_amazon_data:
+library(stringr)
+#amazon:
+big_amazon_data$STATE <- big_amazon_data$amazon_covid_location
+big_amazon_data$STATE <- str_sub(big_amazon_data$STATE, -2,-1)
+big_amazon_data$STATE
+
+### add MONTH columns
+# amazon:
+big_amazon_data$MONTH <- big_amazon_data$amazon_covid_reviewdate
+big_amazon_data$MONTH <- str_sub(big_amazon_data$MONTH, 1,3)
+big_amazon_data$MONTH
+
+head(big_amazon_data)
+```
+
+basic frequency tables 
+```{r}
+table(big_amazon_data$amazon_covid_jobtitles)
+table(big_amazon_data$amazon_covid_starrating, big_amazon_data$STATE)
+table(big_amazon_data$amazon_covid_starrating, big_amazon_data$MONTH)
+
+# means of each state:
+state_and_star <- big_amazon_data[,c("STATE", "amazon_covid_starrating")]
+head(state_and_star)
+reshape(state_and_star, idvar="STATE", timevar="amazon_covid_starrating", direction="wide")
+colMeans(state_and_star)
+
+```
+
+more tables
+```{r}
+library(reactable)
+reactable(big_amazon_data)
+
+big_amazon_data$agr_location <- aggregate(big_amazon_data$amazon_covid_starrating~big_amazon_data$state, data=big_amazon_data,
+                                          FUN="mean")
+
+```
+
+LIWC
+```{r}
+# first create corpus from df
+library(tm)
+corpus_amazon_data = Corpus(VectorSource(big_amazon_data$amazon_covid_PROS))
+
+library("quanteda.dictionaries")
+
+output_liwc <- liwcalike(corpus_amazon_data, 
+                        dictionary = data_dictionary_NRC)
+
+head(output_lsd)
+```
+
+
+
+LIWC package not supported on this version of R
+So from here, I:
+1) create new dfs based on specific questions
+2) export dfs as a csv and open text in LIWC app
+
+```{r}
+library(ggplot2)
+# txt file: full df
+write.table(big_amazon_data, file="/Users/amandamoeller/Desktop/SoDA 502 FA20/Glassdoor/Amazon Project/bigamazondata.txt", sep="\t",
+                               row.names=TRUE, col.names = TRUE)
+
+
+# ok no i need to separate data into multiple txt documents for LIWC analysis
+
+# pros text:
+write.table(big_amazon_data$amazon_covid_PROS, file="/Users/amandamoeller/Desktop/SoDA 502 FA20/Glassdoor/Amazon Project/PROS.txt", sep="\t",
+                               row.names=TRUE, col.names = TRUE)
+
+# cons text:
+write.table(big_amazon_data$amazon_covid_CONS, file="/Users/amandamoeller/Desktop/SoDA 502 FA20/Glassdoor/Amazon Project/CONS.txt", sep="\t",
+                               row.names=TRUE, col.names = TRUE)
+
+
+# Put through LIWC, manually merged two CSV results files:
+prosncons_LIWC <- read.csv(file="/Users/amandamoeller/Desktop/SoDA 502 FA20/Glassdoor/Amazon Project/prosncons_LIWC2015_Results.csv")
+# not working? Uploaded manually
+
+
+
+
+#### I want to look at concerns (reflected by LIWC) over time
+
+library(stringr)
+library(plyr)
+
+# create a new column with number assigned to month (1-12)
+big_amazon_data$numMONTH <- revalue(big_amazon_data$MONTH,
+                                    c("Jan"="01",
+                                      "Feb" = "02",
+                                      "Mar" = "03",
+                                      "Apr" = "04",
+                                      "May" = "05",
+                                      "Jun" = "06",
+                                      "Jul"= "07",
+                                      "Aug" = "08",
+                                      "Sep" = "09",
+                                      "Oct" = "10",
+                                      "Nov" = "11",
+                                      "Dec" = "12"))
+
+
+# txt file with just month, pros:
+ProsByMonth <- data.frame('month'=big_amazon_data$numMONTH, 'pros'= big_amazon_data$amazon_covid_PROS)
+head(ProsByMonth)
+write.csv(ProsByMonth, file="/Users/amandamoeller/Desktop/SoDA 502 FA20/Glassdoor/Amazon Project/PROSbyMONTH.csv", sep="\t",
+                               row.names=TRUE, col.names = TRUE)
+
+# put through LIWC, manually reupload:
+LIWC_Results_PROSovertime <- read_csv(file="/Users/amandamoeller/Desktop/SoDA 502 FA20/Glassdoor/Amazon Project/LIWC2015 Results (PROSbyMONTH).csv")
+head(LIWC_Results_PROSovertime) #Source B = month number
+
+# txt file with just month, cons:
+ConsByMonth <- data.frame('month'=big_amazon_data$numMONTH, 'cons'= big_amazon_data$amazon_covid_CONS)
+head(ConsByMonth)
+write.csv(ConsByMonth, file="/Users/amandamoeller/Desktop/SoDA 502 FA20/Glassdoor/Amazon Project/CONSbyMONTH.csv", sep="\t",
+                               row.names=TRUE, col.names = TRUE)
+
+# put through LIWC, manually reupload:
+LIWC_Results_CONSovertime <- read_csv(file="/Users/amandamoeller/Desktop/SoDA 502 FA20/Glassdoor/Amazon Project/LIWC2015 Results (CONSbyMONTH).csv")
+head(LIWC_Results_PROSovertime) #Source B = month number
+
+```
+
+## LIWC PROS: Analyses and Plots
+```{r}
+library(ggplot2)
+
+head(LIWC_Results_PROSovertime)
+
+LIWC_Results_PROSovertime$month <-  LIWC_Results_PROSovertime$`Source (B)`
+
+
+###### Psychological processes:
+# affective processes (affect)
+pros_over_time_plot_AFFECT <- ggplot(LIWC_Results_PROSovertime,
+                              aes(month, affect)) +
+  geom_jitter() 
+pros_over_time_plot_AFFECT 
+# static plot:
+staticPlot_pros_affect <- 
+  ggplot(data=LIWC_Results_PROSovertime)+
+  geom_jitter(mapping=aes(x=month, 
+                         y=affect, 
+                         color=affect))+
+  theme_minimal() +
+  scale_color_gradient(low = "#0091ff", 
+                       high = "#f0650e")  +
+  theme_linedraw() 
+# Display the plot:
+print(staticPlot_pros_affect) + labs(x="Month", y="Proportion of Affect-Related Language in Pros of Review") 
+
+
+# positive emotion (posemo)
+pros_over_time_plot_POSEMO <- ggplot(LIWC_Results_PROSovertime,
+                              aes(month, posemo)) +
+  geom_jitter()
+pros_over_time_plot_POSEMO
+# static plot:
+staticPlot_pros_posemo <- 
+  ggplot(data=LIWC_Results_PROSovertime)+
+  geom_jitter(mapping=aes(x=month, 
+                         y=posemo, 
+                         color=posemo))+
+  theme_minimal() +
+  scale_color_gradient(low = "#0091ff", 
+                       high = "#f0650e")  +
+  theme_linedraw() 
+# Display the plot:
+print(staticPlot_pros_posemo) + labs(x="Month", y="Proportion of Positive Emotion in Pros of Review") 
+
+# negative emotion (negemo)
+pros_over_time_plot_NEGEMO <- ggplot(LIWC_Results_PROSovertime,
+                              aes(month, negemo)) +
+  geom_jitter()
+pros_over_time_plot_NEGEMO
+# static plot:
+staticPlot_pros_negemo <- 
+  ggplot(data=LIWC_Results_PROSovertime)+
+  geom_jitter(mapping=aes(x=month, 
+                         y=negemo, 
+                         color=negemo))+
+  theme_minimal() +
+  scale_color_gradient(low = "#0091ff", 
+                       high = "#f0650e")  +
+  theme_linedraw() 
+# Display the plot:
+print(staticPlot_pros_negemo) + labs(x="Month", y="Proportion of Negative Emotion in Pros of Review") 
+
+# anxiety (anx)
+pros_over_time_plot_ANX <- ggplot(LIWC_Results_PROSovertime,
+                              aes(month, anx)) +
+  geom_jitter()
+pros_over_time_plot_ANX
+# static plot:
+staticPlot_pros_anx <- 
+  ggplot(data=LIWC_Results_PROSovertime)+
+  geom_jitter(mapping=aes(x=month, 
+                         y=anx, 
+                         color=anx))+
+  theme_minimal() +
+  scale_color_gradient(low = "#0091ff", 
+                       high = "#f0650e")  +
+  theme_linedraw() 
+# Display the plot:
+print(staticPlot_pros_anx) + labs(x="Month", y="Proportion of Anxiety in Pros of Review") 
+
+# anger (anger)
+pros_over_time_plot_ANGER <- ggplot(LIWC_Results_PROSovertime,
+                              aes(month, anger)) +
+  geom_jitter()
+pros_over_time_plot_ANGER
+# static plot:
+staticPlot_pros_anger <- 
+  ggplot(data=LIWC_Results_PROSovertime)+
+  geom_jitter(mapping=aes(x=month, 
+                         y=anger, 
+                         color=anger))+
+  theme_minimal() +
+  scale_color_gradient(low = "#0091ff", 
+                       high = "#f0650e")  +
+  theme_linedraw() 
+# Display the plot:
+print(staticPlot_pros_anger) + labs(x="Month", y="Proportion of Anger in Pros of Review")
+
+######  Personal concerns:
+# work (work)
+pros_over_time_plot_WORK <- ggplot(LIWC_Results_PROSovertime,
+                              aes(month, work)) +
+  geom_jitter()
+pros_over_time_plot_WORK
+# static plot:
+staticPlot_pros_work <- 
+  ggplot(data=LIWC_Results_PROSovertime)+
+  geom_jitter(mapping=aes(x=month, 
+                         y=work, 
+                         color=work))+
+  theme_minimal() +
+  scale_color_gradient(low = "#0091ff", 
+                       high = "#f0650e")  +
+  theme_linedraw() 
+# Display the plot:
+print(staticPlot_pros_work) + labs(x="Month", y="Proportion of Work-Related Concerns in Pros of Review")
+
+
+# home (home)
+pros_over_time_plot_HOME <- ggplot(LIWC_Results_PROSovertime,
+                              aes(month, home)) +
+  geom_jitter()
+pros_over_time_plot_HOME
+# static plot:
+staticPlot_pros_home <- 
+  ggplot(data=LIWC_Results_PROSovertime)+
+  geom_jitter(mapping=aes(x=month, 
+                         y=home, 
+                         color=home))+
+  theme_minimal() +
+  scale_color_gradient(low = "#0091ff", 
+                       high = "#f0650e")  +
+  theme_linedraw() 
+# Display the plot:
+print(staticPlot_pros_home) + labs(x="Month", y="Proportion of Home-Related Concerns in Pros of Review")
+
+# money (money)
+pros_over_time_plot_MONEY <- ggplot(LIWC_Results_PROSovertime,
+                              aes(month, money)) +
+  geom_jitter() 
+pros_over_time_plot_MONEY
+# static plot:
+staticPlot_pros_money  <- 
+  ggplot(data=LIWC_Results_PROSovertime)+
+  geom_jitter(mapping=aes(x=month, 
+                         y=money, 
+                         color=money))+
+  theme_minimal() +
+  scale_color_gradient(low = "#0091ff", 
+                       high = "#f0650e")  +
+  theme_linedraw() 
+# Display the plot:
+print(staticPlot_pros_money) + labs(x="Month", y="Proportion of Money-Related Concerns in Pros of Review")
+
+```
+
+COR TESTS FOR PROS
+```{r}
+## did concerns differ based on time of review?
+
+LIWC_Results_PROSovertime$month <- as.numeric(LIWC_Results_PROSovertime$month) # change month to numeric
+
+# 1) affect
+cor_pros_affect <- cor.test(LIWC_Results_PROSovertime$month, LIWC_Results_PROSovertime$affect, method=c("pearson"))
+cor_pros_affect # significant relationship between month and affect (r=0.19, p<.05)
+
+# 2) posemo
+cor_pros_posemo <- cor.test(LIWC_Results_PROSovertime$month, LIWC_Results_PROSovertime$posemo, method=c("pearson"))
+cor_pros_posemo # significant relationship between month and posemo (r=0.20, p<.05)
+
+# 3) negemo
+cor_pros_negemo <- cor.test(LIWC_Results_PROSovertime$month, LIWC_Results_PROSovertime$negemo, method=c("pearson"))
+cor_pros_negemo # no significant relationship between month and negemo (r=-0.03, p=0.64)
+
+# 4) anx
+cor_pros_anx <- cor.test(LIWC_Results_PROSovertime$month, LIWC_Results_PROSovertime$anx, method=c("pearson"))
+cor_pros_anx # significant relationship between month and anx (r=-0.12, p=0.03)
+
+# 5) anger
+cor_pros_anger <- cor.test(LIWC_Results_PROSovertime$month, LIWC_Results_PROSovertime$anger, method=c("pearson"))
+cor_pros_anger # significant relationship between month and anger (r=-0.16, p=0.002)
+
+# 6) work
+cor_pros_work <- cor.test(LIWC_Results_PROSovertime$month, LIWC_Results_PROSovertime$work, method=c("pearson"))
+cor_pros_work # significant relationship between month and work (r=0.13, p=0.02)
+
+# 7) home
+cor_pros_home <- cor.test(LIWC_Results_PROSovertime$month, LIWC_Results_PROSovertime$home, method=c("pearson"))
+cor_pros_home # no significant relationship between month and home (r=0.004,, p=0.94)
+
+# 8) money
+cor_pros_money <- cor.test(LIWC_Results_PROSovertime$month, LIWC_Results_PROSovertime$money, method=c("pearson"))
+cor_pros_money # no significant relationship between month and home (r=0.08,, p=0.10)
+
+```
+
+
+
+## LIWC CONS: Analyses and Plots
+```{r}
+library(ggplot2)
+
+head(LIWC_Results_CONSovertime)
+
+LIWC_Results_CONSovertime$month <-  LIWC_Results_CONSovertime$`Source (B)`
+
+
+###### Psychological processes:
+# affective processes (affect)
+CONS_over_time_plot_AFFECT <- ggplot(LIWC_Results_CONSovertime,
+                              aes(month, affect)) +
+  geom_jitter() 
+CONS_over_time_plot_AFFECT 
+# static plot:
+staticPlot_CONS_affect <- 
+  ggplot(data=LIWC_Results_CONSovertime)+
+  geom_jitter(mapping=aes(x=month, 
+                         y=affect, 
+                         color=affect))+
+  theme_minimal() +
+  scale_color_gradient(low = "#0091ff", 
+                       high = "#f0650e")  +
+  theme_linedraw() 
+# Display the plot:
+print(staticPlot_CONS_affect) + labs(x="Month", y="Proportion of Affect-Related Language in CONS of Review") 
+
+
+# positive emotion (posemo)
+CONS_over_time_plot_POSEMO <- ggplot(LIWC_Results_CONSovertime,
+                              aes(month, posemo)) +
+  geom_jitter()
+CONS_over_time_plot_POSEMO
+# static plot:
+staticPlot_CONS_posemo <- 
+  ggplot(data=LIWC_Results_CONSovertime)+
+  geom_jitter(mapping=aes(x=month, 
+                         y=posemo, 
+                         color=posemo))+
+  theme_minimal() +
+  scale_color_gradient(low = "#0091ff", 
+                       high = "#f0650e")  +
+  theme_linedraw() 
+# Display the plot:
+print(staticPlot_CONS_posemo) + labs(x="Month", y="Proportion of Positive Emotion in CONS of Review") 
+
+# negative emotion (negemo)
+CONS_over_time_plot_NEGEMO <- ggplot(LIWC_Results_CONSovertime,
+                              aes(month, negemo)) +
+  geom_jitter()
+CONS_over_time_plot_NEGEMO
+# static plot:
+staticPlot_CONS_negemo <- 
+  ggplot(data=LIWC_Results_CONSovertime)+
+  geom_jitter(mapping=aes(x=month, 
+                         y=negemo, 
+                         color=negemo))+
+  theme_minimal() +
+  scale_color_gradient(low = "#0091ff", 
+                       high = "#f0650e")  +
+  theme_linedraw() 
+# Display the plot:
+print(staticPlot_CONS_negemo) + labs(x="Month", y="Proportion of Negative Emotion in CONS of Review") 
+
+# anxiety (anx)
+CONS_over_time_plot_ANX <- ggplot(LIWC_Results_CONSovertime,
+                              aes(month, anx)) +
+  geom_jitter()
+CONS_over_time_plot_ANX
+# static plot:
+staticPlot_CONS_anx <- 
+  ggplot(data=LIWC_Results_CONSovertime)+
+  geom_jitter(mapping=aes(x=month, 
+                         y=anx, 
+                         color=anx))+
+  theme_minimal() +
+  scale_color_gradient(low = "#0091ff", 
+                       high = "#f0650e")  +
+  theme_linedraw() 
+# Display the plot:
+print(staticPlot_CONS_anx) + labs(x="Month", y="Proportion of Anxiety in CONS of Review") 
+
+# anger (anger)
+CONS_over_time_plot_ANGER <- ggplot(LIWC_Results_CONSovertime,
+                              aes(month, anger)) +
+  geom_jitter()
+CONS_over_time_plot_ANGER
+# static plot:
+staticPlot_CONS_anger <- 
+  ggplot(data=LIWC_Results_CONSovertime)+
+  geom_jitter(mapping=aes(x=month, 
+                         y=anger, 
+                         color=anger))+
+  theme_minimal() +
+  scale_color_gradient(low = "#0091ff", 
+                       high = "#f0650e")  +
+  theme_linedraw() 
+# Display the plot:
+print(staticPlot_CONS_anger) + labs(x="Month", y="Proportion of Anger in CONS of Review")
+
+######  Personal concerns:
+# work (work)
+CONS_over_time_plot_WORK <- ggplot(LIWC_Results_CONSovertime,
+                              aes(month, work)) +
+  geom_jitter()
+CONS_over_time_plot_WORK
+# static plot:
+staticPlot_CONS_work <- 
+  ggplot(data=LIWC_Results_CONSovertime)+
+  geom_jitter(mapping=aes(x=month, 
+                         y=work, 
+                         color=work))+
+  theme_minimal() +
+  scale_color_gradient(low = "#0091ff", 
+                       high = "#f0650e")  +
+  theme_linedraw() 
+# Display the plot:
+print(staticPlot_CONS_work) + labs(x="Month", y="Proportion of Work-Related Concerns in CONS of Review")
+
+
+# home (home)
+CONS_over_time_plot_HOME <- ggplot(LIWC_Results_CONSovertime,
+                              aes(month, home)) +
+  geom_jitter()
+CONS_over_time_plot_HOME
+# static plot:
+staticPlot_CONS_home <- 
+  ggplot(data=LIWC_Results_CONSovertime)+
+  geom_jitter(mapping=aes(x=month, 
+                         y=home, 
+                         color=home))+
+  theme_minimal() +
+  scale_color_gradient(low = "#0091ff", 
+                       high = "#f0650e")  +
+  theme_linedraw() 
+# Display the plot:
+print(staticPlot_CONS_home) + labs(x="Month", y="Proportion of Home-Related Concerns in CONS of Review")
+
+# money (money)
+CONS_over_time_plot_MONEY <- ggplot(LIWC_Results_CONSovertime,
+                              aes(month, money)) +
+  geom_jitter() 
+CONS_over_time_plot_MONEY
+# static plot:
+staticPlot_CONS_money  <- 
+  ggplot(data=LIWC_Results_CONSovertime)+
+  geom_jitter(mapping=aes(x=month, 
+                         y=money, 
+                         color=money))+
+  theme_minimal() +
+  scale_color_gradient(low = "#0091ff", 
+                       high = "#f0650e")  +
+  theme_linedraw() 
+# Display the plot:
+print(staticPlot_CONS_money) + labs(x="Month", y="Proportion of Money-Related Concerns in CONS of Review")
+
+```
+
+COR TESTS FOR CONS
+```{r}
+## did concerns differ based on time of review?
+
+LIWC_Results_CONSovertime$month <- as.numeric(LIWC_Results_CONSovertime$month) # change month to numeric
+
+# 1) affect
+cor_CONS_affect <- cor.test(LIWC_Results_CONSovertime$month, LIWC_Results_CONSovertime$affect, method=c("pearson"))
+cor_CONS_affect # no significant relationship between month and affect (r=0.07, p=.20)
+
+
+# 2) posemo
+cor_CONS_posemo <- cor.test(LIWC_Results_CONSovertime$month, LIWC_Results_CONSovertime$posemo, method=c("pearson"))
+cor_CONS_posemo # no significant relationship between month and posemo (r=-0.17, p=.75)
+
+# 3) negemo
+cor_CONS_negemo <- cor.test(LIWC_Results_CONSovertime$month, LIWC_Results_CONSovertime$negemo, method=c("pearson"))
+cor_CONS_negemo # significant relationship between month and negemo (r=-.11, p=0.03)
+
+# 4) anx
+cor_CONS_anx <- cor.test(LIWC_Results_CONSovertime$month, LIWC_Results_CONSovertime$anx, method=c("pearson"))
+cor_CONS_anx # no significant relationship between month and anx (r=0.05, p=0.30)
+
+# 5) anger
+cor_CONS_anger <- cor.test(LIWC_Results_CONSovertime$month, LIWC_Results_CONSovertime$anger, method=c("pearson"))
+cor_CONS_anger # sno ignificant relationship between month and anger (r=0.04, p=0.50)
+
+# 6) work
+cor_CONS_work <- cor.test(LIWC_Results_CONSovertime$month, LIWC_Results_CONSovertime$work, method=c("pearson"))
+cor_CONS_work # no significant relationship between month and work (r=0.09, p=0.08)
+
+# 7) home
+cor_CONS_home <- cor.test(LIWC_Results_CONSovertime$month, LIWC_Results_CONSovertime$home, method=c("pearson"))
+cor_CONS_home # significant relationship between month and home (r=-.13, p=0.01)
+
+# 8) money
+cor_CONS_money <- cor.test(LIWC_Results_CONSovertime$month, LIWC_Results_CONSovertime$money, method=c("pearson"))
+cor_CONS_money # no significant relationship between month and home (r=0-.04,, p=0.46)
+
+```
+
+
+```{r}
+library(psych)
+library(dplyr)
+
+describe(big_amazon_data$MONTH)
+
+n_distinct(big_amazon_data$MONTH)
+
+
+```
+
+ANOVA & Summary Statistics
+```{r}
+# compute sum statistics by groups
+library(dplyr)
+
+big_amazon_data$STATE <- as.factor(big_amazon_data$STATE) # change state to factor
+big_amazon_data$amazon_covid_starrating <- as.numeric(big_amazon_data$amazon_covid_starrating) # stars to numeric
+
+## 1) Mean, SD Stars by State
+State_stars_meanSD <- group_by(big_amazon_data, STATE) %>%
+  summarise(
+    count=n(),
+    mean=mean(amazon_covid_starrating, na.rm=TRUE),
+    sd=sd(amazon_covid_starrating, na.rm=TRUE)
+  )
+State_stars_meanSD
+
+# anova for state, star rating:
+levels(big_amazon_data$STATE) # see states in data
+state.star.aov <- aov(big_amazon_data$amazon_covid_starrating~big_amazon_data$STATE, data=big_amazon_data)
+summary(state.star.aov) 
+#RESULTS: F (34, 305) = 0.76, p=.83
+## No significant difs between location and job rating
+
+
+
+
+## 2) Mean, SD Stars by Job Title
+big_amazon_data$amazon_covid_jobtitles <- as.factor(big_amazon_data$amazon_covid_jobtitles) 
+
+Jobtitle_stars_meanSD <- group_by(big_amazon_data, amazon_covid_jobtitles) %>%
+  summarise(
+    count=n(),
+    mean=mean(amazon_covid_starrating, na.rm=TRUE),
+    sd=sd(amazon_covid_starrating, na.rm=TRUE)
+  )
+Jobtitle_stars_meanSD 
+
+# anova for job title, star rating:
+jobtitles.star.aov <- aov(big_amazon_data$amazon_covid_starrating~big_amazon_data$amazon_covid_jobtitles, data=big_amazon_data)
+summary(jobtitles.star.aov) 
+#RESULTS: F (167, 172) = 0.97, p=.56
+## No significant difs between job title and job rating
+
+
+```
+
+
+
+
+
+
+
+
+
+
+## LIWC CONS: Analyses and Plots
+```{r}
+head(LIWC_Results_CONSovertime)
+
+LIWC_Results_CONSovertime$month <-  LIWC_Results_CONSovertime$`Source (B)`
+
+
+###### Psychological processes:
+# affective processes (affect)
+cons_over_time_plot_AFFECT <- ggplot(LIWC_Results_CONSovertime,
+                              aes(month, affect)) +
+  geom_jitter() 
+cons_over_time_plot_AFFECT 
+
+
+# positive emotion (posemo)
+cons_over_time_plot_POSEMO <- ggplot(LIWC_Results_CONSovertime,
+                              aes(month, posemo)) +
+  geom_jitter()
+cons_over_time_plot_POSEMO
+
+# negative emotion (negemo)
+cons_over_time_plot_NEGEMO <- ggplot(LIWC_Results_CONSovertime,
+                              aes(month, negemo)) +
+  geom_jitter()
+cons_over_time_plot_NEGEMO
+
+# anxiety (anx)
+cons_over_time_plot_ANX <- ggplot(LIWC_Results_CONSovertime,
+                              aes(month, anx)) +
+  geom_jitter()
+cons_over_time_plot_ANX
+
+# anger (anger)
+cons_over_time_plot_ANGER <- ggplot(LIWC_Results_CONSovertime,
+                              aes(month, anger)) +
+  geom_jitter()
+cons_over_time_plot_ANGER
+
+######  Personal concerns:
+# work (work)
+cons_over_time_plot_WORK <- ggplot(LIWC_Results_CONSovertime,
+                              aes(month, work)) +
+  geom_jitter()
+cons_over_time_plot_WORK
+
+# leisure (leisure)
+cons_over_time_plot_LEISURE <- ggplot(LIWC_Results_CONSovertime,
+                              aes(month, leisure)) +
+  geom_jitter()
+cons_over_time_plot_LEISURE
+
+# home (home)
+cons_over_time_plot_HOME <- ggplot(LIWC_Results_CONSovertime,
+                              aes(month, home)) +
+  geom_jitter()
+cons_over_time_plot_HOME
+
+# money (money)
+cons_over_time_plot_MONEY <- ggplot(LIWC_Results_CONSovertime,
+                              aes(month, money)) +
+  geom_jitter()
+cons_over_time_plot_MONEY
+
+```
+
+
+COR TESTS FOR CONS
+```{r}
+## did concerns differ based on time of review?
+
+LIWC_Results_PROSovertime$month <- as.numeric(LIWC_Results_PROSovertime$month) # change month to numeric
+
+# 1) affect
+cor_pros_affect <- cor.test(LIWC_Results_PROSovertime$month, LIWC_Results_PROSovertime$affect, method=c("pearson"))
+cor_pros_affect # significant relationship between month and affect (r=0.19, p<.05)
+
+# 2) posemo
+cor_pros_posemo <- cor.test(LIWC_Results_PROSovertime$month, LIWC_Results_PROSovertime$posemo, method=c("pearson"))
+cor_pros_posemo # significant relationship between month and posemo (r=0.20, p<.05)
+
+# 3) negemo
+cor_pros_negemo <- cor.test(LIWC_Results_PROSovertime$month, LIWC_Results_PROSovertime$negemo, method=c("pearson"))
+cor_pros_negemo # no significant relationship between month and negemo (r=-0.03, p=0.64)
+
+# 4) anx
+cor_pros_anx <- cor.test(LIWC_Results_PROSovertime$month, LIWC_Results_PROSovertime$anx, method=c("pearson"))
+cor_pros_anx # significant relationship between month and anx (r=-0.12, p=0.03)
+
+# 5) anger
+cor_pros_anger <- cor.test(LIWC_Results_PROSovertime$month, LIWC_Results_PROSovertime$anger, method=c("pearson"))
+cor_pros_anger # significant relationship between month and anger (r=-0.16, p=0.002)
+
+# 6) work
+cor_pros_work <- cor.test(LIWC_Results_PROSovertime$month, LIWC_Results_PROSovertime$work, method=c("pearson"))
+cor_pros_work # significant relationship between month and work (r=0.13, p=0.02)
+
+# 7) home
+cor_pros_home <- cor.test(LIWC_Results_PROSovertime$month, LIWC_Results_PROSovertime$home, method=c("pearson"))
+cor_pros_home # no significant relationship between month and home (r=0.004,, p=0.94)
+
+# 8) money
+cor_pros_money <- cor.test(LIWC_Results_PROSovertime$month, LIWC_Results_PROSovertime$money, method=c("pearson"))
+cor_pros_money # no significant relationship between month and home (r=0.08,, p=0.10)
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+TEXT ANALYSIS STUFF
+```{r}
+library(tm)
+####### AMAZON DF PROS ########
+# PROS CORPUS FROM AMAZON DF
+amazon_corpus_pros <- Corpus(VectorSource(big_amazon_data$amazon_covid_PROS))
+inspect(amazon_corpus_pros)
+
+# PROS CORPUS FROM AMAZON DF
+amazon_corpus_pros
+amazon_corpus_pros <- tm_map(amazon_corpus_pros, removeWords, stopwords("english"))
+
+# Build the term document matrix
+TextDoc_pros_amazon <- TermDocumentMatrix(amazon_corpus_pros)
+pros_matrix_amazon <- as.matrix(TextDoc_pros_amazon)
+# sort by descending value of frequency
+pros_v_amazon <- sort(rowSums(pros_matrix_amazon), decreasing=TRUE)
+pros_d_amazon <- data.frame(word=names(pros_v_amazon), freq=pros_v_amazon)
+
+# display top 20 most frequent words
+head(pros_d_amazon, 20)
+
+
+####### AMAZON DF CONS ########
+# CONS CORPUS FROM AMAZON DF
+amazon_corpus_cons <- Corpus(VectorSource(big_amazon_data$amazon_covid_CONS))
+inspect(amazon_corpus_cons)
+
+# CONS CORPUS FROM AMAZON DF
+amazon_corpus_cons
+amazon_corpus_cons <- tm_map(amazon_corpus_cons, removeWords, stopwords("english"))
+
+# Build the term document matrix
+TextDoc_cons_amazon <- TermDocumentMatrix(amazon_corpus_cons)
+cons_matrix_amazon <- as.matrix(TextDoc_cons_amazon)
+# sort by descearing value of frequency
+cons_v_amazon <- sort(rowSums(cons_matrix_amazon), decreasing=TRUE)
+cons_d_amazon <- data.frame(word=names(cons_v_amazon), freq=cons_v_amazon)
+
+# display top 20 most frequent words
+head(cons_d_amazon, 20)
+
+```
+
+
+```{r}
+### EMOTIONS EXPRESSED IN PROS, CONS (AMAZON)
+# devtools::install_github("kbenoit/quanteda.dictionaries") 
+library(tm)
+library(quanteda)
+library(quanteda.dictionaries)
+library(sentimentr)
+library(dplyr)
+library(ggplot2)
+
+emotion_pros_amazon <- emotion(get_sentences(big_amazon_data$amazon_covid_PROS),  emotion_dt = lexicon::hash_nrc_emotions,
+  drop.unused.emotions = TRUE, un.as.negation = FALSE,
+   n.before = 5, n.after = 2)
+emotion_pros_amazon # trust, anticipation, joy
+emotion_pros_amazon
+
+emotion_cons_amazon <- emotion(get_sentences(big_amazon_data$amazon_covid_CONS),  emotion_dt = lexicon::hash_nrc_emotions,
+  drop.unused.emotions = TRUE) # , un.as.negation = FALSE,
+  # n.before = 5, n.after = 2)
+emotion_cons_amazon # fear, anticipation, trust
+
+# Emotion analysis of pros and cons
+
+### AMAZON PROS
+amazon_pros_mean_sd <- emotion_pros_amazon %>%
+     group_by(emotion_type) %>%
+     summarize(overall_mean=mean(emotion_count), sd=sd(emotion_count))
+amazon_pros_mean_sd
+# plot emotions + pros
+amazon_emot_pros_plot <- 
+  ggplot(amazon_pros_mean_sd, aes(emotion_type, overall_mean)) +
+  geom_bar(stat="identity")
+amazon_emot_pros_plot
+
+# AMAZON CONS
+amazon_cons_mean_sd <- emotion_cons_amazon %>%
+     group_by(emotion_type) %>%
+     summarize(overall_mean=mean(emotion_count), sd=sd(emotion_count))
+amazon_cons_mean_sd
+
+amazon_emot_cons_plot <- 
+  ggplot(amazon_cons_mean_sd, aes(emotion_type, overall_mean)) +
+  geom_bar(stat="identity")
+amazon_emot_cons_plot
+
+## !!!: I need to figure out how to just display top 5-10 or so. Too messy rn 
+
+top10_pros <- amazon_pros_mean_sd %>%
+  top_n(10, overall_mean) %>%
+  ggplot() + aes(emotion_type, overall_mean) + geom_point()
+top10_pros
+
+```
+
+Make a US map
+```{r}
+# install.packages("usmap")
+library(usmap)
+library(ggplot2)
+
+map <- plot_usmap(regions= "states") +
+  labs(title="US States",
+       subtitle="subtitle") +
+  theme(panel.background = element_rect(color=
+                                          "black",
+                                        fill="lightblue"))
+map
+
+big_amazon_data$state <- big_amazon_data$STATE # rename so map can read state
+
+# Create df of average star rating per state:
+big_amazon_data$amazon_covid_starrating <- as.numeric(big_amazon_data$amazon_covid_starrating)
+
+starstatedf=as.data.frame(big_amazon_data %>%
+  group_by(state) %>%
+  summarise(average=mean(amazon_covid_starrating)))
+
+starstatedf$values <- starstatedf$average
+
+# map it
+map_stars <- plot_usmap(data=starstatedf,
+                        values="average",
+                        color="red") + 
+  scale_fill_continuous(name="Average Star Rating",
+                        label=scales::comma) +
+  theme(legend.position="right")
+map_stars
+
+usmap_avratings <- 
+  plot_usmap(data=starstatedf, values="values", labels=TRUE)
+             #, color="red") +
+  #scale_fill_discrete(name="Average Star Rating",
+                  #    label=scales::comma) +
+ # theme(legend.position="right")
+usmap_avratings # not working
+
+```
+Descriptive statistics
+```{r}
+library(psych)
+describe.by(big_amazon_data, group="STATE")
+```
+
+Topic modeling
+```{r}
+library(topicmodels)
+
+# set seed so output of the model is predictable
+big_amazon_data2 <- na.omit(big_amazon_data)
+
+df_lda <- LDA(big_amazon_data2, k=5, control=list(seed=1234))
+#nope
+
+
+### 1) Create a DTM (document term matrix)
+library(textmineR)
+dtm <- CreateDtm(big_amazon_data$amazon_covid_PROS, 
+                 doc_names = big_amazon_data$amazon_covid_jobtitles, 
+                 ngram_window = c(1, 2))
+#explore the basic frequency
+tf <- TermDocFreq(dtm = dtm)
+original_tf <- tf %>% select(term, term_freq,doc_freq)
+rownames(original_tf) <- 1:nrow(original_tf)
+# Eliminate words appearing less than 2 times or in more than half of the
+# documents
+vocabulary <- tf$term[ tf$term_freq > 1 & tf$doc_freq < nrow(dtm) / 2 ]
+dtm = dtm
+
+
+# Next, algorithm calculates a coherence score (i.e., how well do these words make sense together?)
+# Gives the quality of topics being produced
+# Higher score for # of k = more related words, topic will make more sense
+
+# lda
+xyz <- LDA(big_amazon_data)
+xyz
+
+```
+
+
+Star ratings over time
+```{r}
+library(stringr)
+library(plyr)
+
+# create a new column with number assigned to month (1-12)
+big_amazon_data$numMONTH <- revalue(big_amazon_data$MONTH,
+                                    c("Jan"="01",
+                                      "Feb" = "02",
+                                      "Mar" = "03",
+                                      "Apr" = "04",
+                                      "May" = "05",
+                                      "Jun" = "06",
+                                      "Jul"= "07",
+                                      "Aug" = "08",
+                                      "Sep" = "09",
+                                      "Oct" = "10",
+                                      "Nov" = "11",
+                                      "Dec" = "12"))
+
+# plot average star rating by month
+stars_by_month <- ggplot(big_amazon_data, aes(x=numMONTH, y=amazon_covid_starrating)) +
+  stat_summary(fun.y="mean", geom="bar")
+stars_by_month
+
+```
+
+I'M RUNNING OUT OF TIME LOL
+Gonna export big_amazon_data to csv, reupload as big_amazon_data2 with the following variables added:
+- new csv with mean star rating, state, and 12 months (only three variables)
+
+```{r}
+write.csv(big_amazon_data, "/Users/amandamoeller/Desktop/SoDA 502 FA20/Glassdoor/Amazon Project\\big_amazon_data2.csv")
+
+```
+
