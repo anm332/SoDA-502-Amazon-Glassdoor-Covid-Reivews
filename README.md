@@ -1,0 +1,1 @@
+# SoDA-502-Amazon-Glassdoor-Covid-Reivews
